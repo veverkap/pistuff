@@ -1,0 +1,27 @@
+---
+consul_version: "1.6.2"
+consul_checksum: "sha256:0e7dd7f4a6ab9038d3fe2389962b05c1ac91fe80b4a3e9477d6d3213dcfc6ddd"
+consul_install_path: /usr/local/consul
+consul_dc: alpha
+consul_dns_domain: bramble.local
+consul_bind: "{{ ansible_default_ipv4.address }}"
+consul_client: "{{ ansible_default_ipv4.address }}"
+consul_advertise: "{{ ansible_default_ipv4.address }}"
+consul_is_server: no
+consul_retry_join: '{% for host in groups[''consul''] %}"{{ host }}"{% if not loop.last %}, {% endif %}{% endfor %}'
+consul_bootstrap_expect: 3
+consul_disable_remote_exec: "true"
+
+consul_do_acl: no
+consul_acl_master_token: "42baab74-b9e1-11e6-8370-c7a88ede55d0"
+consul_acl_agent_token: "77829414-d3e5-32a9-a48b-2b922ac5619d"
+consul_acl_cluster: "{{ cluster }}"
+consul_acl_default_policy: "allow"
+consul_acl_down_policy: "allow"
+
+consul_do_ssl: no
+consul_ca_file: ca.cert
+consul_cert_file: consul.cert
+consul_key_file: consul.key
+
+consul_do_auth: no

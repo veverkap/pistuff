@@ -1,0 +1,6 @@
+---
+- stat:
+    path: "{{ consul_install_path }}/{{ consul_version }}/"
+  register: preexisting
+  tags:
+    - consul

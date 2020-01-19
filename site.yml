@@ -39,10 +39,11 @@
         - /etc/consul
       tags:
         - consul
-    - name: decompress archive
-      command: "unzip /tmp/consul.zip -d {{ consul_install_path }}/{{ consul_version }}/"
-      tags:
-        - consul
+    - name: Decompress archive
+      unarchive:
+        src: /tmp/consul.zip
+        dest: "{{ consul_install_path }}/{{ consul_version }}/"
+        remote_src: yes
     - name: link the versioned consul to the local bin
       file:
         src: "{{ consul_install_path }}/{{ consul_version }}/consul"

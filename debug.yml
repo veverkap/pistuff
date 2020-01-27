@@ -9,3 +9,9 @@
   tasks:
     - name: see what the default ip address is
       debug: msg="{{ ansible_default_ipv4 }}"
+    - name: collect facts about system services
+      service_facts:
+      register: services_state
+    - name: Debug
+      debug:
+        var: services_state

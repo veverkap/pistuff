@@ -3,12 +3,12 @@ consul_version: "1.6.2"
 consul_checksum: "sha256:0e7dd7f4a6ab9038d3fe2389962b05c1ac91fe80b4a3e9477d6d3213dcfc6ddd"
 consul_install_path: /usr/local/consul
 consul_dc: alpha
-consul_dns_domain: bramble.local
+consul_dns_domain: veverka.local
 consul_bind: "{{ ansible_default_ipv4.address }}"
 consul_client: "{{ ansible_default_ipv4.address }}"
 consul_advertise: "{{ ansible_default_ipv4.address }}"
 consul_is_server: no
-consul_retry_join: '{% for host in groups[''consul''] %}"{{ host }}"{% if not loop.last %}, {% endif %}{% endfor %}'
+consul_retry_join: '{% for host in groups[''consul_servers''] %}"{{ host }}"{% if not loop.last %}, {% endif %}{% endfor %}'
 consul_bootstrap_expect: 3
 consul_disable_remote_exec: "true"
 

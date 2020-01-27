@@ -1,0 +1,7 @@
+---
+- name: restart consul
+  become: yes
+  become_user: root
+  service:
+    name: consul
+    state: restarted

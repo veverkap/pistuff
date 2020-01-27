@@ -1,55 +1,35 @@
 #!/usr/bin/env ansible-playbook -i inventory.ini
 ---
-- name: Install Consul
-  hosts: all
+- hosts: all
+  gather_facts: true
+  remote_user: pi
   become: yes
-  become_method: sudo
-  gather_facts: yes
+  become_user: root
+  roles:
+    - utils
+  tags:
+    - bramble
+    - bootstrap
+
+- name: setup the consul servers
+  hosts: consul_servers
+  become: true
+  become_user: root
+  gather_facts: true
   remote_user: pi
   roles:
+    - { role: consul, consul_is_server: yes }
+  tags:
     - consul
-  tags: [consul]
-  tasks:
-    - name: Update the software package repository
-      apt:
-        update_cache: yes
-    - name: Install dependencies
-      apt:
-        name:
-          - curl
-          - net-tools
-          - unzip
-        state: latest
-    - name: download consul
-      get_url:
-        url: "https://releases.hashicorp.com/consul/{{consul_version}}/consul_{{consul_version}}_linux_armhfv6.zip"
-        dest: /tmp/consul.zip
-        mode: 0777
-        checksum: "{{consul_checksum}}"
-      tags:
-        - consul
-    - name: create the install paths
-      file:
-        path: "{{ item }}"
-        state: directory
-        mode: 0755
-      with_items:
-        - "{{ consul_install_path }}/{{ consul_version }}"
-        - /usr/share/consul-ui
-        - /etc/consul
-      tags:
-        - consul
-    - name: Decompress archive
-      unarchive:
-        src: /tmp/consul.zip
-        dest: "{{ consul_install_path }}/{{ consul_version }}/"
-        remote_src: yes
-    - name: link the versioned consul to the local bin
-      file:
-        src: "{{ consul_install_path }}/{{ consul_version }}/consul"
-        dest: /usr/local/bin/consul
-        owner: root
-        group: root
-        state: link
-      tags:
-        - consul
+    - consul-servers
+
+- name: setup the consul followers
+  hosts: consul_followers
+  become: true
+  become_user: root
+  gather_facts: true
+  remote_user: pi
+  roles:
+    - { role: consul, consul_is_server: no }
+  tags:
+    - consul

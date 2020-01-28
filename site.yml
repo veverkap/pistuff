@@ -1,35 +1,55 @@
 #!/usr/bin/env ansible-playbook -i inventory.ini
 ---
-- hosts: all
-  gather_facts: true
-  remote_user: pi
-  become: yes
-  become_user: root
-  roles:
-    - utils
-  tags:
-    - bramble
-    - bootstrap
+# - hosts: all
+#   gather_facts: true
+#   remote_user: pi
+#   become: yes
+#   become_user: root
+#   roles:
+#     - utils
+#   tags:
+#     - bootstrap
+# - name: setup the consul servers
+#   hosts: consul_servers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: pi
+#   roles:
+#     - { role: consul, consul_is_server: yes }
+#   tags:
+#     - consul
+#     - consul-servers
 
-- name: setup the consul servers
-  hosts: consul_servers
+# - name: setup the consul followers
+#   hosts: consul_followers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: pi
+#   roles:
+#     - { role: consul, consul_is_server: no }
+#   tags:
+#     - consul
+
+- name: setup the nomad servers
+  hosts: nomad_servers
   become: true
   become_user: root
   gather_facts: true
   remote_user: pi
   roles:
-    - { role: consul, consul_is_server: yes }
+    - { role: nomad, nomad_is_server: yes, nomad_dc: alpha }
   tags:
-    - consul
-    - consul-servers
+    - nomad
 
-- name: setup the consul followers
-  hosts: consul_followers
+- name: setup the nomad workers
+  hosts: nomad_workers
   become: true
   become_user: root
   gather_facts: true
   remote_user: pi
   roles:
-    - { role: consul, consul_is_server: no }
+    - { role: nomad, nomad_dc: alpha }
   tags:
-    - consul
+    - nomad

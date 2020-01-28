@@ -1,0 +1,9 @@
+---
+nomad_version: "0.10.2"
+nomad_checksum: "sha256:2b3d6ee8a5b49bda511de4a11764580ef060ec56cce35e92940dbdfafee794f4"
+nomad_install_path: /usr/local/nomad
+nomad_dc: dc1
+nomad_is_server: no
+nomad_leader_group: nomad_servers
+nomad_bootstrap_expect: "{{ groups[nomad_leader_group] | length }}"
+nomad_retry_join: ' [{% for host in groups[nomad_leader_group] %}"{{ host }}"{% if not loop.last %}, {% endif %}{% endfor %}]'

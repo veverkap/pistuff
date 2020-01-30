@@ -7,7 +7,7 @@
   become_user: root
   roles:
     # - utils
-    - { role: dnsmasq, consul_dns_domain: veverka.local }
+    - { role: dnsmasq, consul_dns_domain: consul }
   tags:
     - bootstrap
 # - name: setup the consul servers

@@ -1,0 +1,46 @@
+# tasks file for kibatic.traefik
+---
+- name: Create traefik systemd unit
+  template:
+    src: "{{ traefik_systemd_unit_template }}.j2"
+    dest: "{{ traefik_systemd_unit_dest }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Restart traefik
+
+- name: Ensure install & config directory exists
+  file:
+    path: "{{ traefik_install_dir }}"
+    state: directory
+- name: Download Traefik binary
+  get_url:
+    url: "{{ traefik_binary_url }}"
+    dest: /tmp/traefik.tar.gz
+    mode: 0777
+    checksum: "{{ traefik_checksum }}"
+    force: true
+- name: Ensure traefik service is stopped before traefik update
+  service:
+    name: traefik
+    state: stopped
+    enabled: yes
+- name: decompress archive
+  unarchive:
+    src: /tmp/traefik.tar.gz
+    dest: "{{ traefik_install_dir }}"
+    remote_src: yes
+- name: Copy traefik config file
+  template:
+    src: "{{ traefik_template }}.j2"
+    dest: "{{ traefik_config_file }}"
+    owner: root
+    group: root
+    mode: 0744
+- name: Ensure traefik service is enabled and running
+  systemd:
+    name: traefik
+    state: started
+    enabled: yes
+    daemon_reload: yes

@@ -1,15 +1,21 @@
 #!/usr/bin/env ansible-playbook -i inventory
 ---
-- hosts: all
-  gather_facts: true
-  remote_user: pi
-  become: yes
-  become_user: root
-  roles:
-    # - utils
-    - { role: dnsmasq, consul_dns_domain: consul }
-  tags:
-    - bootstrap
+# - name: setup servers
+#   hosts: all
+#   gather_facts: true
+#   remote_user: pi
+#   become: yes
+#   become_user: root
+#   roles:
+#     - utils
+#     - {
+#         role: geerlingguy.docker_arm,
+#         docker_install_compose: false,
+#         tags: ["docker"],
+#       }
+#     - { role: dnsmasq, consul_dns_domain: consul }
+#   tags:
+#     - bootstrap
 # - name: setup the consul servers
 #   hosts: consul_servers
 #   become: true
@@ -51,3 +57,13 @@
 #     - { role: nomad, nomad_dc: alpha }
 #   tags:
 #     - nomad
+- name: setup traefix
+  hosts: traefik_servers
+  become: true
+  become_user: root
+  gather_facts: true
+  remote_user: pi
+  roles:
+    - { role: traefik, tags: ["docker", "nomad", "traefik"] }
+  tags:
+    - nomad

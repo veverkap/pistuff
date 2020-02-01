@@ -1,0 +1,105 @@
+{#
+    Check traefik sample for full config options
+    https://raw.githubusercontent.com/containous/traefik/master/traefik.sample.toml
+#}
+################################################################
+# Global configuration
+################################################################
+[global]
+  checkNewVersion = true
+  sendAnonymousUsage = false
+
+################################################################
+# Traefik logs configuration
+################################################################
+
+# Traefik logs
+# Enabled by default and log to stdout
+#
+# Optional
+#
+[log]
+
+  # Log level
+  #
+  # Optional
+  # Default: "ERROR"
+  #
+  level = "INFO"
+
+  # Sets the filepath for the traefik log. If not specified, stdout will be used.
+  # Intermediate directories are created if necessary.
+  #
+  # Optional
+  # Default: os.Stdout
+  #
+  filePath = "/var/log/traefik.log"
+
+  # Format is either "json" or "common".
+  #
+  # Optional
+  # Default: "common"
+  #
+  format = "json"
+
+################################################################
+# API and dashboard configuration
+################################################################
+
+# Enable API and dashboard
+[api]
+
+  # Enable the API in insecure mode
+  #
+  # Optional
+  # Default: true
+  #
+  insecure = true
+
+  # Enabled Dashboard
+  #
+  # Optional
+  # Default: true
+  #
+  dashboard = true
+
+################################################################
+# Ping configuration
+################################################################
+
+# Enable ping
+[ping]
+
+  # Name of the related entry point
+  #
+  # Optional
+  # Default: "traefik"
+  #
+  # entryPoint = "traefik"
+
+
+
+################################################################
+# Docker configuration backend
+################################################################
+
+# Enable Docker configuration backend
+[providers.docker]
+
+  # Docker server endpoint. Can be a tcp or a unix socket endpoint.
+  #
+  # Required
+  # Default: "unix:///var/run/docker.sock"
+  #
+  endpoint = "unix:///var/run/docker.sock"
+
+  # Expose containers by default in traefik
+  #
+  # Optional
+  # Default: true
+  #
+  # exposedByDefault = false
+
+[providers.consulCatalog]
+  [providers.consulCatalog.endpoint]
+    address = "http://127.0.0.1:8500"

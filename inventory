@@ -17,6 +17,9 @@ rpi[4:6]
 [nomad_servers]
 rpi6
 
+[traefik_servers]
+rpi1 ansible_host=192.168.1.124
+
 [nomad_workers]
 rpi[1:5]
 

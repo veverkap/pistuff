@@ -14,7 +14,8 @@ server=/{{ consul_dns_domain }}/127.0.0.1#8600
 
 {% for host in groups[consul_servers_group] %}
 {% if host != ansible_default_ipv4.address %}
-server=/{{ consul_dns_domain }}/{{ host }}#8600
+
+server=/{{ consul_dns_domain }}/{{ hostvars[host].ansible_host }}#8600
 
 {% endif %}
 {% endfor %}

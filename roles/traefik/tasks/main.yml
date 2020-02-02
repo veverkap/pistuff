@@ -9,11 +9,13 @@
     mode: 0644
   notify:
     - Restart traefik
+  when: traefik_update | bool == True
 
 - name: Ensure install & config directory exists
   file:
     path: "{{ traefik_install_dir }}"
     state: directory
+
 - name: Download Traefik binary
   get_url:
     url: "{{ traefik_binary_url }}"
@@ -21,16 +23,22 @@
     mode: 0777
     checksum: "{{ traefik_checksum }}"
     force: true
+  when: traefik_update | bool == True
+
 - name: Ensure traefik service is stopped before traefik update
   service:
     name: traefik
     state: stopped
     enabled: yes
+  when: traefik_update | bool == True
+
 - name: decompress archive
   unarchive:
     src: /tmp/traefik.tar.gz
     dest: "{{ traefik_install_dir }}"
     remote_src: yes
+  when: traefik_update | bool == True
+
 - name: Copy traefik config file
   template:
     src: "{{ traefik_template }}.j2"
@@ -38,6 +46,9 @@
     owner: root
     group: root
     mode: 0744
+  notify:
+    - Restart traefik
+
 - name: Ensure traefik service is enabled and running
   systemd:
     name: traefik

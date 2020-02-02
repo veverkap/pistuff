@@ -1,104 +1,35 @@
-{#
-    Check traefik sample for full config options
-    https://raw.githubusercontent.com/containous/traefik/master/traefik.sample.toml
-#}
-################################################################
-# Global configuration
-################################################################
 [global]
   checkNewVersion = true
   sendAnonymousUsage = false
 
-################################################################
-# Traefik logs configuration
-################################################################
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
 
-# Traefik logs
-# Enabled by default and log to stdout
-#
-# Optional
-#
+  [entryPoints.websecure]
+    address = ":443"
+
+[certificatesResolvers.le.acme]
+  email = "patrick@veverka.net"
+  storage = "acme.json"
+  [certificatesResolvers.le.acme.dnsChallenge]
+    provider = "cloudflare"
+
 [log]
-
-  # Log level
-  #
-  # Optional
-  # Default: "ERROR"
-  #
   level = "INFO"
-
-  # Sets the filepath for the traefik log. If not specified, stdout will be used.
-  # Intermediate directories are created if necessary.
-  #
-  # Optional
-  # Default: os.Stdout
-  #
   filePath = "/var/log/traefik.log"
-
-  # Format is either "json" or "common".
-  #
-  # Optional
-  # Default: "common"
-  #
   format = "json"
 
-################################################################
-# API and dashboard configuration
-################################################################
-
-# Enable API and dashboard
 [api]
-
-  # Enable the API in insecure mode
-  #
-  # Optional
-  # Default: true
-  #
   insecure = true
-
-  # Enabled Dashboard
-  #
-  # Optional
-  # Default: true
-  #
   dashboard = true
 
-################################################################
-# Ping configuration
-################################################################
+[providers.file]
+  filename = "/etc/traefik.toml"
 
-# Enable ping
-[ping]
-
-  # Name of the related entry point
-  #
-  # Optional
-  # Default: "traefik"
-  #
-  # entryPoint = "traefik"
-
-
-
-################################################################
-# Docker configuration backend
-################################################################
-
-# Enable Docker configuration backend
 [providers.docker]
-
-  # Docker server endpoint. Can be a tcp or a unix socket endpoint.
-  #
-  # Required
-  # Default: "unix:///var/run/docker.sock"
-  #
   endpoint = "unix:///var/run/docker.sock"
-
-  # Expose containers by default in traefik
-  #
-  # Optional
-  # Default: true
-  #
-  # exposedByDefault = false
+  exposedByDefault = false
 
 [providers.consulCatalog]
   [providers.consulCatalog.endpoint]

@@ -9,6 +9,9 @@
   [entryPoints.websecure]
     address = ":443"
 
+  [entryPoints.registry]
+    address = ":5000"
+
 [certificatesResolvers.le.acme]
   email = "patrick@veverka.net"
   storage = "acme.json"

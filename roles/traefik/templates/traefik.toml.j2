@@ -24,11 +24,11 @@
   format = "json"
 
 [api]
-  insecure = true
   dashboard = true
+  debug = true
 
 [providers.file]
-  filename = "/etc/traefik.toml"
+  directory = "{{ traefik_config_directory }}"
 
 [providers.docker]
   endpoint = "unix:///var/run/docker.sock"

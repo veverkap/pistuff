@@ -1,8 +1,8 @@
 # tasks file for kibatic.traefik
 ---
-- name: Create traefik systemd unit
+- name: Create Traefik systemd unit
   template:
-    src: "{{ traefik_systemd_unit_template }}.j2"
+    src: "{{ traefik_systemd_unit_template }}"
     dest: "{{ traefik_systemd_unit_dest }}"
     owner: root
     group: root
@@ -11,9 +11,26 @@
     - Restart traefik
   when: traefik_update | bool == True
 
-- name: Ensure install & config directory exists
+- name: create systemd override directory
+  file:
+    path: /etc/systemd/system/traefik.service.d
+    state: directory
+  when: traefik_update | bool == True
+
+- name: add systemd override
+  copy:
+    src: override.conf
+    dest: /etc/systemd/system/traefik.service.d/override.conf
+  when: traefik_update | bool == True
+
+- name: Ensure Traefik install directory exists
   file:
     path: "{{ traefik_install_dir }}"
+    state: directory
+
+- name: Ensure Traefik config directory exists
+  file:
+    path: "{{ traefik_config_directory }}"
     state: directory
 
 - name: Download Traefik binary
@@ -25,24 +42,34 @@
     force: true
   when: traefik_update | bool == True
 
-- name: Ensure traefik service is stopped before traefik update
+- name: Ensure Traefik service is stopped before Traefik update
   service:
     name: traefik
     state: stopped
     enabled: yes
   when: traefik_update | bool == True
 
-- name: decompress archive
+- name: Decompress Traefik archive
   unarchive:
     src: /tmp/traefik.tar.gz
     dest: "{{ traefik_install_dir }}"
     remote_src: yes
   when: traefik_update | bool == True
 
-- name: Copy traefik config file
+- name: Copy Traefik config file
   template:
-    src: "{{ traefik_template }}.j2"
+    src: "{{ traefik_config_template }}"
     dest: "{{ traefik_config_file }}"
+    owner: root
+    group: root
+    mode: 0744
+  notify:
+    - Restart traefik
+
+- name: Copy Traefik dashboard config file
+  template:
+    src: "{{ traefix_dashboard_template }}"
+    dest: "{{ traefik_dashboard_file }}"
     owner: root
     group: root
     mode: 0744

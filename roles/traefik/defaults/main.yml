@@ -1,10 +1,14 @@
 ---
-traefik_install_dir: /usr/bin
-traefik_binary_url: https://github.com/containous/traefik/releases/download/v2.1.3/traefik_v2.1.3_linux_armv7.tar.gz
-traefik_bin_path: "{{ traefik_install_dir }}/traefik"
-traefik_config_file: /etc/traefik.toml
-traefik_template: traefik.toml
-traefik_systemd_unit_template: traefik.service
+traefik_version: "v2.1.3"
+traefik_systemd_unit_template: traefik.service.j2
 traefik_systemd_unit_dest: /etc/systemd/system/traefik.service
-traefik_update: no
+traefik_install_dir: /usr/bin
+traefik_bin_path: "{{ traefik_install_dir }}/traefik"
+traefik_config_directory: /etc/traefik.d
+traefik_binary_url: https://github.com/containous/traefik/releases/download/{{traefik_version}}/traefik_{{traefik_version}}_linux_armv7.tar.gz
 traefik_checksum: "sha256:b1468d029279406d8686aed7d394fc75a0d69c0db6a6798b62d64663be0dc730"
+traefik_config_template: traefik.toml.j2
+traefik_config_file: /etc/traefik.toml
+traefix_dashboard_template: dashboard.toml.j2
+traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
+traefik_update: no

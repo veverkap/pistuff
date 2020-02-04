@@ -1,0 +1,12 @@
+[http.routers.my-api]
+  rule = "Host(`traefik.veverka.net`)"
+  service = "api@internal"
+  middlewares = ["auth"]
+
+  [http.routers.my-api.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.my-api.tls.domains]]
+      main = "traefik.veverka.net"
+
+[http.middlewares.auth.basicAuth]
+  usersFile = "/etc/traefik.d/users"

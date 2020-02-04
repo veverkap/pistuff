@@ -47,13 +47,6 @@ job "dockerregistry" {
       }
       service {
         name = "dockerregistry"
-        tags = [
-          "traefik.http.routers.registryrouter.rule=Host(`registry.veverka.net`)",
-          "traefik.http.routers.registryrouter.service=dockerregistry@consulcatalog",
-          "traefik.http.routers.registryrouter.tls.certResolver=le",
-          "traefik.http.routers.registryrouter.tls.domains[0].main=registry.veverka.net",
-          "traefik.http.routers.registryrouter.entryPoints[0]=registry"
-        ]
         port = "dockerregistry"
         check {
           name     = "alive"

@@ -37,3 +37,6 @@
 [providers.consulCatalog]
   [providers.consulCatalog.endpoint]
     address = "http://127.0.0.1:8500"
+
+[http.middlewares.auth.basicAuth]
+  usersFile = "/etc/traefik.d/users"

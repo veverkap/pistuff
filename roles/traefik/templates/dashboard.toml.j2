@@ -8,5 +8,36 @@
     [[http.routers.my-api.tls.domains]]
       main = "traefik.veverka.net"
 
+[http.routers.consul]
+  rule = "Host(`consul.veverka.net`)"
+  service = "consul@consulcatalog"
+  middlewares = ["auth"]
+
+  [http.routers.consul.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.consul.tls.domains]]
+      main = "consul.veverka.net"
+
+[http.routers.nomad]
+  rule = "Host(`nomad.veverka.net`)"
+  service = "nomad-client@consulcatalog"
+  middlewares = ["auth"]
+
+  [http.routers.nomad.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.nomad.tls.domains]]
+      main = "nomad.veverka.net"
+
+[http.routers.registry]
+  rule = "Host(`registry.veverka.net`)"
+  service = "dockerregistry@consulcatalog"
+  middlewares = ["auth"]
+
+  [http.routers.registry.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.registry.tls.domains]]
+      main = "registry.veverka.net"
+
+
 [http.middlewares.auth.basicAuth]
   usersFile = "/etc/traefik.d/users"

@@ -51,12 +51,6 @@ job "homeassistant" {
       }
       service {
         name = "homeassistant"
-        tags = [
-          "traefik.http.routers.homeassrouter.rule=Host(`homeassistant.veverka.net`)",
-          "traefik.http.routers.homeassrouter.service=homeassistant@consulcatalog",
-          "traefik.http.routers.homeassrouter.tls.certResolver=le",
-          "traefik.http.routers.homeassrouter.tls.domains[0].main=homeassistant.veverka.net"
-        ]
         port = "homeassistant_core"
         check {
           name     = "alive"

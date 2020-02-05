@@ -47,12 +47,6 @@ job "ombi" {
       }
       service {
         name = "ombi"
-        tags = [
-          "traefik.http.routers.registryrouter.rule=Host(`ombi.veverka.net`)",
-          "traefik.http.routers.registryrouter.service=ombi@consulcatalog",
-          "traefik.http.routers.registryrouter.tls.certResolver=le",
-          "traefik.http.routers.registryrouter.tls.domains[0].main=ombi.veverka.net"
-        ]
         port = "ombi"
         check {
           name     = "alive"

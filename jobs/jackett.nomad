@@ -47,12 +47,6 @@ job "jackett" {
       }
       service {
         name = "jackett"
-        tags = [
-          "traefik.http.routers.registryrouter.rule=Host(`jackett.veverka.net`)",
-          "traefik.http.routers.registryrouter.service=jackett@consulcatalog",
-          "traefik.http.routers.registryrouter.tls.certResolver=le",
-          "traefik.http.routers.registryrouter.tls.domains[0].main=jackett.veverka.net"
-        ]
         port = "jackett"
         check {
           name     = "alive"

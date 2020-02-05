@@ -62,6 +62,7 @@
     dest: "{{ traefik_config_file }}"
     owner: root
     group: root
+    backup: true
     mode: 0744
   notify:
     - Restart traefik
@@ -72,6 +73,7 @@
     dest: "{{ traefik_dashboard_file }}"
     owner: root
     group: root
+    backup: true
     mode: 0744
   notify:
     - Restart traefik

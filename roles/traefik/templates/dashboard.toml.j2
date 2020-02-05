@@ -1,3 +1,4 @@
+# Adding in router for traefikdash
 [http.routers.traefikdash]
   rule = "Host(`traefik.veverka.net`)"
   service = "api@internal"
@@ -8,66 +9,21 @@
     [[http.routers.traefikdash.tls.domains]]
       main = "traefik.veverka.net"
 
-[http.routers.consul]
-  rule = "Host(`consul.veverka.net`)"
-  service = "consul@consulcatalog"
+{% for item in traefix_dashboard_items %}
+# Adding in router for {{item.name}}
+[http.routers.{{ item.name }}]
+  rule = "Host(`{{ item.host }}`)"
+  service = "{{ item.service }}"
+{% if item.include_auth | bool == True %}
   middlewares = ["auth"]
+{% endif %}
 
-  [http.routers.consul.tls]
+  [http.routers.{{ item.name }}.tls]
     certResolver = "le" # From static configuration
-    [[http.routers.consul.tls.domains]]
-      main = "consul.veverka.net"
+    [[http.routers.{{ item.name }}.tls.domains]]
+      main = "{{ item.host }}"
 
-[http.routers.homeassistant]
-  rule = "Host(`homeassistant.veverka.net`)"
-  service = "homeassistant@consulcatalog"
-  middlewares = ["auth"]
-
-  [http.routers.homeassistant.tls]
-    certResolver = "le" # From static configuration
-    [[http.routers.homeassistant.tls.domains]]
-      main = "homeassistant.veverka.net"
-
-[http.routers.jackett]
-  rule = "Host(`jackett.veverka.net`)"
-  service = "jackett@consulcatalog"
-  middlewares = ["auth"]
-
-  [http.routers.jackett.tls]
-    certResolver = "le" # From static configuration
-    [[http.routers.jackett.tls.domains]]
-      main = "jackett.veverka.net"
-
-[http.routers.nomad]
-  rule = "Host(`nomad.veverka.net`)"
-  service = "nomad-client@consulcatalog"
-  middlewares = ["auth"]
-
-  [http.routers.nomad.tls]
-    certResolver = "le" # From static configuration
-    [[http.routers.nomad.tls.domains]]
-      main = "nomad.veverka.net"
-
-[http.routers.ombi]
-  rule = "Host(`ombi.veverka.net`)"
-  service = "ombi@consulcatalog"
-  middlewares = ["auth"]
-
-  [http.routers.ombi.tls]
-    certResolver = "le" # From static configuration
-    [[http.routers.ombi.tls.domains]]
-      main = "ombi.veverka.net"
-
-[http.routers.registry]
-  rule = "Host(`registry.veverka.net`)"
-  service = "dockerregistry@consulcatalog"
-  middlewares = ["auth"]
-
-  [http.routers.registry.tls]
-    certResolver = "le" # From static configuration
-    [[http.routers.registry.tls.domains]]
-      main = "registry.veverka.net"
-
+{% endfor %}
 
 [http.middlewares.auth.basicAuth]
   usersFile = "/etc/traefik.d/users"

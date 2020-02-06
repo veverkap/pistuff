@@ -18,10 +18,16 @@
   [certificatesResolvers.le.acme.dnsChallenge]
     provider = "cloudflare"
 
+[accessLog]
+  filePath = "/var/log/traefik_access.log"
+  format = "json"
+
 [log]
   level = "INFO"
   filePath = "/var/log/traefik.log"
   format = "json"
+
+[ping]
 
 [api]
   dashboard = true

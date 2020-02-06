@@ -13,10 +13,10 @@ traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
 traefik_update: no
 traefix_dashboard_items:
-  - name: consul
-    host: consul.veverka.net
-    service: consul@consulcatalog
-    include_auth: true
+  - name: couchpotato
+    host: couchpotato.veverka.net
+    service: couchpotato@consulcatalog
+    include_auth: false
   - name: homeassistant
     host: homeassistant.veverka.net
     service: homeassistant@consulcatalog

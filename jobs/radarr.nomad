@@ -60,5 +60,15 @@ job "radarr" {
         }
       }
     }
+    volume "movies" {
+      type      = "host"
+      source    = "movies"
+      read_only = false
+    }
+    volume "tv" {
+      type      = "host"
+      source    = "tv"
+      read_only = false
+    }
   }
 }

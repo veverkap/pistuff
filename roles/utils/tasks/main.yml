@@ -14,5 +14,10 @@
     - htop
     - dnsutils
     - telnet
+    - curl
+    - net-tools
+    - unzip
+    - htop
+    - wget
   tags:
     - utils

@@ -41,6 +41,10 @@ job "radarr" {
         labels {
         }
       }
+      env {
+        PUID = "1000",
+        PGID = "995"
+      }
       resources {
         cpu    = 500 # 500 MHz
         memory = 1024 # 1G

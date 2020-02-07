@@ -1,26 +1,49 @@
 ---
-- name: Create mnt movies
+- name: Create mounted Movies directory
   file:
     path: /mnt/movies
     state: directory
-- name: Create mnt tv
-  file:
-    path: /mnt/tv
-    state: directory
-- name: add mount movies
+- name: Remove existing mount for movies
   mount:
     name: /mnt/movies
-    src: //192.168.1.43/USBDisk1/Movies
-    # yes this password is super secure
-    opts: "username=admin,password=admin"
+    state: unmounted
+- name: Mount movies directory
+  mount:
+    name: /mnt/movies
+    src: "//192.168.1.43/USBDisk1/Movies"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
     fstype: cifs
     state: mounted
   become: true # as root
-- name: add mount tv
+- name: Create mounted TV directory
+  file:
+    path: /mnt/tv
+    state: directory
+- name: Remove existing mount for TV
+  mount:
+    name: /mnt/tv
+    state: unmounted
+- name: Mount tv directory
   mount:
     name: /mnt/tv
     src: "//192.168.1.43/USBDisk2/TV Shows"
-    opts: "username=admin,password=admin"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+- name: Create mounted config directory
+  file:
+    path: /mnt/configs
+    state: directory
+- name: Remove existing mount for configs
+  mount:
+    name: /mnt/configs
+    state: unmounted
+- name: Mount configs directory
+  mount:
+    name: /mnt/configs
+    src: "//192.168.1.43/Public/NomadConfigs"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
     fstype: cifs
     state: mounted
   become: true # as root

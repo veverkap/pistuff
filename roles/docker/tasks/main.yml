@@ -1,0 +1,26 @@
+---
+- name: Create mnt movies
+  file:
+    path: /mnt/movies
+    state: directory
+- name: Create mnt tv
+  file:
+    path: /mnt/tv
+    state: directory
+- name: add mount movies
+  mount:
+    name: /mnt/movies
+    src: //192.168.1.43/USBDisk1/Movies
+    # yes this password is super secure
+    opts: "username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+- name: add mount tv
+  mount:
+    name: /mnt/tv
+    src: "//192.168.1.43/USBDisk2/TV Shows"
+    opts: "username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root

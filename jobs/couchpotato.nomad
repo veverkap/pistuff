@@ -31,6 +31,10 @@ job "couchpotato" {
       config {
         image = "linuxserver/couchpotato"
         network_mode = "bridge"
+        volumes = [
+            "/mnt/movies:/mnt/movies",
+            "/mnt/tv:/mnt/tv"
+        ]
         port_map {
           couchpotato = 5050
         }

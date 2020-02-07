@@ -1,4 +1,4 @@
-job "dockerregistry" {
+job "bazarr" {
   datacenters = ["alpha"]
   type = "service"
   update {
@@ -15,7 +15,7 @@ job "dockerregistry" {
     min_healthy_time = "10s"
     healthy_deadline = "5m"
   }
-  group "dockerregistry" {
+  group "bazarr" {
     count = 1
     restart {
       attempts = 2
@@ -26,17 +26,17 @@ job "dockerregistry" {
     ephemeral_disk {
       size = 300
     }
-    task "dockerregistry" {
+    task "bazarr" {
       driver = "docker"
       config {
-        image = "registry:2"
+        image = "linuxserver/bazarr"
         network_mode = "bridge"
         volumes = [
             "/mnt/movies:/mnt/movies",
             "/mnt/tv:/mnt/tv"
         ]
         port_map {
-          dockerregistry = 5000
+          bazarr = 6767
         }
         labels {
         }
@@ -46,12 +46,12 @@ job "dockerregistry" {
         memory = 1024 # 1G
         network {
           mbits = 100
-          port "dockerregistry" {}
+          port "bazarr" {}
         }
       }
       service {
-        name = "dockerregistry"
-        port = "dockerregistry"
+        name = "bazarr"
+        port = "bazarr"
         check {
           name     = "alive"
           type     = "tcp"

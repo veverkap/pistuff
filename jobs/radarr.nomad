@@ -31,6 +31,10 @@ job "radarr" {
       config {
         image = "linuxserver/radarr"
         network_mode = "bridge"
+        volumes = [
+            "/mnt/movies:/mnt/movies",
+            "/mnt/tv:/mnt/tv"
+        ]
         port_map {
           radarr = 7878
         }

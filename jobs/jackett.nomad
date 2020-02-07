@@ -31,6 +31,10 @@ job "jackett" {
       config {
         image = "linuxserver/jackett"
         network_mode = "bridge"
+        volumes = [
+            "/mnt/movies:/mnt/movies",
+            "/mnt/tv:/mnt/tv"
+        ]
         port_map {
           jackett = 9117
         }

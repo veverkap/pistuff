@@ -31,6 +31,10 @@ job "ombi" {
       config {
         image = "linuxserver/ombi"
         network_mode = "bridge"
+        volumes = [
+            "/mnt/movies:/mnt/movies",
+            "/mnt/tv:/mnt/tv"
+        ]
         port_map {
           ombi = 3579
         }

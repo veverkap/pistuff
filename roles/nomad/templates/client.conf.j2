@@ -14,5 +14,14 @@ advertise {
 
 client {
   enabled = true
+  host_volume "movies" {
+    path = "/mnt/movies"
+    read_only = false
+  }
+
+  host_volume "tv" {
+    path = "/mnt/tv"
+    read_only = false
+  }
   servers = {{ nomad_retry_join }}
 }

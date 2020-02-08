@@ -34,7 +34,7 @@ job "radarr" {
         volumes = [
             "/mnt/movies:/mnt/movies",
             "/mnt/tv:/mnt/tv",
-            "/opt/radarr:/config"
+            "/mnt/configs/radarr:/config"
         ]
         port_map {
           radarr = 7878

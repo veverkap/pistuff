@@ -15,6 +15,24 @@
     fstype: cifs
     state: mounted
   become: true # as root
+
+- name: Create mounted MoviesSync directory
+  file:
+    path: /mnt/movies-sync
+    state: directory
+- name: Remove existing mount for moviesSync
+  mount:
+    name: /mnt/movies-sync
+    state: unmounted
+- name: Mount moviessync directory
+  mount:
+    name: /mnt/movies-sync
+    src: "//192.168.1.43/USBDisk1/Sync"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+
 - name: Create mounted TV directory
   file:
     path: /mnt/tv
@@ -31,6 +49,24 @@
     fstype: cifs
     state: mounted
   become: true # as root
+
+- name: Create mounted TVSync directory
+  file:
+    path: /mnt/tv-sync
+    state: directory
+- name: Remove existing mount for TVSync
+  mount:
+    name: /mnt/tv-sync
+    state: unmounted
+- name: Mount tv directory
+  mount:
+    name: /mnt/tv-sync
+    src: "//192.168.1.43/USBDisk2/Sync"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+
 - name: Create mounted config directory
   file:
     path: /mnt/configs

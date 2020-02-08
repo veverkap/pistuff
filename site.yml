@@ -14,7 +14,7 @@
         tags: ["docker"],
       }
     - { role: dnsmasq, consul_dns_domain: consul }
-    - docker
+    - { role: docker, tags: ["dockermnt"] }
   tags:
     - bootstrap
 - name: setup the consul servers

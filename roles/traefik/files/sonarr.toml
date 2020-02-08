@@ -1,0 +1,16 @@
+# Adding in router for traefikdash
+[http.routers.sonarrdash]
+  rule = "Host(`sonarr.veverka.net`)"
+  service = "service-sonarr"
+
+  [http.routers.sonarrdash.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.sonarrdash.tls.domains]]
+      main = "sonarr.veverka.net"
+
+# Adding in router for sonarrdash
+[http.services]
+  [http.services.service-sonarr]
+    [http.services.service-sonarr.loadBalancer]
+      [[http.services.service-sonarr.loadBalancer.servers]]
+        url = "http://192.168.1.32:8567"

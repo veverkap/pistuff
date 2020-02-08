@@ -32,7 +32,7 @@ job "homeassistant" {
         image = "homeassistant/home-assistant"
         network_mode = "bridge"
         volumes = [
-            "/srv/home_assistant/config:/config",
+            "//mnt/configs/home_assistant:/config",
             "/etc/localtime:/etc/localtime:ro"
         ]
         port_map {
@@ -40,6 +40,11 @@ job "homeassistant" {
         }
         labels {
         }
+      }
+      env {
+        PUID = "1000",
+        PGID = "995",
+        TZ = "America/New_York"
       }
       resources {
         cpu    = 500 # 500 MHz

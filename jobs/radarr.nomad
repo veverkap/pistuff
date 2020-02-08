@@ -33,7 +33,8 @@ job "radarr" {
         network_mode = "bridge"
         volumes = [
             "/mnt/movies:/mnt/movies",
-            "/mnt/tv:/mnt/tv"
+            "/mnt/tv:/mnt/tv",
+            "/opt/radarr:/config"
         ]
         port_map {
           radarr = 7878
@@ -63,16 +64,6 @@ job "radarr" {
           timeout  = "2s"
         }
       }
-    }
-    volume "movies" {
-      type      = "host"
-      source    = "movies"
-      read_only = false
-    }
-    volume "tv" {
-      type      = "host"
-      source    = "tv"
-      read_only = false
     }
   }
 }

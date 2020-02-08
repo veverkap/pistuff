@@ -33,7 +33,8 @@ job "couchpotato" {
         network_mode = "bridge"
         volumes = [
             "/mnt/movies:/mnt/movies",
-            "/mnt/tv:/mnt/tv"
+            "/mnt/tv:/mnt/tv",
+            "/mnt/configs/couchpotato:/config"
         ]
         port_map {
           couchpotato = 5050
@@ -43,7 +44,8 @@ job "couchpotato" {
       }
       env {
         PUID = "1000",
-        PGID = "995"
+        PGID = "995",
+        TZ = "America/New_York"
       }
       resources {
         cpu    = 500 # 500 MHz

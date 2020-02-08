@@ -33,13 +33,19 @@ job "jackett" {
         network_mode = "bridge"
         volumes = [
             "/mnt/movies:/mnt/movies",
-            "/mnt/tv:/mnt/tv"
+            "/mnt/tv:/mnt/tv",
+            "/mnt/configs/jackatt:/config"
         ]
         port_map {
           jackett = 9117
         }
         labels {
         }
+      }
+      env {
+        PUID = "1000",
+        PGID = "995",
+        TZ = "America/New_York"
       }
       resources {
         cpu    = 500 # 500 MHz

@@ -33,7 +33,8 @@ job "radarr" {
         network_mode = "bridge"
         volumes = [
             "/mnt/movies:/mnt/movies",
-            "/mnt/tv:/mnt/tv"
+            "/mnt/tv:/mnt/tv",
+            "/opt/radarr:/config"
         ]
         port_map {
           radarr = 7878
@@ -43,7 +44,8 @@ job "radarr" {
       }
       env {
         PUID = "1000",
-        PGID = "995"
+        PGID = "995",
+        TZ = "America/New_York"
       }
       resources {
         cpu    = 500 # 500 MHz
@@ -63,16 +65,6 @@ job "radarr" {
           timeout  = "2s"
         }
       }
-    }
-    volume "movies" {
-      type      = "host"
-      source    = "movies"
-      read_only = false
-    }
-    volume "tv" {
-      type      = "host"
-      source    = "tv"
-      read_only = false
     }
   }
 }

@@ -24,7 +24,9 @@ job "ombi" {
       mode = "fail"
     }
     ephemeral_disk {
-      size = 300
+      size = 200
+      sticky = true
+      migrate = true
     }
     task "ombi" {
       driver = "docker"
@@ -33,13 +35,18 @@ job "ombi" {
         network_mode = "bridge"
         volumes = [
             "/mnt/movies:/mnt/movies",
-            "/mnt/tv:/mnt/tv"
+            "/mnt/tv:/mnt/tv",
+            "/opt/ombi:/config"
         ]
         port_map {
           ombi = 3579
         }
         labels {
         }
+      }
+      env {
+        PUID = "1000",
+        PGID = "995"
       }
       resources {
         cpu    = 500 # 500 MHz

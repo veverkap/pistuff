@@ -42,7 +42,7 @@ resource "cloudflare_record" "unifi" {
 }
 resource "cloudflare_record" "veverkanet" {
   zone_id  = cloudflare_zone.veverka.id
-  name     = "veverkanet"
+  name     = "veverka.net"
   value    = "71.120.237.171"
   type     = "A"
   ttl      = 120
@@ -77,7 +77,7 @@ resource "cloudflare_record" "couchpotato" {
 }
 resource "cloudflare_record" "emailmg" {
   zone_id  = cloudflare_zone.veverka.id
-  name     = "emailmg"
+  name     = "email.mg"
   value    = "mailgun.org"
   type     = "CNAME"
   ttl      = 120

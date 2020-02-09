@@ -24,6 +24,7 @@ resource "cloudflare_record" "lan" {
   name     = "lan"
   value    = "71.120.237.171"
   type     = "A"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "terraform" {
@@ -31,6 +32,7 @@ resource "cloudflare_record" "terraform" {
   name     = "terraform"
   value    = "192.168.0.11"
   type     = "A"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "unifi" {
@@ -38,6 +40,7 @@ resource "cloudflare_record" "unifi" {
   name     = "unifi"
   value    = "192.168.1.6"
   type     = "A"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "veverkanet" {
@@ -45,6 +48,7 @@ resource "cloudflare_record" "veverkanet" {
   name     = "veverka.net"
   value    = "71.120.237.171"
   type     = "A"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "windows" {
@@ -52,6 +56,7 @@ resource "cloudflare_record" "windows" {
   name     = "windows"
   value    = "192.168.1.43"
   type     = "A"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "bazarr" {
@@ -59,6 +64,7 @@ resource "cloudflare_record" "bazarr" {
   name     = "bazarr"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "consul" {
@@ -66,6 +72,7 @@ resource "cloudflare_record" "consul" {
   name     = "consul"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "couchpotato" {
@@ -73,6 +80,7 @@ resource "cloudflare_record" "couchpotato" {
   name     = "couchpotato"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "emailmg" {
@@ -80,6 +88,7 @@ resource "cloudflare_record" "emailmg" {
   name     = "email.mg"
   value    = "mailgun.org"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "homeassistant" {
@@ -87,6 +96,7 @@ resource "cloudflare_record" "homeassistant" {
   name     = "homeassistant"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "jackett" {
@@ -94,6 +104,7 @@ resource "cloudflare_record" "jackett" {
   name     = "jackett"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "nomad" {
@@ -101,6 +112,7 @@ resource "cloudflare_record" "nomad" {
   name     = "nomad"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "ombi" {
@@ -108,6 +120,7 @@ resource "cloudflare_record" "ombi" {
   name     = "ombi"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "patrick" {
@@ -115,6 +128,7 @@ resource "cloudflare_record" "patrick" {
   name     = "patrick"
   value    = "veverkap.github.io"
   type     = "CNAME"
+  proxied  = true
   ttl      = 120
 }
 resource "cloudflare_record" "radarr" {
@@ -122,6 +136,7 @@ resource "cloudflare_record" "radarr" {
   name     = "radarr"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "registry" {
@@ -129,6 +144,7 @@ resource "cloudflare_record" "registry" {
   name     = "registry"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "sonarr" {
@@ -136,6 +152,7 @@ resource "cloudflare_record" "sonarr" {
   name     = "sonarr"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "traefik" {
@@ -143,6 +160,7 @@ resource "cloudflare_record" "traefik" {
   name     = "traefik"
   value    = "lan.veverka.net"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }
 resource "cloudflare_record" "warez" {
@@ -150,6 +168,7 @@ resource "cloudflare_record" "warez" {
   name     = "warez"
   value    = "f001.backblazeb2.com"
   type     = "CNAME"
+  proxied  = true
   ttl      = 120
 }
 resource "cloudflare_record" "webmail" {
@@ -157,5 +176,6 @@ resource "cloudflare_record" "webmail" {
   name     = "webmail"
   value    = "ghs.googlehosted.com"
   type     = "CNAME"
+  proxied  = false
   ttl      = 120
 }

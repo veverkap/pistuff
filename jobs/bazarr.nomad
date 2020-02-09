@@ -33,13 +33,19 @@ job "bazarr" {
         network_mode = "bridge"
         volumes = [
             "/mnt/movies:/mnt/movies",
-            "/mnt/tv:/mnt/tv"
+            "/mnt/tv:/mnt/tv",
+            "/mnt/configs/bazarr:/config"
         ]
         port_map {
           bazarr = 6767
         }
         labels {
         }
+      }
+      env {
+        PUID = "1000",
+        PGID = "995",
+        TZ = "America/New_York"
       }
       resources {
         cpu    = 500 # 500 MHz

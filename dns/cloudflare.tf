@@ -27,14 +27,6 @@ resource "cloudflare_record" "lan" {
   proxied  = false
   ttl      = 120
 }
-resource "cloudflare_record" "terraform" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "terraform"
-  value    = "192.168.0.11"
-  type     = "A"
-  proxied  = false
-  ttl      = 120
-}
 resource "cloudflare_record" "unifi" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "unifi"
@@ -129,7 +121,7 @@ resource "cloudflare_record" "patrick" {
   value    = "veverkap.github.io"
   type     = "CNAME"
   proxied  = true
-  ttl      = 120
+  ttl      = 1
 }
 resource "cloudflare_record" "radarr" {
   zone_id  = cloudflare_zone.veverka.id
@@ -169,12 +161,20 @@ resource "cloudflare_record" "warez" {
   value    = "f001.backblazeb2.com"
   type     = "CNAME"
   proxied  = true
-  ttl      = 120
+  ttl      = 1
 }
 resource "cloudflare_record" "webmail" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "webmail"
   value    = "ghs.googlehosted.com"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+resource "cloudflare_record" "www" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "www"
+  value    = "patrick.veverka.net"
   type     = "CNAME"
   proxied  = false
   ttl      = 120

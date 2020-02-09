@@ -171,11 +171,3 @@ resource "cloudflare_record" "webmail" {
   proxied  = false
   ttl      = 120
 }
-resource "cloudflare_record" "www" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "www"
-  value    = "patrick.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}

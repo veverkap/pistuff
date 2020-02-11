@@ -42,6 +42,7 @@ job "dockerregistry" {
         volumes = [
           "/mnt/movies:/mnt/movies",
           "/mnt/tv:/mnt/tv",
+          "/mnt/configs/docker:/config"
         ]
 
         port_map {

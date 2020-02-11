@@ -11,13 +11,11 @@
     name: htop
     update_cache: yes
   with_items:
-    - htop
-    - dnsutils
-    - telnet
     - curl
+    - dnsutils
     - net-tools
+    - telnet
     - unzip
-    - htop
     - wget
   tags:
     - utils

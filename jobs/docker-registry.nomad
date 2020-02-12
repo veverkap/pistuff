@@ -40,9 +40,7 @@ job "dockerregistry" {
         network_mode = "bridge"
 
         volumes = [
-          "/mnt/movies:/mnt/movies",
-          "/mnt/tv:/mnt/tv",
-          "/mnt/configs/docker:/config"
+          "/mnt/configs/dockerregistry:/config"
         ]
 
         port_map {

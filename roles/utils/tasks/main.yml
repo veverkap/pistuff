@@ -20,73 +20,100 @@
   tags:
     - utils
 
-- name: Create mounted Movies directory
-  file:
-    path: /mnt/movies
-    state: directory
 - name: Remove existing mount for movies
   mount:
     name: /mnt/movies
     state: unmounted
+  tags:
+    - dockermnt
+- name: Create mounted Movies directory
+  file:
+    path: /mnt/movies
+    state: directory
+  tags:
+    - dockermnt
 - name: Mount movies directory
   mount:
     name: /mnt/movies
-    src: "//192.168.1.43/USBDisk1/Movies"
+    src: "//192.168.1.43/USBDisk2/Movies"
     opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
     fstype: cifs
     state: mounted
   become: true # as root
+  tags:
+    - dockermnt
+
+- name: Remove existing mount for moviesSync
+  mount:
+    name: /mnt/movies-sync
+    state: unmounted
+  tags:
+    - dockermnt
 
 - name: Create mounted MoviesSync directory
   file:
     path: /mnt/movies-sync
     state: directory
-- name: Remove existing mount for moviesSync
-  mount:
-    name: /mnt/movies-sync
-    state: unmounted
+  tags:
+    - dockermnt
+
 - name: Mount moviessync directory
   mount:
     name: /mnt/movies-sync
-    src: "//192.168.1.43/USBDisk1/Sync"
-    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
-    fstype: cifs
-    state: mounted
-  become: true # as root
-
-- name: Create mounted TV directory
-  file:
-    path: /mnt/tv
-    state: directory
-- name: Remove existing mount for TV
-  mount:
-    name: /mnt/tv
-    state: unmounted
-- name: Mount tv directory
-  mount:
-    name: /mnt/tv
-    src: "//192.168.1.43/USBDisk2/TV Shows"
-    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
-    fstype: cifs
-    state: mounted
-  become: true # as root
-
-- name: Create mounted TVSync directory
-  file:
-    path: /mnt/tv-sync
-    state: directory
-- name: Remove existing mount for TVSync
-  mount:
-    name: /mnt/tv-sync
-    state: unmounted
-- name: Mount tv directory
-  mount:
-    name: /mnt/tv-sync
     src: "//192.168.1.43/USBDisk2/Sync"
     opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
     fstype: cifs
     state: mounted
   become: true # as root
+  tags:
+    - dockermnt
+
+- name: Remove existing mount for TV
+  mount:
+    name: /mnt/tv
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Create mounted TV directory
+  file:
+    path: /mnt/tv
+    state: directory
+  tags:
+    - dockermnt
+
+- name: Mount tv directory
+  mount:
+    name: /mnt/tv
+    src: "//192.168.1.43/USBDisk1/TV Shows"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+  tags:
+    - dockermnt
+
+- name: Remove existing mount for TVSync
+  mount:
+    name: /mnt/tv-sync
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Create mounted TVSync directory
+  file:
+    path: /mnt/tv-sync
+    state: directory
+  tags:
+    - dockermnt
+- name: Mount tv directory
+  mount:
+    name: /mnt/tv-sync
+    src: "//192.168.1.43/USBDisk1/Sync"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+  tags:
+    - dockermnt
 
 - name: Create mounted config directory
   file:

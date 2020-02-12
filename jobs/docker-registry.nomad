@@ -2,45 +2,23 @@ job "dockerregistry" {
   datacenters = ["alpha"]
   type        = "service"
 
-  update {
-    max_parallel      = 2
-    min_healthy_time  = "10s"
-    healthy_deadline  = "3m"
-    progress_deadline = "10m"
-    auto_revert       = false
-    canary            = 0
-  }
-
-  migrate {
-    max_parallel     = 2
-    health_check     = "checks"
-    min_healthy_time = "10s"
-    healthy_deadline = "5m"
-  }
-
   group "dockerregistry" {
+    # I only want one of these running at a time
     count = 1
 
-    restart {
-      attempts = 2
-      interval = "30m"
-      delay    = "15s"
-      mode     = "fail"
-    }
-
-    ephemeral_disk {
-      size = 300
-    }
-
     task "dockerregistry" {
+      # gotta use the docker driver
       driver = "docker"
 
       config {
         image        = "registry:2"
         network_mode = "bridge"
 
+        # I mount the dockerregistry folder to /var/lib/registry
+        # so that I can persist the images on my NAS through
+        # deploys and restarts
         volumes = [
-          "/mnt/configs/dockerregistry:/config"
+          "/mnt/configs/dockerregistry:/var/lib/registry"
         ]
 
         port_map {

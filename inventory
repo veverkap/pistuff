@@ -26,3 +26,7 @@ rpi[1:5]
 [hosts:vars]
 ansible_ssh_user=pi
 deploy_target=pi
+
+[samba_servers]
+rpi1
+rpi2

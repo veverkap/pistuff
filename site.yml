@@ -66,3 +66,13 @@
     - traefik
   tags:
     - traefik
+- name: setup samba
+  hosts: samba_servers
+  become: true
+  become_user: root
+  gather_facts: true
+  remote_user: pi
+  roles:
+    - samba
+  tags:
+    - samba

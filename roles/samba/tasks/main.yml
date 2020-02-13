@@ -1,0 +1,11 @@
+---
+- name: Install samba
+  apt:
+    pkg:
+      - samba
+      - samba-common-bin
+- name: Create a share directory
+  file:
+    path: /share
+    mode: "1777"
+    state: directory

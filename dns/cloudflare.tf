@@ -22,7 +22,7 @@ resource "cloudflare_zone" "veverka" {
 resource "cloudflare_record" "lan" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "lan"
-  value    = "71.120.237.171"
+  value    = "192.168.1.124"
   type     = "A"
   proxied  = false
   ttl      = 120
@@ -46,11 +46,21 @@ resource "cloudflare_record" "veverkanet" {
 resource "cloudflare_record" "windows" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "windows"
+  value    = "192.168.1.32"
+  type     = "A"
+  proxied  = false
+  ttl      = 120
+}
+
+resource "cloudflare_record" "qnap" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "qnap"
   value    = "192.168.1.43"
   type     = "A"
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "bazarr" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "bazarr"

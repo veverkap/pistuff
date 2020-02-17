@@ -9,16 +9,17 @@ response = Net::HTTP.get_response(uri)
 XmlHasher.parse(response.body)[:MediaContainer][:Video].each do |video|
   year = video[:year]
   title = video[:title]
+  puts title
   file = video[:Media][:Part][:file].gsub("X:\\Kids\\Movies\\", "")
   oldfile = "/share/USBDisk2/Kids/Movies/#{file}"
-  newfolder = "/share/USBDisk2/Kids/Movies/#{title} (#{year})"
+  newfolder = "/Volumes/external/Kids/Movies/#{title} (#{year})"
   # pp video
   # /Volumes/USBDisk2/Kids/Movies
   # puts year
   # puts title
   # puts file
-  puts "echo \"Making #{newfolder}\""
+  # puts "echo \"Making #{newfolder}\""
   puts "mkdir \"#{newfolder}\""
-  puts "echo \"Copying file over\""
-  puts "mv \"#{oldfile}\" \"#{newfolder}/#{file}\""
+  # puts "echo \"Copying file over\""
+  # puts "mv \"#{oldfile}\" \"#{newfolder}/#{file}\""
 end

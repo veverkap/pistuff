@@ -21,10 +21,6 @@ traefix_dashboard_items:
     host: couchpotato.veverka.net
     service: couchpotato@consulcatalog
     include_auth: false
-  - name: homeassistant
-    host: homeassistant.veverka.net
-    service: homeassistant@consulcatalog
-    include_auth: false
   - name: jackett
     host: jackett.veverka.net
     service: jackett@consulcatalog
@@ -45,3 +41,7 @@ traefix_dashboard_items:
     host: registry.veverka.net
     service: dockerregistry@consulcatalog
     include_auth: true
+  - name: sonarr
+    host: sonarr.veverka.net
+    service: sonarr@consulcatalog
+    include_auth: false

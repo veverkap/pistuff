@@ -109,6 +109,14 @@ resource "cloudflare_record" "jackett" {
   proxied  = false
   ttl      = 120
 }
+resource "cloudflare_record" "minio" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "minio"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
 resource "cloudflare_record" "nomad" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "nomad"

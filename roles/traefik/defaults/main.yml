@@ -25,6 +25,14 @@ traefix_dashboard_items:
     host: jackett.veverka.net
     service: jackett@consulcatalog
     include_auth: false
+  - name: minio
+    host: minio.veverka.net
+    service: minio@consulcatalog
+    include_auth: false
+  - name: minioext
+    host: minioext.veverka.net
+    service: minio@consulcatalog
+    include_auth: false
   - name: nomad
     host: nomad.veverka.net
     service: nomad-client@consulcatalog

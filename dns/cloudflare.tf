@@ -27,6 +27,14 @@ resource "cloudflare_record" "lan" {
   proxied  = false
   ttl      = 120
 }
+resource "cloudflare_record" "external" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "external"
+  value    = "71.120.237.171"
+  type     = "A"
+  proxied  = false
+  ttl      = 120
+}
 resource "cloudflare_record" "unifi" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "unifi"
@@ -109,6 +117,15 @@ resource "cloudflare_record" "jackett" {
   proxied  = false
   ttl      = 120
 }
+resource "cloudflare_record" "minioext" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "minioext"
+  value    = "external.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "minio" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "minio"

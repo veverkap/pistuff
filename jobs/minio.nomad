@@ -35,16 +35,22 @@ job "minio" {
     task "minio" {
       driver = "docker"
 
+      env {
+        MINIO_ACCESS_KEY = "NOTAREALKEY"
+        MINIO_SECRET_KEY = "NOTAREALKEY"
+      }
+
       config {
-        image        = "registry.veverka.net/minio"
-        auth {
-          username = "test"
-          password = "test"
-        }
+        image        = "jessestuart/minio:RELEASE.2020-01-25T02-50-51Z"
+
+        args = [
+          "server",
+          "/data"
+        ]
         network_mode = "bridge"
 
         volumes = [
-          "/mnt/configs/minio:/objects/",
+          "/mnt/configs/minio:/data/",
         ]
 
         port_map {

@@ -17,6 +17,10 @@ traefix_dashboard_items:
     host: bazarr.veverka.net
     service: bazarr@consulcatalog
     include_auth: false
+  - name: bigtexslash
+    host: bigtexslash.veverka.net
+    service: bigtexslash@consulcatalog
+    include_auth: false
   - name: couchpotato
     host: couchpotato.veverka.net
     service: couchpotato@consulcatalog

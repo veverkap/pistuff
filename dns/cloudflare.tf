@@ -77,6 +77,15 @@ resource "cloudflare_record" "bazarr" {
   proxied  = false
   ttl      = 120
 }
+
+resource "cloudflare_record" "bigtexslash" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "bigtexslash"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
 resource "cloudflare_record" "consul" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "consul"

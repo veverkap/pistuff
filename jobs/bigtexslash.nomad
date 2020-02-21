@@ -35,6 +35,13 @@ job "bigtexslash" {
     task "bigtexslash" {
       driver = "docker"
 
+      env {
+        IMGUR_CLIENT_ID = "c0b16bac15fdd9d"
+        MINIO_ENDPOINT="https://minioext.veverka.net"
+        MINIO_ACCESS_KEY_ID="meatsweats"
+        MINIO_SECRET_ACCESS_KEY="bigtexan"
+      }
+
       config {
         image        = "registry.veverka.net/ffmpeg-ruby"
 

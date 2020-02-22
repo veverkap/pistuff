@@ -1,4 +1,4 @@
-job "bigtexslash" {
+job "slackslash" {
   datacenters = ["alpha"]
   type        = "service"
 
@@ -18,7 +18,7 @@ job "bigtexslash" {
     healthy_deadline = "5m"
   }
 
-  group "bigtexslash" {
+  group "slackslash" {
     count = 1
 
     restart {
@@ -32,7 +32,7 @@ job "bigtexslash" {
       size = 300
     }
 
-    task "bigtexslash" {
+    task "slackslash" {
       driver = "docker"
 
       env {
@@ -41,7 +41,7 @@ job "bigtexslash" {
       }
 
       config {
-        image        = "registry.veverka.net/ffmpeg-ruby"
+        image        = "registry.veverka.net/slackslash"
 
         auth {
           username = "test"
@@ -52,7 +52,7 @@ job "bigtexslash" {
 
 
         port_map {
-          bigtexslash = 9292
+          slackslash = 9292
         }
 
         labels {}
@@ -70,13 +70,13 @@ job "bigtexslash" {
 
         network {
           mbits = 100
-          port  "bigtexslash"{}
+          port  "slackslash"{}
         }
       }
 
       service {
-        name = "bigtexslash"
-        port = "bigtexslash"
+        name = "slackslash"
+        port = "slackslash"
 
         check {
           name     = "alive"

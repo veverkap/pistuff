@@ -87,6 +87,15 @@ resource "cloudflare_record" "bigtexslash" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "bigslackslash" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "bigslackslash"
+  value    = "external.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "consul" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "consul"

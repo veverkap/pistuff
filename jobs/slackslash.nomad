@@ -1,4 +1,4 @@
-job "slackslash" {
+job "bigslackslash" {
   datacenters = ["alpha"]
   type        = "service"
 
@@ -18,7 +18,7 @@ job "slackslash" {
     healthy_deadline = "5m"
   }
 
-  group "slackslash" {
+  group "bigslackslash" {
     count = 1
 
     restart {
@@ -32,11 +32,12 @@ job "slackslash" {
       size = 300
     }
 
-    task "slackslash" {
+    task "bigslackslash" {
       driver = "docker"
 
       env {
         IMGUR_CLIENT_ID = "c0b16bac15fdd9d"
+        IMGUR_API_URL = "https://api.imgur.com/3/upload"
         MINIO_ENDPOINT="https://minioext.veverka.net"
       }
 
@@ -52,7 +53,7 @@ job "slackslash" {
 
 
         port_map {
-          slackslash = 9292
+          bigslackslash = 9292
         }
 
         labels {}
@@ -70,13 +71,13 @@ job "slackslash" {
 
         network {
           mbits = 100
-          port  "slackslash"{}
+          port  "bigslackslash"{}
         }
       }
 
       service {
-        name = "slackslash"
-        port = "slackslash"
+        name = "bigslackslash"
+        port = "bigslackslash"
 
         check {
           name     = "alive"

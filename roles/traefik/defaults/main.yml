@@ -53,6 +53,10 @@ traefix_dashboard_items:
     host: registry.veverka.net
     service: dockerregistry@consulcatalog
     include_auth: true
+  - name: bigslackslash
+    host: bigslackslash.veverka.net
+    service: bigslackslash@consulcatalog
+    include_auth: false
   - name: sonarr
     host: sonarr.veverka.net
     service: sonarr@consulcatalog

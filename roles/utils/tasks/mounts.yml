@@ -1,0 +1,109 @@
+---
+- name: Remove existing mount for MOVIES
+  mount:
+    name: /mnt/movies
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Create mounted MOVIES directory
+  file:
+    path: /mnt/movies
+    state: directory
+  tags:
+    - dockermnt
+- name: Mount MOVIES directory
+  mount:
+    name: /mnt/movies
+    src: "//192.168.1.137/external/Movies"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+  tags:
+    - dockermnt
+
+- name: Remove existing mount for MOVIES
+  mount:
+    name: /mnt/movies-sync
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Create mounted MOVIES directory
+  file:
+    path: /mnt/movies-sync
+    state: directory
+  tags:
+    - dockermnt
+- name: Mount MOVIES directory
+  mount:
+    name: /mnt/movies-sync
+    src: "//192.168.1.137/external/Sync"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+  tags:
+    - dockermnt
+
+- name: Remove existing mount for TV
+  mount:
+    name: /mnt/tv
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Create mounted TV directory
+  file:
+    path: /mnt/tv
+    state: directory
+  tags:
+    - dockermnt
+- name: Mount tv directory
+  mount:
+    name: /mnt/tv
+    src: "//192.168.1.124/external/TV Shows"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+  tags:
+    - dockermnt
+
+- name: Remove existing mount for TVSync
+  mount:
+    name: /mnt/tv-sync
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Create mounted TVSync directory
+  file:
+    path: /mnt/tv-sync
+    state: directory
+  tags:
+    - dockermnt
+- name: Mount tv directory
+  mount:
+    name: /mnt/tv-sync
+    src: "//192.168.1.124/external/Sync"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+  tags:
+    - dockermnt
+
+- name: Create mounted CONFIGS directory
+  file:
+    path: /mnt/configs
+    state: directory
+- name: Remove existing mount for CONFIGS
+  mount:
+    name: /mnt/configs
+    state: unmounted
+- name: Mount CONFIGS directory
+  mount:
+    name: /mnt/configs
+    src: "//192.168.1.43/Public/NomadConfigs"
+    opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root

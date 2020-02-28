@@ -1,0 +1,21 @@
+# Generics
+defaults
+auth           on
+tls            on
+# following is different from ssmtp:
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+# user specific log location, otherwise use /var/log/msmtp.log, however,
+# this will create an access violation if you are user pi, and have not changes the access rights
+logfile        /var/log/msmtp.log
+
+# Gmail specifics
+account        gmail
+host           smtp.gmail.com
+port           587
+
+from          {{ server_from_user }}
+user          {{ server_from_email }}
+password      {{ server_from_pass }}
+
+# Default
+account default : gmail

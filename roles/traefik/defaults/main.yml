@@ -17,9 +17,9 @@ traefix_dashboard_items:
     host: bazarr.veverka.net
     service: bazarr@consulcatalog
     include_auth: false
-  - name: bigtexslash
-    host: bigtexslash.veverka.net
-    service: bigtexslash@consulcatalog
+  - name: bigslackslash
+    host: bigslackslash.veverka.net
+    service: bigslackslash@consulcatalog
     include_auth: false
   - name: couchpotato
     host: couchpotato.veverka.net
@@ -29,6 +29,10 @@ traefix_dashboard_items:
     host: jackett.veverka.net
     service: jackett@consulcatalog
     include_auth: false
+  - name: meatsweats
+    host: meatsweats.veverka.net
+    service: meatsweatsweb@consulcatalog
+    include_auth: true
   - name: minio
     host: minio.veverka.net
     service: minio@consulcatalog
@@ -53,10 +57,6 @@ traefix_dashboard_items:
     host: registry.veverka.net
     service: dockerregistry@consulcatalog
     include_auth: true
-  - name: bigslackslash
-    host: bigslackslash.veverka.net
-    service: bigslackslash@consulcatalog
-    include_auth: false
   - name: sonarr
     host: sonarr.veverka.net
     service: sonarr@consulcatalog

@@ -78,15 +78,6 @@ resource "cloudflare_record" "bazarr" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "bigtexslash" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "bigtexslash"
-  value    = "external.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
 resource "cloudflare_record" "bigslackslash" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "bigslackslash"
@@ -136,6 +127,16 @@ resource "cloudflare_record" "jackett" {
   proxied  = false
   ttl      = 120
 }
+
+resource "cloudflare_record" "meatsweats" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "meatsweats"
+  value    = "external.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "minioext" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "minioext"

@@ -63,8 +63,8 @@ job "meatsweatweb" {
       }
 
       resources {
-        cpu    = 700  # 500 MHz
-        memory = 1024 # 1G
+        cpu    = 1500
+        memory = 2048
 
         network {
           mbits = 100

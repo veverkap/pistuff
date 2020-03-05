@@ -1,4 +1,4 @@
-job "bigslackslash" {
+job "nextcloud" {
   datacenters = ["alpha"]
   type        = "service"
 
@@ -18,7 +18,7 @@ job "bigslackslash" {
     healthy_deadline = "5m"
   }
 
-  group "bigslackslash" {
+  group "nextcloud" {
     count = 1
 
     restart {
@@ -32,32 +32,21 @@ job "bigslackslash" {
       size = 300
     }
 
-    task "bigslackslash" {
+    task "nextcloud" {
       driver = "docker"
 
-      env {
-        IMGUR_CLIENT_ID = "c0b16bac15fdd9d"
-        IMGUR_API_URL = "https://api.imgur.com/3/upload"
-        MINIO_ACCESS_KEY_ID = ""
-        MINIO_SECRET_ACCESS_KEY = ""
-        MINIO_BUCKET = ""
-        SLACK_API_TOKEN = ""
-        MINIO_ENDPOINT="https://minioext.veverka.net"
-      }
-
       config {
-        image        = "registry.veverka.net/slackslash"
-
-        auth {
-          username = "test"
-          password = "test"
-        }
-
+        image        = "linuxserver/nextcloud"
         network_mode = "bridge"
 
+        volumes = [
+          "/mnt/movies:/mnt/movies",
+          "/mnt/tv:/mnt/tv",
+          "/mnt/configs/nextcloud:/config",
+        ]
 
         port_map {
-          bigslackslash = 9292
+          nextcloud = 443
         }
 
         labels {}
@@ -75,13 +64,13 @@ job "bigslackslash" {
 
         network {
           mbits = 100
-          port  "bigslackslash"{}
+          port  "nextcloud"{}
         }
       }
 
       service {
-        name = "bigslackslash"
-        port = "bigslackslash"
+        name = "nextcloud"
+        port = "nextcloud"
 
         check {
           name     = "alive"

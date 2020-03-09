@@ -36,13 +36,16 @@ job "bigslackslash" {
       driver = "docker"
 
       env {
-        IMGUR_CLIENT_ID = "c0b16bac15fdd9d"
-        IMGUR_API_URL = "https://api.imgur.com/3/upload"
-        MINIO_ACCESS_KEY_ID = ""
-        MINIO_SECRET_ACCESS_KEY = ""
-        MINIO_BUCKET = ""
-        SLACK_API_TOKEN = ""
-        MINIO_ENDPOINT="https://minioext.veverka.net"
+        IMGUR_API_URL="https://api.imgur.com/3/upload"
+        IMGUR_CLIENT_ID=""
+        MINIO_ACCESS_KEY_ID=""
+        MINIO_BUCKET=""
+        MINIO_SECRET_ACCESS_KEY=""
+        SLACK_KEYWORD=""
+        TWITTER_ACCESS_TOKEN_KEY=""
+        TWITTER_ACCESS_TOKEN_SECRET=""
+        TWITTER_CONSUMER_KEY=""
+        TWITTER_CONSUMER_SECRET=""
       }
 
       config {

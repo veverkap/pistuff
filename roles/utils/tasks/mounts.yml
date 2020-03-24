@@ -14,7 +14,7 @@
 - name: Mount MOVIES directory
   mount:
     name: /mnt/movies
-    src: "//192.168.1.137/external/Movies"
+    src: "//192.168.1.124/external/Movies"
     opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
     fstype: cifs
     state: mounted
@@ -22,22 +22,22 @@
   tags:
     - dockermnt
 
-- name: Remove existing mount for MOVIES
+- name: Remove existing mount for MOVIES-SYNC
   mount:
     name: /mnt/movies-sync
     state: unmounted
   tags:
     - dockermnt
-- name: Create mounted MOVIES directory
+- name: Create mounted MOVIES-SYNC directory
   file:
     path: /mnt/movies-sync
     state: directory
   tags:
     - dockermnt
-- name: Mount MOVIES directory
+- name: Mount MOVIES-SYNC directory
   mount:
     name: /mnt/movies-sync
-    src: "//192.168.1.137/external/Sync"
+    src: "//192.168.1.124/external/Sync"
     opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
     fstype: cifs
     state: mounted
@@ -60,7 +60,7 @@
 - name: Mount tv directory
   mount:
     name: /mnt/tv
-    src: "//192.168.1.124/external/TV Shows"
+    src: "//192.168.1.137/external/TV Shows"
     opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
     fstype: cifs
     state: mounted
@@ -80,10 +80,10 @@
     state: directory
   tags:
     - dockermnt
-- name: Mount tv directory
+- name: Mount TVSync directory
   mount:
     name: /mnt/tv-sync
-    src: "//192.168.1.124/external/Sync"
+    src: "//192.168.1.137/external/Sync"
     opts: "noacl,uid=pi,gid=docker,username=admin,password=admin"
     fstype: cifs
     state: mounted

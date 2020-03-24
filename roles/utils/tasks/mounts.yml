@@ -95,10 +95,14 @@
   file:
     path: /mnt/configs
     state: directory
+  tags:
+    - dockermnt
 - name: Remove existing mount for CONFIGS
   mount:
     name: /mnt/configs
     state: unmounted
+  tags:
+    - dockermnt
 - name: Mount CONFIGS directory
   mount:
     name: /mnt/configs
@@ -107,3 +111,5 @@
     fstype: cifs
     state: mounted
   become: true # as root
+  tags:
+    - dockermnt

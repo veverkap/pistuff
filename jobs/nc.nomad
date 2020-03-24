@@ -39,6 +39,11 @@ job "nextcloud" {
         image        = "nextcloud:fpm"
         network_mode = "bridge"
 
+        volumes = [
+          "/mnt/configs/nextcloud:/config",
+          "/mnt/configs/nextcloudhtml:/var/www/html"
+        ]
+
         port_map {
           nextcloud = 9000
         }

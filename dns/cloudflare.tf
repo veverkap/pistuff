@@ -187,6 +187,14 @@ resource "cloudflare_record" "patrick" {
   proxied  = true
   ttl      = 1
 }
+resource "cloudflare_record" "prtg" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "prtg"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
 resource "cloudflare_record" "radarr" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "radarr"

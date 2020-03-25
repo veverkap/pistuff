@@ -1,1 +1,3 @@
 ansible/
+dns/terraform.tfvars
+dns/.terraform/

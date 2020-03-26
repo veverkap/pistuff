@@ -2,6 +2,11 @@ job "sonarr" {
   datacenters = ["alpha"]
   type        = "service"
 
+  constraint {
+    attribute = "${attr.unique.hostname}"
+    value     = "rpi4.node.consul"
+  }
+
   update {
     max_parallel      = 2
     min_healthy_time  = "10s"
@@ -21,6 +26,12 @@ job "sonarr" {
   group "sonarr" {
     count = 1
 
+    volume "sonarrconfig" {
+      type      = "host"
+      read_only = false
+      source    = "sonarrconfig"
+    }
+
     restart {
       attempts = 2
       interval = "30m"
@@ -35,14 +46,19 @@ job "sonarr" {
     task "sonarr" {
       driver = "docker"
 
+      volume_mount {
+        volume      = "sonarrconfig"
+        destination = "/config"
+        read_only   = false
+      }
+
       config {
-        image        = "linuxserver/sonarr"
+        image        = "linuxserver/sonarr:latest"
         network_mode = "bridge"
 
         volumes = [
-          "/mnt/tv:/mnt/tv",
-          "/mnt/tv-sync:/mnt/tv-sync",
-          "/mnt/configs/sonarr:/config",
+          "/mnt/tv:/tv",
+          "/mnt/tv-sync:/downloads",
         ]
 
         port_map {

@@ -23,5 +23,18 @@ client {
     path = "/mnt/tv"
     read_only = false
   }
+
+  host_volume "nomadconfig" {
+    path = "/opt/nomad/configs"
+    read_only = false
+  }
+{%- if ansible_hostname == "rpi4" -%}
+
+  host_volume "sonarrconfig" {
+    path = "/opt/nomad/configs/sonarr"
+    read_only = false
+  }
+ {%- endif -%}
+
   servers = {{ nomad_retry_join }}
 }

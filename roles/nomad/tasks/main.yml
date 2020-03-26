@@ -62,7 +62,6 @@
       when: nomad_is_server
       tags:
         - nomad
-
     - name: setup nomad client config
       template:
         src: client.conf.j2
@@ -82,7 +81,7 @@
       service:
         name: nomad
         enabled: yes
-        state: started
+        state: restarted
       tags:
         - nomad
   become: true

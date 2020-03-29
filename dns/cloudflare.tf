@@ -219,6 +219,14 @@ resource "cloudflare_record" "sonarr" {
   proxied  = false
   ttl      = 120
 }
+resource "cloudflare_record" "tautulli" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "tautulli"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
 resource "cloudflare_record" "traefik" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "traefik"

@@ -61,3 +61,7 @@ traefix_dashboard_items:
     host: sonarr.veverka.net
     service: sonarr@consulcatalog
     include_auth: false
+  - name: tautulli
+    host: tautulli.veverka.net
+    service: tautulli@consulcatalog
+    include_auth: false

@@ -28,6 +28,15 @@ client {
     path = "/opt/nomad/configs"
     read_only = false
   }
+
+{%- if ansible_hostname == "rpi1" -%}
+
+  host_volume "tautulliconfig" {
+    path = "/opt/nomad/configs/tautulli"
+    read_only = false
+  }
+ {%- endif -%}
+
 {%- if ansible_hostname == "rpi4" -%}
 
   host_volume "sonarrconfig" {

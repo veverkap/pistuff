@@ -2,6 +2,11 @@ job "tautulli" {
   datacenters = ["alpha"]
   type        = "service"
 
+  constraint {
+    attribute = "${attr.unique.hostname}"
+    value     = "rpi1.node.consul"
+  }
+
   update {
     max_parallel      = 2
     min_healthy_time  = "10s"
@@ -21,6 +26,12 @@ job "tautulli" {
   group "tautulli" {
     count = 1
 
+    volume "tautulliconfig" {
+      type      = "host"
+      read_only = false
+      source    = "tautulliconfig"
+    }
+
     restart {
       attempts = 2
       interval = "30m"
@@ -35,16 +46,18 @@ job "tautulli" {
     task "tautulli" {
       driver = "docker"
 
+      volume_mount {
+        volume      = "tautulliconfig"
+        destination = "/config"
+        read_only   = false
+      }
+
       config {
         image        = "linuxserver/tautulli"
         network_mode = "bridge"
 
-        volumes = [
-          "/mnt/configs/tautulli:/config",
-        ]
-
         port_map {
-          tautulli = 9117
+          tautulli = 8181
         }
 
         labels {}

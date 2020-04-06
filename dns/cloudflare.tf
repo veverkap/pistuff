@@ -95,6 +95,14 @@ resource "cloudflare_record" "cloud" {
   proxied  = false
   ttl      = 120
 }
+resource "cloudflare_record" "cockpit" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "cockpit"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
 
 resource "cloudflare_record" "consul" {
   zone_id  = cloudflare_zone.veverka.id

@@ -2,6 +2,11 @@ job "radarr" {
   datacenters = ["alpha"]
   type        = "service"
 
+  constraint {
+    attribute = "${attr.unique.hostname}"
+    value     = "rpi1.node.consul"
+  }
+
   update {
     max_parallel      = 2
     min_healthy_time  = "10s"
@@ -21,6 +26,24 @@ job "radarr" {
   group "radarr" {
     count = 1
 
+    volume "radarrconfig" {
+      type      = "host"
+      read_only = false
+      source    = "radarrconfig"
+    }
+
+    volume "moviesfolder" {
+      type      = "host"
+      read_only = false
+      source    = "moviesfolder"
+    }
+
+    volume "moviessync" {
+      type      = "host"
+      read_only = false
+      source    = "moviessync"
+    }
+
     restart {
       attempts = 2
       interval = "30m"
@@ -35,15 +58,27 @@ job "radarr" {
     task "radarr" {
       driver = "docker"
 
+      volume_mount {
+        volume      = "radarrconfig"
+        destination = "/config"
+        read_only   = false
+      }
+
+      volume_mount {
+        volume      = "moviesfolder"
+        destination = "/movies"
+        read_only   = false
+      }
+
+      volume_mount {
+        volume      = "moviessync"
+        destination = "/downloads"
+        read_only   = false
+      }
+
       config {
         image        = "linuxserver/radarr"
         network_mode = "bridge"
-
-        volumes = [
-          "/mnt/movies:/mnt/movies",
-          "/mnt/tv:/mnt/tv",
-          "/mnt/configs/radarr:/config",
-        ]
 
         port_map {
           radarr = 7878

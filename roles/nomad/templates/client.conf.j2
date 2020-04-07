@@ -29,12 +29,29 @@ client {
     read_only = false
   }
 
+
 {%- if ansible_hostname == "rpi1" -%}
+
+  host_volume "moviesfolder" {
+    path = "/mnt/external/Movies"
+    read_only = false
+  }
+
+  host_volume "moviessync" {
+    path = "/mnt/external/Sync"
+    read_only = false
+  }
 
   host_volume "tautulliconfig" {
     path = "/opt/nomad/configs/tautulli"
     read_only = false
   }
+
+  host_volume "radarrconfig" {
+    path = "/opt/nomad/configs/radarr"
+    read_only = false
+  }
+
  {%- endif -%}
 
 {%- if ansible_hostname == "rpi4" -%}
@@ -43,6 +60,7 @@ client {
     path = "/opt/nomad/configs/sonarr"
     read_only = false
   }
+
  {%- endif -%}
 
   servers = {{ nomad_retry_join }}

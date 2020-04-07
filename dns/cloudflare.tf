@@ -211,6 +211,16 @@ resource "cloudflare_record" "radarr" {
   proxied  = false
   ttl      = 120
 }
+
+resource "cloudflare_record" "redis" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "redis"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "registry" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "registry"

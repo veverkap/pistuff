@@ -13,26 +13,26 @@ traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
 traefik_update: no
 traefix_dashboard_items:
-  - name: bigslackslash
-    host: bigslackslash.veverka.net
-    service: bigslackslash@consulcatalog
-    include_auth: false
-  - name: couchpotato
-    host: couchpotato.veverka.net
-    service: couchpotato@consulcatalog
-    include_auth: false
-  - name: cloud
-    host: cloud.veverka.net
-    service: nextcloud@consulcatalog
-    include_auth: false
+  # - name: bigslackslash
+  #   host: bigslackslash.veverka.net
+  #   service: bigslackslash@consulcatalog
+  #   include_auth: false
+  # - name: couchpotato
+  #   host: couchpotato.veverka.net
+  #   service: couchpotato@consulcatalog
+  #   include_auth: false
+  # - name: cloud
+  #   host: cloud.veverka.net
+  #   service: nextcloud@consulcatalog
+  #   include_auth: false
   - name: jackett
     host: jackett.veverka.net
     service: jackett@consulcatalog
     include_auth: false
-  - name: meatsweats
-    host: meatsweats.veverka.net
-    service: meatsweatweb@consulcatalog
-    include_auth: true
+  # - name: meatsweats
+  #   host: meatsweats.veverka.net
+  #   service: meatsweatweb@consulcatalog
+  #   include_auth: true
   - name: minio
     host: minio.veverka.net
     service: minio@consulcatalog

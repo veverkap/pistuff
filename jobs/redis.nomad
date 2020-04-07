@@ -1,11 +1,12 @@
-job "ombi" {
+job "redis" {
   datacenters = ["alpha"]
   type        = "service"
 
   constraint {
     attribute = "${attr.unique.hostname}"
-    value     = "rpi2.node.consul"
+    value     = "rpi5.node.consul"
   }
+
   update {
     max_parallel      = 2
     min_healthy_time  = "10s"
@@ -22,13 +23,13 @@ job "ombi" {
     healthy_deadline = "5m"
   }
 
-  group "ombi" {
+  group "redis" {
     count = 1
 
-    volume "ombiconfig" {
+    volume "redisconfig" {
       type      = "host"
       read_only = false
-      source    = "ombiconfig"
+      source    = "redisconfig"
     }
 
     restart {
@@ -39,39 +40,39 @@ job "ombi" {
     }
 
     ephemeral_disk {
-      size    = 200
-      sticky  = true
-      migrate = true
+      size = 300
     }
 
-    task "ombi" {
+    task "redis" {
       driver = "docker"
 
+      meta {
+        "traefik.enable" = "true"
+        "traefik.tcp.routers.redisrouter.entrypoints" = "redis"
+        "traefik.tcp.routers.redisrouter.rule" = "HostSNI(`redis.veverka.net`)"
+        "traefik.tcp.routers.redisrouter.service" = "redis"
+      }
+
       volume_mount {
-        volume      = "ombiconfig"
+        volume      = "redisconfig"
         destination = "/config"
         read_only   = false
       }
 
       config {
-        image        = "linuxserver/ombi"
+        image        = "redis"
         network_mode = "bridge"
 
-        volumes = [
-          "/mnt/movies:/mnt/movies",
-          "/mnt/tv:/mnt/tv",
-        ]
-
         port_map {
-          ombi = 3579
+          redis = 6379
         }
 
-        labels {}
       }
 
       env {
         PUID = "1000"
         PGID = "995"
+        TZ   = "America/New_York"
       }
 
       resources {
@@ -80,13 +81,20 @@ job "ombi" {
 
         network {
           mbits = 100
-          port  "ombi"{}
+          port  "redis"{}
         }
       }
 
       service {
-        name = "ombi"
-        port = "ombi"
+        name = "redis"
+        port = "redis"
+
+        tags = [
+          "traefik.enable=true",
+          "traefik.tcp.routers.redisrouter.entrypoints=redis",
+          "traefik.tcp.routers.redisrouter.rule=HostSNI(`redis.veverka.net`)",
+          "traefik.tcp.routers.redisrouter.service=redis"
+        ]
 
         check {
           name     = "alive"

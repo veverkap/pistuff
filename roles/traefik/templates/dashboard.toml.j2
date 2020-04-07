@@ -11,11 +11,6 @@
 
 # Adding in router for consuldash
 [http.services]
-  [http.services.service-cockpit]
-    [http.services.service-cockpit.loadBalancer]
-      [[http.services.service-cockpit.loadBalancer.servers]]
-        url = "http://192.168.1.124:9090"
-
   [http.services.service-consul]
     [http.services.service-consul.loadBalancer]
       [[http.services.service-consul.loadBalancer.servers]]
@@ -24,15 +19,6 @@
         url = "http://192.168.1.137:8500"
       [[http.services.service-consul.loadBalancer.servers]]
         url = "http://192.168.1.149:8500"
-
-[http.routers.cockpitdash]
-  rule = "Host(`cockpit.veverka.net`)"
-  service = "service-cockpit"
-
-  [http.routers.cockpitdash.tls]
-    certResolver = "le" # From static configuration
-    [[http.routers.cockpitdash.tls.domains]]
-      main = "cockpit.veverka.net"
 
 
 [http.routers.consuldash]
@@ -44,6 +30,17 @@
     certResolver = "le" # From static configuration
     [[http.routers.consuldash.tls.domains]]
       main = "consul.veverka.net"
+
+[tcp.services]
+  [tcp.services.redis.loadBalancer]
+    [[tcp.services.redis.loadBalancer.servers]]
+      address = "192.168.1.151:20182"
+
+[tcp.routers]
+  [tcp.routers.redis]
+    entryPoints = ["redis"]
+    rule = "HostSNI(`*`)"
+    service = "redis"
 
 {% for item in traefix_dashboard_items %}
 # Adding in router for {{item.name}}

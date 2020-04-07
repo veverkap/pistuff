@@ -54,6 +54,15 @@ client {
 
  {%- endif -%}
 
+{%- if ansible_hostname == "rpi2" -%}
+
+  host_volume "ombiconfig" {
+    path = "/opt/nomad/configs/ombi"
+    read_only = false
+  }
+ {%- endif -%}
+
+
 {%- if ansible_hostname == "rpi4" -%}
 
   host_volume "sonarrconfig" {
@@ -61,6 +70,15 @@ client {
     read_only = false
   }
 
+ {%- endif -%}
+
+
+  {%- if ansible_hostname == "rpi5" -%}
+
+  host_volume "redisconfig" {
+    path = "/opt/nomad/configs/redis"
+    read_only = false
+  }
  {%- endif -%}
 
   servers = {{ nomad_retry_join }}

@@ -28,7 +28,6 @@
 [http.routers.cockpitdash]
   rule = "Host(`cockpit.veverka.net`)"
   service = "service-cockpit"
-  middlewares = ["auth"]
 
   [http.routers.cockpitdash.tls]
     certResolver = "le" # From static configuration

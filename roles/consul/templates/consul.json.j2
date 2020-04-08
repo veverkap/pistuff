@@ -1,6 +1,11 @@
 {
   "advertise_addr": "{{ consul_advertise }}",
   "bind_addr": "{{ consul_bind }}",
+  "acl": {
+    "enabled": true,
+    "default_policy": "allow",
+    "enable_token_persistence": true
+  },
 {% if consul_is_server %}
   "bootstrap_expect": {{ consul_bootstrap_expect }},
 {% endif %}

@@ -46,13 +46,6 @@ job "redis" {
     task "redis" {
       driver = "docker"
 
-      meta {
-        "traefik.enable" = "true"
-        "traefik.tcp.routers.redisrouter.entrypoints" = "redis"
-        "traefik.tcp.routers.redisrouter.rule" = "HostSNI(`redis.veverka.net`)"
-        "traefik.tcp.routers.redisrouter.service" = "redis"
-      }
-
       volume_mount {
         volume      = "redisconfig"
         destination = "/config"
@@ -92,7 +85,7 @@ job "redis" {
         tags = [
           "traefik.enable=true",
           "traefik.tcp.routers.redisrouter.entrypoints=redis",
-          "traefik.tcp.routers.redisrouter.rule=HostSNI(`redis.veverka.net`)",
+          "traefik.tcp.routers.redisrouter.rule=HostSNI(`*`)",
           "traefik.tcp.routers.redisrouter.service=redis"
         ]
 

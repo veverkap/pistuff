@@ -2,6 +2,7 @@
 [http.routers.traefikdash]
   rule = "Host(`traefik.veverka.net`)"
   service = "api@internal"
+  entryPoints = ["websecure"]
   middlewares = ["auth"]
 
   [http.routers.traefikdash.tls]
@@ -24,6 +25,7 @@
 [http.routers.consuldash]
   rule = "Host(`consul.veverka.net`)"
   service = "service-consul"
+  entryPoints = ["websecure"]
   middlewares = ["auth"]
 
   [http.routers.consuldash.tls]
@@ -31,22 +33,12 @@
     [[http.routers.consuldash.tls.domains]]
       main = "consul.veverka.net"
 
-[tcp.services]
-  [tcp.services.redis.loadBalancer]
-    [[tcp.services.redis.loadBalancer.servers]]
-      address = "192.168.1.151:20182"
-
-[tcp.routers]
-  [tcp.routers.redis]
-    entryPoints = ["redis"]
-    rule = "HostSNI(`*`)"
-    service = "redis"
-
 {% for item in traefix_dashboard_items %}
 # Adding in router for {{item.name}}
 [http.routers.{{ item.name }}]
   rule = "Host(`{{ item.host }}`)"
   service = "{{ item.service }}"
+  entryPoints = ["websecure"]
 {% if item.include_auth | bool == True %}
   middlewares = ["auth"]
 {% endif %}

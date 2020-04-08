@@ -2,6 +2,11 @@ job "jackett" {
   datacenters = ["alpha"]
   type        = "service"
 
+  constraint {
+    attribute = "${attr.unique.hostname}"
+    value     = "rpi3.node.consul"
+  }
+
   update {
     max_parallel      = 2
     min_healthy_time  = "10s"
@@ -21,6 +26,12 @@ job "jackett" {
   group "jackett" {
     count = 1
 
+    volume "jackettconfig" {
+      type      = "host"
+      read_only = false
+      source    = "jackettconfig"
+    }
+
     restart {
       attempts = 2
       interval = "30m"
@@ -35,15 +46,15 @@ job "jackett" {
     task "jackett" {
       driver = "docker"
 
+      volume_mount {
+        volume      = "jackettconfig"
+        destination = "/config"
+        read_only   = false
+      }
+
       config {
         image        = "linuxserver/jackett"
         network_mode = "bridge"
-
-        volumes = [
-          "/mnt/movies:/mnt/movies",
-          "/mnt/tv:/mnt/tv",
-          "/mnt/configs/jackatt:/config",
-        ]
 
         port_map {
           jackett = 9117

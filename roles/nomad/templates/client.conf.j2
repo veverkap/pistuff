@@ -63,6 +63,15 @@ client {
  {%- endif -%}
 
 
+ {%- if ansible_hostname == "rpi3" -%}
+
+  host_volume "jackettconfig" {
+    path = "/opt/nomad/configs/jackett"
+    read_only = false
+  }
+ {%- endif -%}
+
+
 {%- if ansible_hostname == "rpi4" -%}
 
   host_volume "sonarrconfig" {

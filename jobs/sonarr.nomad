@@ -4,7 +4,7 @@ job "sonarr" {
 
   constraint {
     attribute = "${attr.unique.hostname}"
-    value     = "rpi4.node.consul"
+    value     = "rpi2.node.consul"
   }
 
   update {
@@ -32,6 +32,18 @@ job "sonarr" {
       source    = "sonarrconfig"
     }
 
+    volume "tvfolder" {
+      type      = "host"
+      read_only = false
+      source    = "tvfolder"
+    }
+
+    volume "tvsync" {
+      type      = "host"
+      read_only = false
+      source    = "tvsync"
+    }
+
     restart {
       attempts = 2
       interval = "30m"
@@ -52,14 +64,21 @@ job "sonarr" {
         read_only   = false
       }
 
+      volume_mount {
+        volume      = "tvfolder"
+        destination = "/tv"
+        read_only   = false
+      }
+
+      volume_mount {
+        volume      = "tvsync"
+        destination = "/downloads"
+        read_only   = false
+      }
+
       config {
         image        = "linuxserver/sonarr:latest"
         network_mode = "bridge"
-
-        volumes = [
-          "/mnt/tv:/tv",
-          "/mnt/tv-sync:/downloads",
-        ]
 
         port_map {
           sonarr = 8989

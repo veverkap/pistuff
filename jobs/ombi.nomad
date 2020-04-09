@@ -2,6 +2,10 @@ job "ombi" {
   datacenters = ["alpha"]
   type        = "service"
 
+  constraint {
+    attribute = "${attr.unique.hostname}"
+    value     = "rpi2.node.consul"
+  }
   update {
     max_parallel      = 2
     min_healthy_time  = "10s"
@@ -21,6 +25,12 @@ job "ombi" {
   group "ombi" {
     count = 1
 
+    volume "ombiconfig" {
+      type      = "host"
+      read_only = false
+      source    = "ombiconfig"
+    }
+
     restart {
       attempts = 2
       interval = "30m"
@@ -37,6 +47,12 @@ job "ombi" {
     task "ombi" {
       driver = "docker"
 
+      volume_mount {
+        volume      = "ombiconfig"
+        destination = "/config"
+        read_only   = false
+      }
+
       config {
         image        = "linuxserver/ombi"
         network_mode = "bridge"
@@ -44,7 +60,6 @@ job "ombi" {
         volumes = [
           "/mnt/movies:/mnt/movies",
           "/mnt/tv:/mnt/tv",
-          "/opt/ombi:/config",
         ]
 
         port_map {

@@ -2,6 +2,7 @@
 [http.routers.traefikdash]
   rule = "Host(`traefik.veverka.net`)"
   service = "api@internal"
+  entryPoints = ["websecure"]
   middlewares = ["auth"]
 
   [http.routers.traefikdash.tls]
@@ -11,11 +12,6 @@
 
 # Adding in router for consuldash
 [http.services]
-  [http.services.service-cockpit]
-    [http.services.service-cockpit.loadBalancer]
-      [[http.services.service-cockpit.loadBalancer.servers]]
-        url = "http://192.168.1.124:9090"
-
   [http.services.service-consul]
     [http.services.service-consul.loadBalancer]
       [[http.services.service-consul.loadBalancer.servers]]
@@ -25,19 +21,11 @@
       [[http.services.service-consul.loadBalancer.servers]]
         url = "http://192.168.1.149:8500"
 
-[http.routers.cockpitdash]
-  rule = "Host(`cockpit.veverka.net`)"
-  service = "service-cockpit"
-
-  [http.routers.cockpitdash.tls]
-    certResolver = "le" # From static configuration
-    [[http.routers.cockpitdash.tls.domains]]
-      main = "cockpit.veverka.net"
-
 
 [http.routers.consuldash]
   rule = "Host(`consul.veverka.net`)"
   service = "service-consul"
+  entryPoints = ["websecure"]
   middlewares = ["auth"]
 
   [http.routers.consuldash.tls]
@@ -50,6 +38,7 @@
 [http.routers.{{ item.name }}]
   rule = "Host(`{{ item.host }}`)"
   service = "{{ item.service }}"
+  entryPoints = ["websecure"]
 {% if item.include_auth | bool == True %}
   middlewares = ["auth"]
 {% endif %}

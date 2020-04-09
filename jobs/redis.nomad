@@ -1,10 +1,10 @@
-job "jackett" {
+job "redis" {
   datacenters = ["alpha"]
   type        = "service"
 
   constraint {
     attribute = "${attr.unique.hostname}"
-    value     = "rpi3.node.consul"
+    value     = "rpi5.node.consul"
   }
 
   update {
@@ -23,13 +23,13 @@ job "jackett" {
     healthy_deadline = "5m"
   }
 
-  group "jackett" {
+  group "redis" {
     count = 1
 
-    volume "jackettconfig" {
+    volume "redisconfig" {
       type      = "host"
       read_only = false
-      source    = "jackettconfig"
+      source    = "redisconfig"
     }
 
     restart {
@@ -43,24 +43,23 @@ job "jackett" {
       size = 300
     }
 
-    task "jackett" {
+    task "redis" {
       driver = "docker"
 
       volume_mount {
-        volume      = "jackettconfig"
+        volume      = "redisconfig"
         destination = "/config"
         read_only   = false
       }
 
       config {
-        image        = "linuxserver/jackett"
+        image        = "redis"
         network_mode = "bridge"
 
         port_map {
-          jackett = 9117
+          redis = 6379
         }
 
-        labels {}
       }
 
       env {
@@ -75,13 +74,20 @@ job "jackett" {
 
         network {
           mbits = 100
-          port  "jackett"{}
+          port  "redis"{}
         }
       }
 
       service {
-        name = "jackett"
-        port = "jackett"
+        name = "redis"
+        port = "redis"
+
+        tags = [
+          "traefik.enable=true",
+          "traefik.tcp.routers.redisrouter.entrypoints=redis",
+          "traefik.tcp.routers.redisrouter.rule=HostSNI(`*`)",
+          "traefik.tcp.routers.redisrouter.service=redis"
+        ]
 
         check {
           name     = "alive"

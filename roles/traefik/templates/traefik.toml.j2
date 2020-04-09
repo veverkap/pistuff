@@ -12,6 +12,9 @@
   [entryPoints.registry]
     address = ":5000"
 
+  [entryPoints.redis]
+    address = ":6379/tcp"
+
 [certificatesResolvers.le.acme]
   email = "patrick@veverka.net"
   storage = "acme.json"

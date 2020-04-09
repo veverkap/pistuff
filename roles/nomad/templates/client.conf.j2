@@ -14,23 +14,14 @@ advertise {
 
 client {
   enabled = true
-  host_volume "movies" {
-    path = "/mnt/movies"
-    read_only = false
-  }
-
-  host_volume "tv" {
-    path = "/mnt/tv"
-    read_only = false
-  }
 
   host_volume "nomadconfig" {
     path = "/opt/nomad/configs"
     read_only = false
   }
 
-
-{%- if ansible_hostname == "rpi1" -%}
+{% if ansible_hostname == "rpi1" %}
+  # rpi1 only for radarr
 
   host_volume "moviesfolder" {
     path = "/mnt/external/Movies"
@@ -42,53 +33,69 @@ client {
     read_only = false
   }
 
-  host_volume "tautulliconfig" {
-    path = "/opt/nomad/configs/tautulli"
-    read_only = false
-  }
-
   host_volume "radarrconfig" {
     path = "/opt/nomad/configs/radarr"
     read_only = false
   }
 
- {%- endif -%}
+{% endif %}
 
-{%- if ansible_hostname == "rpi2" -%}
+{% if ansible_hostname == "rpi2" %}
+  # rpi2 only for sonarr
 
-  host_volume "ombiconfig" {
-    path = "/opt/nomad/configs/ombi"
+  host_volume "tvfolder" {
+    path = "/mnt/external/TV Shows"
     read_only = false
   }
- {%- endif -%}
 
-
- {%- if ansible_hostname == "rpi3" -%}
-
-  host_volume "jackettconfig" {
-    path = "/opt/nomad/configs/jackett"
+  host_volume "tvsync" {
+    path = "/mnt/external/Sync"
     read_only = false
   }
- {%- endif -%}
-
-
-{%- if ansible_hostname == "rpi4" -%}
 
   host_volume "sonarrconfig" {
     path = "/opt/nomad/configs/sonarr"
     read_only = false
   }
 
- {%- endif -%}
+{% endif %}
 
+{% if ansible_hostname == "rpi3" %}
 
-  {%- if ansible_hostname == "rpi5" -%}
+  host_volume "tautulliconfig" {
+    path = "/opt/nomad/configs/tautulli"
+    read_only = false
+  }
+
+{% endif %}
+
+{% if ansible_hostname == "rpi4" %}
+
+  host_volume "minioconfig" {
+    path = "/opt/nomad/configs/minio"
+    read_only = false
+  }
+
+{% endif %}
+
+{% if ansible_hostname == "rpi5" %}
+
+  host_volume "jackettconfig" {
+    path = "/opt/nomad/configs/jackettconfig"
+    read_only = false
+  }
+
+  host_volume "ombiconfig" {
+    path = "/opt/nomad/configs/ombiconfig"
+    read_only = false
+  }
 
   host_volume "redisconfig" {
     path = "/opt/nomad/configs/redis"
     read_only = false
   }
- {%- endif -%}
+
+{% endif %}
 
   servers = {{ nomad_retry_join }}
 }

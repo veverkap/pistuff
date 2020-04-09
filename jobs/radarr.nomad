@@ -2,11 +2,6 @@ job "radarr" {
   datacenters = ["alpha"]
   type        = "service"
 
-  constraint {
-    attribute = "${attr.unique.hostname}"
-    value     = "rpi1.node.consul"
-  }
-
   update {
     max_parallel      = 2
     min_healthy_time  = "10s"

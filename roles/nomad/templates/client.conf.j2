@@ -76,6 +76,11 @@ client {
     read_only = false
   }
 
+  host_volume "delugeconfig" {
+    path = "/opt/nomad/configs/deluge"
+    read_only = false
+  }
+
 {% endif %}
 
 {% if ansible_hostname == "rpi5" %}
@@ -96,6 +101,7 @@ client {
   }
 
 {% endif %}
+
 
   servers = {{ nomad_retry_join }}
 }

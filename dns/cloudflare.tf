@@ -95,9 +95,9 @@ resource "cloudflare_record" "cloud" {
   proxied  = false
   ttl      = 120
 }
-resource "cloudflare_record" "cockpit" {
+resource "cloudflare_record" "deluge" {
   zone_id  = cloudflare_zone.veverka.id
-  name     = "cockpit"
+  name     = "deluge"
   value    = "lan.veverka.net"
   type     = "CNAME"
   proxied  = false

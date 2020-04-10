@@ -2,10 +2,6 @@ job "ombi" {
   datacenters = ["alpha"]
   type        = "service"
 
-  constraint {
-    attribute = "${attr.unique.hostname}"
-    value     = "rpi2.node.consul"
-  }
   update {
     max_parallel      = 2
     min_healthy_time  = "10s"

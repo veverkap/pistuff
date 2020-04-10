@@ -1,4 +1,4 @@
-job "tautulli" {
+job "deluge" {
   datacenters = ["alpha"]
   type        = "service"
 
@@ -18,14 +18,15 @@ job "tautulli" {
     healthy_deadline = "5m"
   }
 
-  group "tautulli" {
+  group "deluge" {
     count = 1
 
-    volume "tautulliconfig" {
+    volume "delugeconfig" {
       type      = "host"
       read_only = false
-      source    = "tautulliconfig"
+      source    = "delugeconfig"
     }
+
 
     restart {
       attempts = 2
@@ -38,21 +39,29 @@ job "tautulli" {
       size = 300
     }
 
-    task "tautulli" {
+    task "deluge" {
       driver = "docker"
 
       volume_mount {
-        volume      = "tautulliconfig"
+        volume      = "delugeconfig"
         destination = "/config"
         read_only   = false
       }
 
+
       config {
-        image        = "linuxserver/tautulli"
+        image        = "linuxserver/deluge:latest"
         network_mode = "bridge"
 
+        volumes = [
+          "/mnt/movies:/mnt/movies",
+          "/mnt/tv:/mnt/tv",
+          "/mnt/movies-sync:/mnt/movies-sync",
+          "/mnt/tv-sync:/mnt/tv-sync",
+        ]
+
         port_map {
-          tautulli = 8181
+          deluge = 8112
         }
 
         labels {}
@@ -70,13 +79,13 @@ job "tautulli" {
 
         network {
           mbits = 100
-          port  "tautulli"{}
+          port  "deluge" {}
         }
       }
 
       service {
-        name = "tautulli"
-        port = "tautulli"
+        name = "deluge"
+        port = "deluge"
 
         check {
           name     = "alive"

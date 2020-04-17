@@ -21,6 +21,12 @@ job "minio" {
   group "minio" {
     count = 1
 
+    volume "minioconfig" {
+      type      = "host"
+      read_only = false
+      source    = "minioconfig"
+    }
+
     restart {
       attempts = 2
       interval = "30m"
@@ -40,6 +46,12 @@ job "minio" {
         MINIO_SECRET_KEY = "NOTAREALKEY"
       }
 
+      volume_mount {
+        volume      = "minioconfig"
+        destination = "/config"
+        read_only   = false
+      }
+
       config {
         image        = "jessestuart/minio:RELEASE.2020-01-25T02-50-51Z"
 
@@ -48,10 +60,6 @@ job "minio" {
           "/data"
         ]
         network_mode = "bridge"
-
-        volumes = [
-          "/mnt/configs/minio:/data/",
-        ]
 
         port_map {
           minio = 9000

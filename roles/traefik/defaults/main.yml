@@ -13,18 +13,6 @@ traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
 traefik_update: yes
 traefix_dashboard_items:
-  # - name: bigslackslash
-  #   host: bigslackslash.veverka.net
-  #   service: bigslackslash@consulcatalog
-  #   include_auth: false
-  # - name: couchpotato
-  #   host: couchpotato.veverka.net
-  #   service: couchpotato@consulcatalog
-  #   include_auth: false
-  # - name: cloud
-  #   host: cloud.veverka.net
-  #   service: nextcloud@consulcatalog
-  #   include_auth: false
   - name: influxdb
     host: influxdb.veverka.net
     service: influxdb@consulcatalog
@@ -33,10 +21,6 @@ traefix_dashboard_items:
     host: jackett.veverka.net
     service: jackett@consulcatalog
     include_auth: false
-  # - name: meatsweats
-  #   host: meatsweats.veverka.net
-  #   service: meatsweatweb@consulcatalog
-  #   include_auth: true
   - name: minio
     host: minio.veverka.net
     service: minio@consulcatalog
@@ -65,6 +49,10 @@ traefix_dashboard_items:
     host: sonarr.veverka.net
     service: sonarr@consulcatalog
     include_auth: false
+  - name: sonarrsync
+    host: sonarrsync.veverka.net
+    service: sonarrsync@consulcatalog
+    include_auth: true
   - name: tautulli
     host: tautulli.veverka.net
     service: tautulli@consulcatalog

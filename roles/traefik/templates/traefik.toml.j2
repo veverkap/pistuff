@@ -49,3 +49,23 @@
 
 [http.middlewares.auth.basicAuth]
   usersFile = "/etc/traefik.d/users"
+
+[metrics]
+  # ...
+
+  # InfluxDB metrics exporter type
+  [metrics.influxdb]
+
+    # InfluxDB's address.
+    #
+    # Required
+    # Default: "localhost:8089"
+    #
+    address = "influxdb.veverka.net:443"
+
+    # InfluxDB's address protocol (udp or http)
+    #
+    # Required
+    # Default: "udp"
+    #
+    protocol = "http"

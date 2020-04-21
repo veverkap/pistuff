@@ -22,7 +22,7 @@ resource "cloudflare_zone" "veverka" {
 resource "cloudflare_record" "lan" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "lan"
-  value    = "192.168.1.124"
+  value    = "192.168.1.152"
   type     = "A"
   proxied  = false
   ttl      = 120

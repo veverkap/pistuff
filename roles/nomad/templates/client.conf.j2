@@ -38,6 +38,11 @@ client {
     read_only = false
   }
 
+  host_volume "radarrsyncconfig" {
+    path = "/opt/nomad/configs/radarrsync"
+    read_only = false
+  }
+
 {% endif %}
 
 {% if ansible_hostname == "rpi2" %}
@@ -55,6 +60,11 @@ client {
 
   host_volume "sonarrconfig" {
     path = "/opt/nomad/configs/sonarr"
+    read_only = false
+  }
+
+  host_volume "sonarrsyncconfig" {
+    path = "/opt/nomad/configs/sonarrsync"
     read_only = false
   }
 

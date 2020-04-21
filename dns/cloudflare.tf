@@ -128,9 +128,9 @@ resource "cloudflare_record" "emailmg" {
   proxied  = false
   ttl      = 120
 }
-resource "cloudflare_record" "homeassistant" {
+resource "cloudflare_record" "influxdb" {
   zone_id  = cloudflare_zone.veverka.id
-  name     = "homeassistant"
+  name     = "influxdb"
   value    = "lan.veverka.net"
   type     = "CNAME"
   proxied  = false

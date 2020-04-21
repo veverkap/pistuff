@@ -58,6 +58,11 @@ client {
     read_only = false
   }
 
+  host_volume "influxdbconfig" {
+    path = "/opt/nomad/configs/influxdb"
+    read_only = false
+  }
+
 {% endif %}
 
 {% if ansible_hostname == "rpi3" %}

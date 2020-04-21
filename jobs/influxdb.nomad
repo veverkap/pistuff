@@ -1,4 +1,4 @@
-job "minio" {
+job "influxdb" {
   datacenters = ["alpha"]
   type        = "service"
 
@@ -18,13 +18,13 @@ job "minio" {
     healthy_deadline = "5m"
   }
 
-  group "minio" {
+  group "influxdb" {
     count = 1
 
-    volume "minioconfig" {
+    volume "influxdbconfig" {
       type      = "host"
       read_only = false
-      source    = "minioconfig"
+      source    = "influxdbconfig"
     }
 
     restart {
@@ -38,34 +38,23 @@ job "minio" {
       size = 300
     }
 
-    task "minio" {
+    task "influxdb" {
       driver = "docker"
 
-      env {
-        MINIO_ACCESS_KEY = "NOTAREALKEY"
-        MINIO_SECRET_KEY = "NOTAREALKEY"
-      }
-
       volume_mount {
-        volume      = "minioconfig"
-        destination = "/config"
+        volume      = "influxdbconfig"
+        destination = "/var/lib/influxdb"
         read_only   = false
       }
 
       config {
-        image        = "jessestuart/minio:RELEASE.2020-01-25T02-50-51Z"
-
-        args = [
-          "server",
-          "/data"
-        ]
+        image        = "influxdb"
         network_mode = "bridge"
 
         port_map {
-          minio = 9000
+          influxdb = 8086
         }
 
-        labels {}
       }
 
       env {
@@ -80,13 +69,13 @@ job "minio" {
 
         network {
           mbits = 100
-          port  "minio"{}
+          port  "influxdb"{}
         }
       }
 
       service {
-        name = "minio"
-        port = "minio"
+        name = "influxdb"
+        port = "influxdb"
 
         check {
           name     = "alive"

@@ -21,9 +21,13 @@ traefix_dashboard_items:
   #   host: couchpotato.veverka.net
   #   service: couchpotato@consulcatalog
   #   include_auth: false
-  - name: deluge
-    host: deluge.veverka.net
-    service: deluge@consulcatalog
+  # - name: cloud
+  #   host: cloud.veverka.net
+  #   service: nextcloud@consulcatalog
+  #   include_auth: false
+  - name: influxdb
+    host: influxdb.veverka.net
+    service: influxdb@consulcatalog
     include_auth: false
   - name: jackett
     host: jackett.veverka.net
@@ -37,10 +41,10 @@ traefix_dashboard_items:
     host: minio.veverka.net
     service: minio@consulcatalog
     include_auth: false
-  # - name: minioext
-  #   host: minioext.veverka.net
-  #   service: minio@consulcatalog
-  #   include_auth: false
+  - name: minioext
+    host: minioext.veverka.net
+    service: minio@consulcatalog
+    include_auth: false
   - name: nomad
     host: nomad.veverka.net
     service: nomad-client@consulcatalog

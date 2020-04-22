@@ -13,6 +13,10 @@ traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
 traefik_update: yes
 traefix_dashboard_items:
+  - name: docker
+    host: docker.veverka.net
+    service: dockerregistry@consulcatalog
+    include_auth: false
   - name: influxdb
     host: influxdb.veverka.net
     service: influxdb@consulcatalog

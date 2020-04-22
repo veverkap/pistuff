@@ -120,6 +120,14 @@ resource "cloudflare_record" "couchpotato" {
   proxied  = false
   ttl      = 120
 }
+resource "cloudflare_record" "docker" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "docker"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
 resource "cloudflare_record" "emailmg" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "email.mg"

@@ -82,6 +82,15 @@ client {
     read_only = false
   }
 
+  host_volume "calibrewebconfig" {
+    path = "/opt/nomad/configs/calibreweb"
+    read_only = false
+  }
+
+  host_volume "calibrebooks" {
+    path = "/opt/nomad/configs/calibrebooks"
+    read_only = false
+  }
 {% endif %}
 
 {% if ansible_hostname == "rpi4" %}

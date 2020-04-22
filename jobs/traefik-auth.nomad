@@ -11,6 +11,7 @@ job "traefikforwardauth" {
       driver = "docker"
 
       env {
+        # this are not real
         PROVIDERS_GOOGLE_CLIENT_ID = "310000938070-b9m4jj7opmjft2u9bqmop1tu1rpcvc4m.apps.googleusercontent.com"
         PROVIDERS_GOOGLE_CLIENT_SECRET = "oE9Gww2z33zcM5CX61fREiVG"
         SECRET = "486d011f89107c79459d3df2982450fc"

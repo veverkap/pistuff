@@ -1,6 +1,6 @@
 ---
-nomad_version: "0.11.0"
-nomad_checksum: "sha256:1bc2d394339a48e03a7da5d04aff87569ceae44a551c8c672e1a850765e8d731"
+nomad_version: "0.11.1"
+nomad_checksum: "sha256:8c7975efaa636862b2a11e772ca7f9e1f87f0a3deb349c53af76e6de16612521"
 nomad_install_path: /usr/local/nomad
 nomad_dc: dc1
 nomad_is_server: no

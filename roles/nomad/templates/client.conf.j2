@@ -82,6 +82,11 @@ client {
     read_only = false
   }
 
+  host_volume "lazylibrarianconfig" {
+    path = "/opt/nomad/configs/lazylibrarian"
+    read_only = false
+  }
+
   host_volume "calibrewebconfig" {
     path = "/opt/nomad/configs/calibreweb"
     read_only = false

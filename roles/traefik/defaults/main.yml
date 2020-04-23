@@ -25,6 +25,10 @@ traefix_dashboard_items:
     host: jackett.veverka.net
     service: jackett@consulcatalog
     include_auth: false
+  - name: lazylibrarian
+    host: lazylibrarian.veverka.net
+    service: lazylibrarian@consulcatalog
+    include_auth: false
   - name: library
     host: library.veverka.net
     service: calibreweb@consulcatalog

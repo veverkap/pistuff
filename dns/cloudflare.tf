@@ -153,6 +153,15 @@ resource "cloudflare_record" "jackett" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "lazylibrarian" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "lazylibrarian"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "library" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "library"

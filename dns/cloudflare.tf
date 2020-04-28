@@ -27,6 +27,7 @@ resource "cloudflare_record" "lan" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "external" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "external"
@@ -35,6 +36,7 @@ resource "cloudflare_record" "external" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "unifi" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "unifi"
@@ -43,6 +45,7 @@ resource "cloudflare_record" "unifi" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "veverkanet" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "veverka.net"
@@ -69,14 +72,6 @@ resource "cloudflare_record" "qnap" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "bazarr" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "bazarr"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
 
 resource "cloudflare_record" "bigslackslash" {
   zone_id  = cloudflare_zone.veverka.id

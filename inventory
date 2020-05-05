@@ -30,3 +30,4 @@ deploy_target=pi
 [samba_servers]
 rpi1
 rpi2
+rpi3

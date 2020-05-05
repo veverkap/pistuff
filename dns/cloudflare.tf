@@ -250,6 +250,14 @@ resource "cloudflare_record" "registry" {
   proxied  = false
   ttl      = 120
 }
+resource "cloudflare_record" "shiori" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "shiori"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
 resource "cloudflare_record" "sonarr" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "sonarr"

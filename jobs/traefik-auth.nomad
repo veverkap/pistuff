@@ -12,7 +12,16 @@ job "traefikforwardauth" {
 
       env {
         # this are not real
-
+        PROVIDERS_GOOGLE_CLIENT_ID = ""
+        PROVIDERS_GOOGLE_CLIENT_SECRET = ""
+        SECRET = ""
+        COOKIE_DOMAIN = "veverka.net"
+        INSECURE_COOKIE = "false"
+        AUTH_HOST = "oauth.veverka.net"
+        URL_PATH = "/_oauth"
+        WHITELIST = ""
+        LOG_LEVEL = "info"
+        LIFETIME = "2592000"
       }
 
       config {

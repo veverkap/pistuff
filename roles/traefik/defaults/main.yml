@@ -1,20 +1,24 @@
 ---
-traefik_version: "v2.2.0"
+traefik_version: "v2.2.1"
 traefik_systemd_unit_template: traefik.service.j2
 traefik_systemd_unit_dest: /etc/systemd/system/traefik.service
 traefik_install_dir: /usr/bin
 traefik_bin_path: "{{ traefik_install_dir }}/traefik"
 traefik_config_directory: /etc/traefik.d
 traefik_binary_url: https://github.com/containous/traefik/releases/download/{{traefik_version}}/traefik_{{traefik_version}}_linux_armv7.tar.gz
-traefik_checksum: "sha256:4d0df2a3c01b848765960e6b36e9425717b79e410af418c40313d759cbfb698b"
+traefik_checksum: "sha256:012778da71c29a0dd9275c6981e00ffad4bb198f21c7d7c23c55e2620d6fbb50"
 traefik_config_template: traefik.toml.j2
 traefik_config_file: /etc/traefik.toml
 traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
-traefik_update: yes
+traefik_update: no
 traefix_dashboard_items:
   - name: auth
     host: auth.veverka.net
+    service: traefikforwardauth@consulcatalog
+    include_auth: false
+  - name: lanauth
+    host: lanauth.veverka.net
     service: traefikforwardauth@consulcatalog
     include_auth: false
   - name: docker

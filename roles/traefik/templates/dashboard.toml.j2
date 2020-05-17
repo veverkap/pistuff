@@ -53,5 +53,12 @@
 [http.middlewares.auth.basicAuth]
   usersFile = "/etc/traefik.d/users"
 
-[http.middlewares.auth.forwardAuth]
+[http.middlewares.fauth.forwardAuth]
    address = "http://auth.veverka.net/_oauth"
+    trustForwardHeader = true
+    authResponseHeaders = ["X-Forwarded-User"]
+
+[http.middlewares.flanauth.forwardAuth]
+   address = "http://lanauth.veverka.net/_oauth"
+    trustForwardHeader = true
+    authResponseHeaders = ["X-Forwarded-User"]

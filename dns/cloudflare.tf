@@ -81,6 +81,15 @@ resource "cloudflare_record" "auth" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "lanauth" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "lanauth"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "bigslackslash" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "bigslackslash"

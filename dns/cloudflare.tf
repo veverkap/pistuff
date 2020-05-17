@@ -31,7 +31,7 @@ resource "cloudflare_record" "lan" {
 resource "cloudflare_record" "external" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "external"
-  value    = "71.120.237.171"
+  value    = "71.120.230.47"
   type     = "A"
   proxied  = false
   ttl      = 120
@@ -72,6 +72,14 @@ resource "cloudflare_record" "qnap" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "auth" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "auth"
+  value    = "external.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
 
 resource "cloudflare_record" "bigslackslash" {
   zone_id  = cloudflare_zone.veverka.id

@@ -12,28 +12,13 @@ job "traefikforwardauth" {
 
       env {
         # this are not real
-        PROVIDERS_GOOGLE_CLIENT_ID = "310000938070-b9m4jj7opmjft2u9bqmop1tu1rpcvc4m.apps.googleusercontent.com"
-        PROVIDERS_GOOGLE_CLIENT_SECRET = "oE9Gww2z33zcM5CX61fREiVG"
-        SECRET = "486d011f89107c79459d3df2982450fc"
-        COOKIE_DOMAIN = "veverka.net"
-        INSECURE_COOKIE = "false"
-        AUTH_HOST = "oauth.veverka.net"
-        URL_PATH = "/_oauth"
-        WHITELIST = "patrick.veverka@gmail.com"
-        LOG_LEVEL = "info"
-        LIFETIME = "2592000"
+
       }
 
       config {
-        image        = "thomseddon/traefik-forward-auth"
+        image        = "thomseddon/traefik-forward-auth:2-arm"
         network_mode = "bridge"
 
-        # I mount the traefikforwardauth folder to /var/lib/registry
-        # so that I can persist the images on my NAS through
-        # deploys and restarts
-        volumes = [
-          "/mnt/configs/traefikforwardauth:/var/lib/registry"
-        ]
 
         port_map {
           traefikforwardauth = 4181

@@ -52,3 +52,6 @@
 
 [http.middlewares.auth.basicAuth]
   usersFile = "/etc/traefik.d/users"
+
+[http.middlewares.auth.forwardAuth]
+   address = "http://auth.veverka.net/_oauth"

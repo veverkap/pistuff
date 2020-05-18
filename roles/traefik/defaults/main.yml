@@ -13,14 +13,6 @@ traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
 traefik_update: no
 traefix_dashboard_items:
-  - name: auth
-    host: auth.veverka.net
-    service: traefikforwardauth@consulcatalog
-    include_auth: false
-  - name: lanauth
-    host: lanauth.veverka.net
-    service: traefikforwardauth@consulcatalog
-    include_auth: false
   - name: docker
     host: docker.veverka.net
     service: dockerregistry@consulcatalog
@@ -69,10 +61,6 @@ traefix_dashboard_items:
     host: sonarr.veverka.net
     service: sonarr@consulcatalog
     include_auth: false
-  - name: sonarrsync
-    host: sonarrsync.veverka.net
-    service: sonarrsync@consulcatalog
-    include_auth: true
   - name: tautulli
     host: tautulli.veverka.net
     service: tautulli@consulcatalog

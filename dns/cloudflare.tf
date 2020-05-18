@@ -54,6 +54,7 @@ resource "cloudflare_record" "veverkanet" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "windows" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "windows"
@@ -72,45 +73,10 @@ resource "cloudflare_record" "qnap" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "auth" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "auth"
-  value    = "external.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "lanauth" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "lanauth"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "bigslackslash" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "bigslackslash"
-  value    = "external.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
 resource "cloudflare_record" "cloud" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "cloud"
   value    = "external.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-resource "cloudflare_record" "deluge" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "deluge"
-  value    = "lan.veverka.net"
   type     = "CNAME"
   proxied  = false
   ttl      = 120
@@ -124,14 +90,7 @@ resource "cloudflare_record" "consul" {
   proxied  = false
   ttl      = 120
 }
-resource "cloudflare_record" "couchpotato" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "couchpotato"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
+
 resource "cloudflare_record" "docker" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "docker"
@@ -140,6 +99,7 @@ resource "cloudflare_record" "docker" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "emailmg" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "email.mg"
@@ -148,6 +108,7 @@ resource "cloudflare_record" "emailmg" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "influxdb" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "influxdb"
@@ -156,6 +117,7 @@ resource "cloudflare_record" "influxdb" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "jackett" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "jackett"
@@ -209,6 +171,7 @@ resource "cloudflare_record" "minio" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "nomad" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "nomad"
@@ -217,6 +180,7 @@ resource "cloudflare_record" "nomad" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "ombi" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "ombi"
@@ -225,6 +189,7 @@ resource "cloudflare_record" "ombi" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "patrick" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "patrick"
@@ -233,6 +198,7 @@ resource "cloudflare_record" "patrick" {
   proxied  = true
   ttl      = 1
 }
+
 resource "cloudflare_record" "prtg" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "prtg"
@@ -241,6 +207,7 @@ resource "cloudflare_record" "prtg" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "radarr" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "radarr"
@@ -267,6 +234,7 @@ resource "cloudflare_record" "registry" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "shiori" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "shiori"
@@ -275,6 +243,7 @@ resource "cloudflare_record" "shiori" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "sonarr" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "sonarr"
@@ -284,14 +253,6 @@ resource "cloudflare_record" "sonarr" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "sonarrsync" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "sonarrsync"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
 resource "cloudflare_record" "tautulli" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "tautulli"
@@ -300,6 +261,7 @@ resource "cloudflare_record" "tautulli" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "traefik" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "traefik"
@@ -308,6 +270,7 @@ resource "cloudflare_record" "traefik" {
   proxied  = false
   ttl      = 120
 }
+
 resource "cloudflare_record" "warez" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "warez"
@@ -316,6 +279,7 @@ resource "cloudflare_record" "warez" {
   proxied  = true
   ttl      = 1
 }
+
 resource "cloudflare_record" "webmail" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "webmail"

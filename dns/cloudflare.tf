@@ -199,15 +199,6 @@ resource "cloudflare_record" "patrick" {
   ttl      = 1
 }
 
-resource "cloudflare_record" "prtg" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "prtg"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
 resource "cloudflare_record" "radarr" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "radarr"
@@ -229,15 +220,6 @@ resource "cloudflare_record" "redis" {
 resource "cloudflare_record" "registry" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "registry"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "shiori" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "shiori"
   value    = "lan.veverka.net"
   type     = "CNAME"
   proxied  = false

@@ -1,15 +1,15 @@
 [hosts]
-rpi1 ansible_host=192.168.1.124
-rpi2 ansible_host=192.168.1.137
-rpi3 ansible_host=192.168.1.149
-rpi4 ansible_host=192.168.1.150
-rpi5 ansible_host=192.168.1.151
-rpi6 ansible_host=192.168.1.152
+rpi1.internal ansible_host=192.168.1.231
+rpi2.internal ansible_host=192.168.1.224
+rpi3.internal ansible_host=192.168.1.149
+rpi4.internal ansible_host=192.168.1.150
+rpi5.internal ansible_host=192.168.1.151
+rpi6.internal ansible_host=192.168.1.152
 
 [consul_servers]
-rpi1 ansible_host=192.168.1.124
-rpi2 ansible_host=192.168.1.137
-rpi3 ansible_host=192.168.1.149
+192.168.1.231
+192.168.1.224
+192.168.1.149
 
 [consul_followers]
 rpi[4:6]

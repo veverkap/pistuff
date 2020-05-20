@@ -1,7 +1,7 @@
 #!/usr/bin/env ansible-playbook -i inventory --skip-tags=consul,bootstrap,nomad
 ---
 - name: setup servers
-  hosts: all
+  hosts: hosts
   gather_facts: true
   remote_user: pi
   become: yes
@@ -13,7 +13,6 @@
         docker_install_compose: false,
         tags: ["docker"],
       }
-    - { role: dnsmasq, consul_dns_domain: consul }
   tags:
     - bootstrap
 - name: setup the consul servers
@@ -36,43 +35,43 @@
     - { role: consul, consul_is_server: no }
   tags:
     - consul
-- name: setup the nomad servers
-  hosts: nomad_servers
-  become: true
-  become_user: root
-  gather_facts: true
-  remote_user: pi
-  roles:
-    - { role: nomad, nomad_is_server: yes, nomad_dc: alpha }
-  tags:
-    - nomad
-- name: setup the nomad workers
-  hosts: nomad_workers
-  become: true
-  become_user: root
-  gather_facts: true
-  remote_user: pi
-  roles:
-    - { role: nomad, nomad_dc: alpha }
-  tags:
-    - nomad
-- name: setup traefix
-  hosts: traefik_servers
-  become: true
-  become_user: root
-  gather_facts: true
-  remote_user: pi
-  roles:
-    - traefik
-  tags:
-    - traefik
-- name: setup samba
-  hosts: samba_servers
-  become: true
-  become_user: root
-  gather_facts: true
-  remote_user: pi
-  roles:
-    - samba
-  tags:
-    - samba
+# - name: setup the nomad servers
+#   hosts: nomad_servers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: pi
+#   roles:
+#     - { role: nomad, nomad_is_server: yes, nomad_dc: alpha }
+#   tags:
+#     - nomad
+# - name: setup the nomad workers
+#   hosts: nomad_workers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: pi
+#   roles:
+#     - { role: nomad, nomad_dc: alpha }
+#   tags:
+#     - nomad
+# - name: setup traefix
+#   hosts: traefik_servers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: pi
+#   roles:
+#     - traefik
+#   tags:
+#     - traefik
+# - name: setup samba
+#   hosts: samba_servers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: pi
+#   roles:
+#     - samba
+#   tags:
+#     - samba

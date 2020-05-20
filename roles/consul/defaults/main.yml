@@ -1,9 +1,9 @@
 ---
-consul_version: "1.7.3"
-consul_checksum: "sha256:425e4efacfc63deacfd5873d37e66d333c2bd3c7aac1dbc8d89822698af809be"
+consul_version: "1.7.2"
+consul_checksum: "sha256:654550682333fc86b5680cdba18205743e855223525db20c276309e16052fa19"
 consul_install_path: /usr/local/consul
 consul_dc: alpha
-consul_dns_domain: localdomain
+consul_dns_domain: consul
 consul_bind: "{{ ansible_default_ipv4.address }}"
 consul_client: "{{ ansible_default_ipv4.address }}"
 consul_advertise: "{{ ansible_default_ipv4.address }}"

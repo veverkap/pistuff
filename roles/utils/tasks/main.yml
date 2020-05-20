@@ -1,6 +1,5 @@
 ---
 # Required
-
 - include: packages.yml
 - include: msmtp.yml
 - include: mounts.yml
@@ -11,3 +10,6 @@
     src: check-service-active.j2
     dest: /usr/local/bin/check-service-active
     mode: u=rwx,g=rx,o=rx
+
+- debug:
+    msg: inventory_hostname {{ inventory_hostname }} / uuid {{ ansible_product_uuid }} / ansible_hostname {{ansible_hostname}} / ansible_fqdn {{ansible_fqdn}} / ansible_ssh_host {{ansible_ssh_host}}

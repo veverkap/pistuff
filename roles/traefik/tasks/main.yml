@@ -88,18 +88,6 @@
   notify:
     - Restart traefik
 
-- name: Copy Traefik prtg config file
-  copy:
-    src: prtg.toml
-    dest: "{{ traefik_config_directory }}/prtg.toml"
-    owner: root
-    group: root
-    backup: true
-    mode: 0744
-  notify:
-    - Restart traefik
-
-
 - name: Ensure traefik service is enabled and running
   systemd:
     name: traefik

@@ -27,18 +27,6 @@ job "sonarr" {
       source    = "sonarrconfig"
     }
 
-    volume "tvfolder" {
-      type      = "host"
-      read_only = false
-      source    = "tvfolder"
-    }
-
-    volume "tvsync" {
-      type      = "host"
-      read_only = false
-      source    = "tvsync"
-    }
-
     restart {
       attempts = 2
       interval = "30m"
@@ -56,18 +44,6 @@ job "sonarr" {
       volume_mount {
         volume      = "sonarrconfig"
         destination = "/config"
-        read_only   = false
-      }
-
-      volume_mount {
-        volume      = "tvfolder"
-        destination = "/tv"
-        read_only   = false
-      }
-
-      volume_mount {
-        volume      = "tvsync"
-        destination = "/downloads"
         read_only   = false
       }
 

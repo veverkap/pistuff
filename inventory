@@ -12,16 +12,16 @@ rpi6.internal ansible_host=192.168.1.152
 192.168.1.149
 
 [consul_followers]
-rpi[4:6]
+rpi[4:6].internal
 
 [nomad_servers]
-rpi6
+rpi6.internal
 
 [traefik_servers]
 rpi6 ansible_host=192.168.1.152
 
 [nomad_workers]
-rpi[1:5]
+rpi[1:5].internal
 
 [hosts:vars]
 ansible_ssh_user=pi

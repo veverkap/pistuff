@@ -21,6 +21,18 @@ job "sonarr" {
   group "sonarr" {
     count = 1
 
+    volume "tvfolder" {
+      type      = "host"
+      read_only = false
+      source    = "tvfolder"
+    }
+
+    volume "qnaptvfolder" {
+      type      = "host"
+      read_only = false
+      source    = "qnaptvfolder"
+    }
+
     volume "sonarrconfig" {
       type      = "host"
       read_only = false
@@ -40,6 +52,19 @@ job "sonarr" {
 
     task "sonarr" {
       driver = "docker"
+
+      volume_mount {
+        volume      = "tvfolder"
+        destination = "/tv"
+        read_only   = false
+      }
+
+      volume_mount {
+        volume      = "qnaptvfolder"
+        destination = "/qnaptv"
+        read_only   = false
+      }
+
 
       volume_mount {
         volume      = "sonarrconfig"

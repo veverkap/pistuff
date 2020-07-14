@@ -1,0 +1,73 @@
+---
+- name: Remove existing mount for MOVIES
+  mount:
+    name: /mnt/movies
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Delete mounted MOVIES directory
+  file:
+    path: /mnt/movies
+    state: absent
+  tags:
+    - dockermnt
+- name: Remove existing mount for MOVIES-SYNC
+  mount:
+    name: /mnt/movies-sync
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Delete mounted MOVIES-SYNC directory
+  file:
+    path: /mnt/movies-sync
+    state: absent
+  tags:
+    - dockermnt
+- name: Remove existing mount for TV
+  mount:
+    name: /mnt/tv
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Delete mounted TV directory
+  file:
+    path: /mnt/tv
+    state: absent
+  tags:
+    - dockermnt
+- name: Remove existing mount for TVSync
+  mount:
+    name: /mnt/tv-sync
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Delete mounted TVSync directory
+  file:
+    path: /mnt/tv-sync
+    state: absent
+  tags:
+    - dockermnt
+- name: Remove existing mount for CONFIGS
+  mount:
+    name: /mnt/configs
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Delete mounted CONFIGS directory
+  file:
+    path: /mnt/configs
+    state: absent
+  tags:
+    - dockermnt
+- name: Remove existing mount for configuration
+  mount:
+    name: /mnt/configuration
+    state: unmounted
+  tags:
+    - dockermnt
+- name: Delete mounted configuration directory
+  file:
+    path: /mnt/configuration
+    state: absent
+  tags:
+    - dockermnt

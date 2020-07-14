@@ -29,7 +29,17 @@ client {
   }
 
   host_volume "moviessync" {
-    path = "/mnt/external/Sync"
+    path = "/mnt/external/MovieSync"
+    read_only = false
+  }
+
+  host_volume "tvfolder" {
+    path = "/mnt/external/TV"
+    read_only = false
+  }
+
+  host_volume "tvsync" {
+    path = "/mnt/external/TVSync"
     read_only = false
   }
 
@@ -43,18 +53,13 @@ client {
     read_only = false
   }
 
-{% endif %}
-
-{% if ansible_hostname == "rpi2" %}
-  # rpi2 only for sonarr
-
-  host_volume "tvfolder" {
-    path = "/mnt/external/TV Shows"
+  host_volume "qnaptvfolder" {
+    path = "/mnt/qnap-tv"
     read_only = false
   }
 
-  host_volume "tvsync" {
-    path = "/mnt/external/Sync"
+  host_volume "qnaptvsync" {
+    path = "/mnt/qnap-tv-sync"
     read_only = false
   }
 
@@ -62,6 +67,10 @@ client {
     path = "/opt/nomad/configs/sonarr"
     read_only = false
   }
+{% endif %}
+
+{% if ansible_hostname == "rpi2" %}
+  # rpi2 only for sonarr
 
   host_volume "sonarrsyncconfig" {
     path = "/opt/nomad/configs/sonarrsync"

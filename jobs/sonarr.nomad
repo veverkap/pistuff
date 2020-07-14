@@ -39,6 +39,18 @@ job "sonarr" {
       source    = "tvsync"
     }
 
+    volume "qnaptvfolder" {
+      type      = "host"
+      read_only = false
+      source    = "qnaptvfolder"
+    }
+
+    volume "qnaptvsync" {
+      type      = "host"
+      read_only = false
+      source    = "qnaptvsync"
+    }
+
     restart {
       attempts = 2
       interval = "30m"
@@ -68,6 +80,18 @@ job "sonarr" {
       volume_mount {
         volume      = "tvsync"
         destination = "/downloads"
+        read_only   = false
+      }
+
+      volume_mount {
+        volume      = "qnaptvfolder"
+        destination = "/mnt/qnaptv"
+        read_only   = false
+      }
+
+      volume_mount {
+        volume      = "qnaptvsync"
+        destination = "/mnt/qnapdownloads"
         read_only   = false
       }
 

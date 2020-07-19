@@ -109,6 +109,15 @@ resource "cloudflare_record" "emailmg" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "git" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "git"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "influxdb" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "influxdb"

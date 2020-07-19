@@ -132,5 +132,10 @@ client {
 {% endif %}
 
 
+  host_volume "giteaconfig" {
+    path = "/opt/nomad/configs/gitea"
+    read_only = false
+  }
+
   servers = {{ nomad_retry_join }}
 }

@@ -15,6 +15,9 @@
   [entryPoints.redis]
     address = ":6379/tcp"
 
+  [entryPoints.gitea]
+    address = ":2222/tcp"
+
 [certificatesResolvers.le.acme]
   email = "patrick@veverka.net"
   storage = "acme.json"

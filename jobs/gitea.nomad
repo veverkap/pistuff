@@ -76,12 +76,20 @@ job "gitea" {
         network {
           mbits = 100
           port  "gitea"{}
+          port "openssh" {}
         }
       }
 
       service {
         name = "gitea"
         port = "gitea"
+
+        tags = [
+          "traefik.enable=true",
+          "traefik.tcp.routers.gitearouter.entrypoints=gitea",
+          "traefik.tcp.routers.gitearouter.rule=HostSNI(`*`)",
+          "traefik.tcp.routers.gitearouter.service=gitea"
+        ]
 
         check {
           name     = "alive"

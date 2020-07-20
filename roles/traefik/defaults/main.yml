@@ -1,25 +1,21 @@
 ---
-traefik_version: "v2.2.1"
+traefik_version: "v2.2.6"
 traefik_systemd_unit_template: traefik.service.j2
 traefik_systemd_unit_dest: /etc/systemd/system/traefik.service
 traefik_install_dir: /usr/bin
 traefik_bin_path: "{{ traefik_install_dir }}/traefik"
 traefik_config_directory: /etc/traefik.d
 traefik_binary_url: https://github.com/containous/traefik/releases/download/{{traefik_version}}/traefik_{{traefik_version}}_linux_armv7.tar.gz
-traefik_checksum: "sha256:012778da71c29a0dd9275c6981e00ffad4bb198f21c7d7c23c55e2620d6fbb50"
+traefik_checksum: "sha256:6e7511d554887dedd31c0aae41f48a6a9c883e56934140fa968b1fc23999ad78"
 traefik_config_template: traefik.toml.j2
 traefik_config_file: /etc/traefik.toml
 traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
-traefik_update: no
+traefik_update: yes
 traefix_dashboard_items:
   - name: docker
     host: docker.veverka.net
     service: dockerregistry@consulcatalog
-    include_auth: false
-  - name: git
-    host: git.veverka.net
-    service: gitea@consulcatalog
     include_auth: false
   - name: influxdb
     host: influxdb.veverka.net

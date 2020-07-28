@@ -29,7 +29,7 @@ client {
   }
 
   host_volume "moviessync" {
-    path = "/mnt/external/Sync"
+    path = "/mnt/external/MovieSync"
     read_only = false
   }
 
@@ -49,7 +49,12 @@ client {
   # rpi2 only for sonarr
 
   host_volume "tvfolder" {
-    path = "/mnt/pi-tv"
+    path = "/mnt/rpi1-tv"
+    read_only = false
+  }
+
+  host_volume "rpi2-kids-tvfolder" {
+    path = "/mnt/rpi2-kids-tv"
     read_only = false
   }
 

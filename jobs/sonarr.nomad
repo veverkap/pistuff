@@ -33,6 +33,12 @@ job "sonarr" {
       source    = "qnaptvfolder"
     }
 
+    volume "rpi2-kids-tvfolder" {
+      type      = "host"
+      read_only = false
+      source    = "rpi2-kids-tvfolder"
+    }
+
     volume "sonarrconfig" {
       type      = "host"
       read_only = false
@@ -65,6 +71,11 @@ job "sonarr" {
         read_only   = false
       }
 
+      volume_mount {
+        volume      = "rpi2-kids-tvfolder"
+        destination = "/rpi2kids"
+        read_only   = false
+      }
 
       volume_mount {
         volume      = "sonarrconfig"

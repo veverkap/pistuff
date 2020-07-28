@@ -3,7 +3,7 @@
 
 - include: packages.yml
 - include: msmtp.yml
-# - include: clean_mounts.yml
+- include: clean_mounts.yml
 - include: mounts.yml
 - include: zsh.yml
 

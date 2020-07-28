@@ -1,19 +1,21 @@
 - name: Create folders
   file:
-    path: "{{ item }}"
+    path: "{{ item.name }}"
     state: directory
   loop:
-    - /mnt/rpi1-kids
-    - /mnt/rpi1-workout
-    - /mnt/rpi1-movies
-    - /mnt/rpi1-movies-sync
-    - /mnt/rpi1-tv
-    - /mnt/rpi1-tv-sync
-    - /mnt/rpi2-kids-tv
-    - /mnt/rpi2-sync
-    - /mnt/qnap-tv
-    - /mnt/qnap-sync
-    - /mnt/configs
+    - { name: "/mnt/rpi1-kids", source: "//192.168.1.231/external/Movies" }
+    - { name: "/mnt/rpi1-workout", source: "//192.168.1.231/external/Workout" }
+    - { name: "/mnt/rpi1-movies", source: "//192.168.1.231/external/Movies" }
+    - { name: "/mnt/rpi1-movies-sync", source: "//192.168.1.231/external/MovieSync" }
+    - { name: "/mnt/rpi1-tv", source: "//192.168.1.231/external/TV" }
+    - { name: "/mnt/rpi1-tv-sync", source: "//192.168.1.231/external/TVSync" }
+
+    - { name: "/mnt/rpi2-kids-tv", source: "//192.168.1.224/external/Kids/TV" }
+    - { name: "/mnt/rpi2-sync", source: "//192.168.1.224/external/Sync" }
+
+    - { name: "/mnt/qnap-tv", source: "//192.168.1.43/VIDEO/TV" }
+    - { name: "/mnt/qnap-sync", source: "//192.168.1.43/VIDEO/Sync" }
+    - { name: "/mnt/configs", source: "//192.168.1.43/Public/NomadConfigs" }
   tags:
     - dockermnt
 
@@ -26,14 +28,14 @@
     state: mounted
   become: true # as root
   loop:
-    - { name: "/mnt/rpi1-kids", source: "//192.168.1.124/external/Movies" }
-    - { name: "/mnt/rpi1-workout", source: "//192.168.1.124/external/Workout" }
-    - { name: "/mnt/rpi1-movies", source: "//192.168.1.124/external/Movies" }
-    - { name: "/mnt/rpi1-movies-sync", source: "//192.168.1.124/external/MovieSync" }
-    - { name: "/mnt/rpi1-tv", source: "//192.168.1.124/external/TV" }
-    - { name: "/mnt/rpi1-tv-sync", source: "//192.168.1.124/external/TVSync" }
+    - { name: "/mnt/rpi1-kids", source: "//192.168.1.231/external/Movies" }
+    - { name: "/mnt/rpi1-workout", source: "//192.168.1.231/external/Workout" }
+    - { name: "/mnt/rpi1-movies", source: "//192.168.1.231/external/Movies" }
+    - { name: "/mnt/rpi1-movies-sync", source: "//192.168.1.231/external/MovieSync" }
+    - { name: "/mnt/rpi1-tv", source: "//192.168.1.231/external/TV" }
+    - { name: "/mnt/rpi1-tv-sync", source: "//192.168.1.231/external/TVSync" }
 
-    - { name: "/mnt/rpi2-kids-tv", source: "//192.168.1.124/external/Kids/TV" }
+    - { name: "/mnt/rpi2-kids-tv", source: "//192.168.1.224/external/Kids/TV" }
     - { name: "/mnt/rpi2-sync", source: "//192.168.1.224/external/Sync" }
 
     - { name: "/mnt/qnap-tv", source: "//192.168.1.43/VIDEO/TV" }

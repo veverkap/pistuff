@@ -1,0 +1,39 @@
+---
+- name: Remove existing mounts
+  mount:
+    name: "{{ item }}"
+    state: unmounted
+  loop:
+    - /mnt/movies
+    - /mnt/pi-movies
+    - /mnt/movies-sync
+    - /mnt/pi-movies-sync
+    - /mnt/tv
+    - /mnt/pi-tv
+    - /mnt/qnap-tv
+    - /mnt/tv-sync
+    - /mnt/pi-tv-sync
+    - /mnt/qnap-tv-sync
+    - /mnt/configs
+    - /mnt/configuration
+  tags:
+    - dockermnt
+- name: Delete folders
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /mnt/movies
+    - /mnt/pi-movies
+    - /mnt/movies-sync
+    - /mnt/pi-movies-sync
+    - /mnt/tv
+    - /mnt/pi-tv
+    - /mnt/qnap-tv
+    - /mnt/tv-sync
+    - /mnt/pi-tv-sync
+    - /mnt/qnap-tv-sync
+    - /mnt/configs
+    - /mnt/configuration
+  tags:
+    - dockermnt

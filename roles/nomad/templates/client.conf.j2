@@ -12,6 +12,16 @@ advertise {
   rpc = "{{ ansible_default_ipv4.address }}:4647"
 }
 
+plugin "raw_exec" {
+  config {
+    enabled = true
+  }
+}
+
+consul {
+  address = "127.0.0.1:8500"
+}
+
 client {
   enabled = true
 

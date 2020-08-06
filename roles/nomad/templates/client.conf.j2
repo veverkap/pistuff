@@ -152,5 +152,10 @@ client {
     read_only = false
   }
 
+  host_volume "postgres" {
+    path = "/opt/nomad/configs/postgres"
+    read_only = false
+  }
+
   servers = {{ nomad_retry_join }}
 }

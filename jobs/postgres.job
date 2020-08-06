@@ -1,0 +1,88 @@
+job "postgres" {
+  datacenters = ["alpha"]
+  type        = "service"
+
+  update {
+    max_parallel     = 2
+    min_healthy_time  = "10s"
+    healthy_deadline  = "3m"
+    progress_deadline = "10m"
+    auto_revert       = false
+    canary           = 1
+    auto_promote     = true
+  }
+
+  migrate {
+    max_parallel     = 2
+    health_check     = "checks"
+    min_healthy_time = "10s"
+    healthy_deadline = "5m"
+  }
+
+  group "db" {
+
+    count = 1
+
+    volume "postgres" {
+      type      = "host"
+      read_only = false
+      source    = "postgres"
+    }
+
+    restart {
+      attempts = 2
+      interval = "30m"
+      delay    = "15s"
+      mode     = "fail"
+    }
+
+    task "postgres" {
+      driver = "docker"
+
+      volume_mount {
+        volume      = "postgres"
+        destination = "/appdata/postgres"
+        read_only   = false
+      }
+
+      config {
+        image = "postgres:12"
+
+        network_mode = "bridge"
+
+        port_map {
+          db = 5432
+        }
+      }
+
+      env {
+        POSTGRES_DB       = "postgres"
+        POSTGRES_USER     = "postgres"
+        POSTGRES_PASSWORD = "ChAnGeMe"
+        PGDATA            = "/appdata/postgres"
+      }
+
+      service {
+        name = "${NOMAD_JOB_NAME}"
+        tags = ["postgres"]
+
+        port = "db"
+
+        check {
+          type     = "tcp"
+          port     = "db"
+          interval = "30s"
+          timeout  = "2s"
+        }
+      }
+
+      resources {
+        network {
+          port  "db"  {
+            static = "25432"
+          }
+        }
+      }
+    }
+  }
+}

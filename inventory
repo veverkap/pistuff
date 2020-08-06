@@ -7,9 +7,9 @@ rpi5.internal ansible_host=192.168.1.151
 rpi6.internal ansible_host=192.168.1.152
 
 [consul_servers]
-192.168.1.231
-192.168.1.224
-192.168.1.149
+rpi1.internal ansible_host=192.168.1.231
+rpi2.internal ansible_host=192.168.1.224
+rpi3.internal ansible_host=192.168.1.149
 
 [consul_followers]
 rpi[4:6].internal
@@ -18,7 +18,7 @@ rpi[4:6].internal
 rpi6.internal
 
 [traefik_servers]
-rpi6 ansible_host=192.168.1.152
+rpi6.internal ansible_host=192.168.1.152
 
 [nomad_workers]
 rpi[1:5].internal
@@ -28,6 +28,6 @@ ansible_ssh_user=pi
 deploy_target=pi
 
 [samba_servers]
-rpi1
-rpi2
-rpi3
+rpi1.internal ansible_host=192.168.1.231
+rpi2.internal ansible_host=192.168.1.224
+rpi3.internal ansible_host=192.168.1.149

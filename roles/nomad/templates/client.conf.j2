@@ -111,6 +111,8 @@ client {
     path = "/opt/nomad/configs/calibrebooks"
     read_only = false
   }
+
+
 {% endif %}
 
 {% if ansible_hostname == "rpi4" %}
@@ -144,8 +146,23 @@ client {
     read_only = false
   }
 
-{% endif %}
+  host_volume "ombimovies" {
+    path = "/mnt/rpi1-movies"
+    read_only = false
+  }
 
+  host_volume "ombitv" {
+    path = "/mnt/rpi1-tv"
+    read_only = false
+  }
+
+  host_volume "ombitv2" {
+    path = "/mnt/qnap-tv"
+    read_only = false
+  }
+
+
+{% endif %}
 
   host_volume "giteaconfig" {
     path = "/opt/nomad/configs/gitea"
@@ -154,6 +171,11 @@ client {
 
   host_volume "postgres" {
     path = "/opt/nomad/configs/postgres"
+    read_only = false
+  }
+
+  host_volume "dockerconfig" {
+    path = "/mnt/configs/dockerregistry"
     read_only = false
   }
 

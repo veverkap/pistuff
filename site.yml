@@ -1,7 +1,7 @@
 #!/usr/bin/env ansible-playbook -i inventory --skip-tags=consul,bootstrap,nomad
 ---
 - name: setup servers
-  hosts: all
+  hosts: hosts
   gather_facts: true
   remote_user: pi
   become: yes

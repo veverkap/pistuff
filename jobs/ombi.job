@@ -27,6 +27,24 @@ job "ombi" {
       source    = "ombiconfig"
     }
 
+    volume "ombimovies" {
+      type      = "host"
+      read_only = false
+      source    = "ombimovies"
+    }
+
+    volume "ombitv" {
+      type      = "host"
+      read_only = false
+      source    = "ombitv"
+    }
+
+    volume "ombitv2" {
+      type      = "host"
+      read_only = false
+      source    = "ombitv2"
+    }
+
     restart {
       attempts = 2
       interval = "30m"
@@ -49,14 +67,26 @@ job "ombi" {
         read_only   = false
       }
 
+      volume_mount {
+        volume      = "ombimovies"
+        destination = "/movies"
+        read_only   = false
+      }
+
+      volume_mount {
+        volume      = "ombitv"
+        destination = "/tv"
+        read_only   = false
+      }
+
+      volume_mount {
+        volume      = "ombitv2"
+        destination = "/tv2"
+        read_only   = false
+      }
       config {
         image        = "linuxserver/ombi"
         network_mode = "bridge"
-
-        volumes = [
-          "/mnt/movies:/mnt/movies",
-          "/mnt/tv:/mnt/tv",
-        ]
 
         port_map {
           ombi = 3579

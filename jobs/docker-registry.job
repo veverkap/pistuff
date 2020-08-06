@@ -6,9 +6,21 @@ job "dockerregistry" {
     # I only want one of these running at a time
     count = 1
 
+    volume "dockerconfig" {
+      type      = "host"
+      read_only = false
+      source    = "dockerconfig"
+    }
+
     task "dockerregistry" {
       # gotta use the docker driver
       driver = "docker"
+
+      volume_mount {
+        volume      = "dockerconfig"
+        destination = "/var/lib/registry"
+        read_only   = false
+      }
 
       config {
         image        = "registry:2"
@@ -17,9 +29,6 @@ job "dockerregistry" {
         # I mount the dockerregistry folder to /var/lib/registry
         # so that I can persist the images on my NAS through
         # deploys and restarts
-        volumes = [
-          "/mnt/configs/dockerregistry:/var/lib/registry"
-        ]
 
         port_map {
           dockerregistry = 5000
@@ -30,7 +39,7 @@ job "dockerregistry" {
 
       resources {
         cpu    = 500  # 500 MHz
-        memory = 1024 # 1G
+        memory = 256 # 1G
 
         network {
           mbits = 100

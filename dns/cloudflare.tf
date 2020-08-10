@@ -82,6 +82,15 @@ resource "cloudflare_record" "cloud" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "next" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "next"
+  value    = "external.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "consul" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "consul"

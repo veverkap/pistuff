@@ -1,0 +1,63 @@
+job "nextcloud" {
+  datacenters = ["alpha"]
+  type        = "service"
+
+  group "nextcloud" {
+    # I only want one of these running at a time
+    count = 1
+
+    volume "nextcloudconfig" {
+      type      = "host"
+      read_only = false
+      source    = "nextcloudconfig"
+    }
+
+    task "nextcloud" {
+      # gotta use the docker driver
+      driver = "docker"
+
+      volume_mount {
+        volume      = "nextcloudconfig"
+        destination = "/data"
+        read_only   = false
+      }
+
+      config {
+        image        = "ownyourbits/nextcloudpi"
+        network_mode = "bridge"
+
+        port_map {
+          nextcloud = 80
+          nextcloudsecure = 443
+          nextcloudother = 4443
+        }
+
+        labels {}
+      }
+
+      resources {
+        cpu    = 500  # 500 MHz
+        memory = 256 # 1G
+
+        network {
+          mbits = 100
+          port  "nextcloud"{}
+          port  "nextcloudsecure"{}
+          port  "nextcloudother"{}
+        }
+      }
+
+      service {
+        name = "nextcloud"
+        port = "nextcloud"
+
+        check {
+          name     = "alive"
+          type     = "tcp"
+          interval = "10s"
+          timeout  = "2s"
+        }
+      }
+    }
+  }
+}

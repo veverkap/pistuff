@@ -76,16 +76,25 @@ resource "cloudflare_record" "qnap" {
 resource "cloudflare_record" "cloud" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "cloud"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
+resource "cloudflare_record" "next-ext" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "next"
   value    = "external.veverka.net"
   type     = "CNAME"
   proxied  = false
   ttl      = 120
 }
 
-resource "cloudflare_record" "next" {
+resource "cloudflare_record" "nextcloud" {
   zone_id  = cloudflare_zone.veverka.id
-  name     = "next"
-  value    = "external.veverka.net"
+  name     = "nextcloud"
+  value    = "lan.veverka.net"
   type     = "CNAME"
   proxied  = false
   ttl      = 120

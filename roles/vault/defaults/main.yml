@@ -1,0 +1,19 @@
+---
+vault_version: "{{ lookup('env','VAULT_VERSION') | default('1.5.0', true) }}"
+vault_architecture_map:
+  # this first entry seems... redundant
+  #(but it's required for reasons)
+  amd64: amd64
+  x86_64: amd64
+  armv7l: arm
+  aarch64: arm64
+vault_architecture: "{{ vault_architecture_map[ansible_architecture] }}"
+vault_os: "{{ ansible_system|lower }}"
+vault_pkg: "vault_{{ vault_version }}_{{ vault_os }}_{{ vault_architecture }}.zip"
+vault_zip_url: "https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_{{ vault_os }}_{{ vault_architecture }}.zip"
+vault_checksum_file_url: "https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version}}_SHA256SUMS"
+vault_install_path: /usr/local/bin
+vault_datacenter: alpha
+
+vault_owner: root
+vault_group: root

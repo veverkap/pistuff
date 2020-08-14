@@ -1,0 +1,58 @@
+###############################################################################
+################################# INSTALL #####################################
+###############################################################################
+- name: Read package checksum file
+  local_action: stat path="{{ role_path }}/files/vault_{{ vault_version }}_SHA256SUMS"
+  become: no
+  run_once: true
+  register: vault_checksum
+  tags:
+    - installation
+    - vault
+
+- name: Download package checksum file
+  local_action: get_url url="{{ vault_checksum_file_url }}" dest="{{ role_path }}/files/vault_{{ vault_version }}_SHA256SUMS" validate_certs=no
+  become: no
+  run_once: true
+  tags:
+    - installation
+    - vault
+  when: not vault_checksum.stat.exists | bool
+
+- name: Read package checksum
+  local_action: shell grep "{{ vault_pkg }}" "{{ role_path }}/files/vault_{{ vault_version }}_SHA256SUMS" | awk '{print $1}'
+  become: no
+  run_once: true
+  register: vault_sha256
+  tags:
+    - installation
+    - vault
+
+- name: Check Vault package file
+  local_action: stat path="{{ role_path }}/files/{{ vault_pkg }}"
+  become: no
+  run_once: true
+  register: vault_package
+  tags:
+    - installation
+    - vault
+
+- name: Download Vault package
+  local_action: get_url url="{{ vault_zip_url }}" dest="{{ role_path }}/files/{{ vault_pkg }}" checksum="sha256:{{ vault_sha256.stdout }}" timeout="42" validate_certs=no
+  become: no
+  run_once: true
+  tags:
+    - installation
+    - vault
+  when: not vault_package.stat.exists | bool
+
+- name: Unarchive Vault package
+  unarchive:
+    src: "{{ vault_pkg }}"
+    dest: "{{ vault_install_path }}"
+    owner: "{{ vault_owner }}"
+    group: "{{ vault_group }}"
+  become: yes
+  tags:
+    - installation
+    - vault

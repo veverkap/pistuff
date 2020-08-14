@@ -2,7 +2,7 @@
 nomad_version: "0.12.1"
 nomad_checksum: "sha256:4cc3025822dd922f0109617337b0cfd37efe9a9e84fa34ceac90d3615463ac24"
 nomad_install_path: /usr/local/nomad
-nomad_dc: dc1
+nomad_dc: alpha
 nomad_is_server: no
 nomad_leader_group: nomad_servers
 nomad_bootstrap_expect: "{{ groups[nomad_leader_group] | length }}"

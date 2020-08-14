@@ -127,6 +127,15 @@ client {
     read_only = false
   }
 
+  host_volume "gitea-data" {
+    path      = "/opt/nomad/configs/gitea/data"
+    read_only = false
+  }
+  host_volume "gitea-db" {
+    path      = "/opt/nomad/configs/gitea/db"
+    read_only = false
+  }
+
 {% endif %}
 
 {% if ansible_hostname == "rpi5" %}

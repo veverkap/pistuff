@@ -1,4 +1,4 @@
-job "lazylibrarian" {
+job "homebridge" {
   datacenters = ["alpha"]
   type        = "service"
 
@@ -18,19 +18,13 @@ job "lazylibrarian" {
     healthy_deadline = "5m"
   }
 
-  group "lazylibrarian" {
+  group "homebridge" {
     count = 1
 
-    volume "calibrebooks" {
+    volume "homebridgeconfig" {
       type      = "host"
       read_only = false
-      source    = "calibrebooks"
-    }
-
-    volume "lazylibrarianconfig" {
-      type      = "host"
-      read_only = false
-      source    = "lazylibrarianconfig"
+      source    = "homebridgeconfig"
     }
 
     restart {
@@ -44,51 +38,46 @@ job "lazylibrarian" {
       size = 300
     }
 
-    task "lazylibrarian" {
+    task "homebridge" {
       driver = "docker"
 
       volume_mount {
-        volume      = "calibrebooks"
-        destination = "/books"
-        read_only   = false
-      }
-
-      volume_mount {
-        volume      = "lazylibrarianconfig"
-        destination = "/config"
+        volume      = "homebridgeconfig"
+        destination = "/homebridge"
         read_only   = false
       }
 
       config {
-        image        = "linuxserver/lazylibrarian:latest"
-        network_mode = "bridge"
+        image        = "oznu/homebridge:raspberry-pi"
+        network_mode = "host"
 
         port_map {
-          lazylibrarian = 5299
+          homebridge = 8080
         }
 
-        labels {}
       }
 
       env {
         PUID = "1000"
-        PGID = "995"
+        PGID = "1000"
         TZ   = "America/New_York"
+        HOMEBRIDGE_CONFIG_UI_PORT = "8080"
+        HOMEBRIDGE_CONFIG_UI = 1
       }
 
       resources {
         cpu    = 500  # 500 MHz
-        memory = 1024 # 1G
+        memory = 256 # 1G
 
         network {
           mbits = 100
-          port  "lazylibrarian"{}
+          port  "homebridge"{}
         }
       }
 
       service {
-        name = "lazylibrarian"
-        port = "lazylibrarian"
+        name = "homebridge"
+        port = "homebridge"
 
         check {
           name     = "alive"

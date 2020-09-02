@@ -1,4 +1,4 @@
-job "lazylibrarian" {
+job "nextcloud" {
   datacenters = ["alpha"]
   type        = "service"
 
@@ -18,19 +18,19 @@ job "lazylibrarian" {
     healthy_deadline = "5m"
   }
 
-  group "lazylibrarian" {
+  group "nextcloud" {
     count = 1
 
-    volume "calibrebooks" {
+    volume "nextclouddata" {
       type      = "host"
       read_only = false
-      source    = "calibrebooks"
+      source    = "nextclouddata"
     }
 
-    volume "lazylibrarianconfig" {
+    volume "nextcloudconfig" {
       type      = "host"
       read_only = false
-      source    = "lazylibrarianconfig"
+      source    = "nextcloudconfig"
     }
 
     restart {
@@ -44,27 +44,27 @@ job "lazylibrarian" {
       size = 300
     }
 
-    task "lazylibrarian" {
+    task "nextcloud" {
       driver = "docker"
 
       volume_mount {
-        volume      = "calibrebooks"
-        destination = "/books"
+        volume      = "nextclouddata"
+        destination = "/data"
         read_only   = false
       }
 
       volume_mount {
-        volume      = "lazylibrarianconfig"
+        volume      = "nextcloudconfig"
         destination = "/config"
         read_only   = false
       }
 
       config {
-        image        = "linuxserver/lazylibrarian:latest"
+        image        = "linuxserver/nextcloud:latest"
         network_mode = "bridge"
 
         port_map {
-          lazylibrarian = 5299
+          nextcloud = 443
         }
 
         labels {}
@@ -78,17 +78,17 @@ job "lazylibrarian" {
 
       resources {
         cpu    = 500  # 500 MHz
-        memory = 1024 # 1G
+        memory = 500 # 1G
 
         network {
           mbits = 100
-          port  "lazylibrarian"{}
+          port  "nextcloud"{}
         }
       }
 
       service {
-        name = "lazylibrarian"
-        port = "lazylibrarian"
+        name = "nextcloud"
+        port = "nextcloud"
 
         check {
           name     = "alive"

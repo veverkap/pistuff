@@ -145,6 +145,11 @@ client {
     read_only = false
   }
 
+  host_volume "nextclouddata" {
+    path = "/opt/nomad/configs/nextclouddata"
+    read_only = false
+  }
+
   host_volume "jackettconfig" {
     path = "/opt/nomad/configs/jackett"
     read_only = false
@@ -172,6 +177,11 @@ client {
 
   host_volume "ombitv2" {
     path = "/mnt/qnap-tv"
+    read_only = false
+  }
+
+  host_volume "homebridgeconfig" {
+    path = "/opt/nomad/configs/homebridge"
     read_only = false
   }
 

@@ -49,7 +49,7 @@ resource "cloudflare_record" "unifi" {
 resource "cloudflare_record" "veverkanet" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "veverka.net"
-  value    = "71.120.237.171"
+  value    = "71.120.230.47"
   type     = "A"
   proxied  = false
   ttl      = 120

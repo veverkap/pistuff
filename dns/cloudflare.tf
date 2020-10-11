@@ -82,10 +82,10 @@ resource "cloudflare_record" "cloud" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "freshrss" {
+resource "cloudflare_record" "rss" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "cloud"
-  value    = "freshrss.veverka.net"
+  value    = "rss.veverka.net"
   type     = "CNAME"
   proxied  = false
   ttl      = 120

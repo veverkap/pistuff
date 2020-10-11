@@ -1,4 +1,4 @@
-job "unifi-controller" {
+job "freshrss" {
   datacenters = ["alpha"]
   type        = "service"
 
@@ -18,13 +18,13 @@ job "unifi-controller" {
     healthy_deadline = "5m"
   }
 
-  group "unifi-controller" {
+  group "freshrss" {
     count = 1
 
-    volume "unifi" {
+    volume "freshrssconfig" {
       type      = "host"
       read_only = false
-      source    = "unifi"
+      source    = "freshrssconfig"
     }
 
     restart {
@@ -38,23 +38,21 @@ job "unifi-controller" {
       size = 300
     }
 
-    task "unifi-controller" {
+    task "freshrss" {
       driver = "docker"
 
       volume_mount {
-        volume      = "unifi"
-        destination = "/unifi"
+        volume      = "freshrssconfig"
+        destination = "/config"
         read_only   = false
       }
 
       config {
-        image        = "jacobalberty/unifi"
+        image        = "linuxserver/freshrss"
         network_mode = "bridge"
 
         port_map {
-          unificontroller = 8080
-          unifisecure = 8443
-          unifistun = 3478
+          freshrss = 80
         }
 
       }
@@ -71,15 +69,13 @@ job "unifi-controller" {
 
         network {
           mbits = 100
-          port  "unificontroller"{}
-          port  "unifisecure"{}
-          port  "unifistun"{}
+          port  "freshrss"{}
         }
       }
 
       service {
-        name = "unificontroller"
-        port = "unificontroller"
+        name = "freshrss"
+        port = "freshrss"
 
         check {
           name     = "alive"

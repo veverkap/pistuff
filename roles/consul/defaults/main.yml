@@ -1,6 +1,6 @@
 ---
-consul_version: "1.8.3"
-consul_checksum: "sha256:aedeb8d48de513e09e4a3ac2e32d0c77f83743e37af09b0c8b38edbb0f644451"
+consul_version: "1.8.4"
+consul_checksum: "sha256:0c115f472582d5bd3adcca060dbf27ad5e34c35d82632ff5d55cf552f25bbd7a"
 consul_install_path: /usr/local/consul
 consul_dc: alpha
 consul_dns_domain: localdomain

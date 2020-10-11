@@ -30,6 +30,11 @@ client {
     read_only = false
   }
 
+  host_volume "freshrssconfig" {
+    path = "/mnt/configs/freshrss"
+    read_only = false
+  }
+
 {% if ansible_hostname == "rpi1" %}
   # rpi1 only for radarr
 
@@ -97,6 +102,7 @@ client {
     read_only = false
   }
 
+
   host_volume "lazylibrarianconfig" {
     path = "/opt/nomad/configs/lazylibrarian"
     read_only = false
@@ -133,6 +139,11 @@ client {
   }
   host_volume "gitea-db" {
     path      = "/opt/nomad/configs/gitea/db"
+    read_only = false
+  }
+
+  host_volume "unifi" {
+    path      = "/opt/nomad/configs/unifi"
     read_only = false
   }
 

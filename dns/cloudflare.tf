@@ -82,6 +82,15 @@ resource "cloudflare_record" "cloud" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "freshrss" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "cloud"
+  value    = "freshrss.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "next-ext" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "next"

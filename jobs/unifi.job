@@ -1,78 +1,71 @@
-job "unifi-controller" {
-  datacenters = ["alpha"]
-  type        = "service"
-
-
-  group "unifi-controller" {
-    count = 1
-
-    volume "unifi" {
-      type      = "host"
-      read_only = false
-      source    = "unifi"
-    }
-
-    restart {
-      attempts = 2
-      interval = "30m"
-      delay    = "15s"
-      mode     = "fail"
-    }
-
-    ephemeral_disk {
-      size = 300
-    }
-
-    task "unifi-controller" {
-      driver = "docker"
-
-      volume_mount {
-        volume      = "unifi"
-        destination = "/unifi"
-        read_only   = false
-      }
-
-      config {
-        image        = "jacobalberty/unifi"
-        network_mode = "bridge"
-
-        port_map {
-          unificontroller = 8080
-          unifisecure = 8443
-          unifistun = 3478
+job "unifi" {
+    datacenters = ["dc1"]
+    type = "service"
+    group "unifi" {
+        count = 1
+        volume "unifi" {
+            type      = "host"
+            source    = "unifi"
         }
-
-      }
-
-      env {
-        PUID = "1000"
-        PGID = "995"
-        TZ   = "America/New_York"
-      }
-
-      resources {
-        cpu    = 500  # 500 MHz
-        memory = 500 # 1G
-
-        network {
-          mbits = 100
-          port  "unificontroller"{}
-          port  "unifisecure"{}
-          port  "unifistun"{}
+        task "unifi" {
+            driver = "docker"
+            config {
+                image        = "linuxserver/unifi-controller"
+                port_map {
+                    stun      = 3478
+                    discovery = 10001
+                    http      = 8080
+                    admin     = 8443
+                    redirect  = 8880
+                    thruput   = 6789
+                    syslog    = 5514
+                }
+            }
+            env {
+                "PUID" = "110"
+                "TZ"   = "America/New_York"
+                "PGID" = "117"
+            }
+            resources {
+                cpu    = 100 # MHz
+                memory = 1024 # MB
+                network {
+                    port "stun" {
+                        static = 3478
+                    }
+                    port "discovery" {
+                        static = 10001
+                    }
+                    port "http" {
+                        static = 8080
+                    }
+                    port "admin" {
+                        static = 8443
+                    }
+                    port "redirect" {
+                        static = 8880
+                    }
+                    port "thruput" {
+                        static = 6789
+                    }
+                    port "syslog" {
+                        static = 5514
+                    }
+                }
+            }
+            volume_mount {
+                volume      = "unifi"
+                destination = "/config"
+            }
+            service {
+                name = "unifi"
+                port = "admin"
+                check {
+                    type     = "tcp"
+                    interval = "10s"
+                    timeout  = "2s"
+                }
+            }
         }
-      }
-
-      service {
-        name = "unificontroller"
-        port = "unificontroller"
-
-        check {
-          name     = "alive"
-          type     = "tcp"
-          interval = "10s"
-          timeout  = "2s"
-        }
-      }
     }
-  }
 }

@@ -17,8 +17,8 @@ traefix_dashboard_items:
     host: docker.veverka.net
     service: dockerregistry@consulcatalog
     include_auth: false
-  - name: freshrss
-    host: freshrss.veverka.net
+  - name: rss
+    host: rss.veverka.net
     service: freshrss@consulcatalog
     include_auth: false
   - name: influxdb
@@ -68,4 +68,8 @@ traefix_dashboard_items:
   - name: tautulli
     host: tautulli.veverka.net
     service: tautulli@consulcatalog
+    include_auth: false
+  - name: unificontroller
+    host: unificontroller.veverka.net
+    service: unificontroller@consulcatalog
     include_auth: false

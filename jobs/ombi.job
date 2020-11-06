@@ -85,7 +85,7 @@ job "ombi" {
         read_only   = false
       }
       config {
-        image        = "linuxserver/ombi"
+        image        = "linuxserver/ombi:latest"
         network_mode = "bridge"
 
         port_map {

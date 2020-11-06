@@ -172,6 +172,7 @@ resource "cloudflare_record" "lazylibrarian" {
   ttl      = 120
 }
 
+
 resource "cloudflare_record" "library" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "library"
@@ -288,6 +289,16 @@ resource "cloudflare_record" "traefik" {
   proxied  = false
   ttl      = 120
 }
+
+resource "cloudflare_record" "unificontroller" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "unificontroller"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 
 resource "cloudflare_record" "warez" {
   zone_id  = cloudflare_zone.veverka.id

@@ -48,13 +48,17 @@ job "unifi-controller" {
       }
 
       config {
-        image        = "jacobalberty/unifi"
+        image        = "linuxserver/unifi-controller"
         network_mode = "bridge"
 
         port_map {
-          unificontroller = 8080
-          unifisecure = 8443
-          unifistun = 3478
+            stun      = 3478
+            discovery = 10001
+            http      = 8080
+            admin     = 8443
+            redirect  = 8880
+            thruput   = 6789
+            syslog    = 5514
         }
 
       }
@@ -66,20 +70,38 @@ job "unifi-controller" {
       }
 
       resources {
-        cpu    = 500  # 500 MHz
-        memory = 500 # 1G
+        cpu    = 200  # 500 MHz
+        memory = 1024 # 1G
 
         network {
           mbits = 100
-          port  "unificontroller"{}
-          port  "unifisecure"{}
-          port  "unifistun"{}
+          port "stun" {
+              static = 3478
+          }
+          port "discovery" {
+              static = 10001
+          }
+          port "http" {
+              static = 8080
+          }
+          port "admin" {
+              static = 8443
+          }
+          port "redirect" {
+              static = 8880
+          }
+          port "thruput" {
+              static = 6789
+          }
+          port "syslog" {
+              static = 5514
+          }
         }
       }
 
       service {
-        name = "unificontroller"
-        port = "unificontroller"
+        name = "unifi"
+        port = "admin"
 
         check {
           name     = "alive"

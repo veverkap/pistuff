@@ -73,42 +73,6 @@ resource "cloudflare_record" "qnap" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "cloud" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "cloud"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "rss" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "cloud"
-  value    = "rss.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "next-ext" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "next"
-  value    = "external.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "nextcloud" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "nextcloud"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
 resource "cloudflare_record" "consul" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "consul"
@@ -172,7 +136,6 @@ resource "cloudflare_record" "lazylibrarian" {
   ttl      = 120
 }
 
-
 resource "cloudflare_record" "library" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "library"
@@ -221,6 +184,15 @@ resource "cloudflare_record" "nomad" {
 resource "cloudflare_record" "ombi" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "ombi"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
+resource "cloudflare_record" "requests" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "requests"
   value    = "lan.veverka.net"
   type     = "CNAME"
   proxied  = false
@@ -289,16 +261,6 @@ resource "cloudflare_record" "traefik" {
   proxied  = false
   ttl      = 120
 }
-
-resource "cloudflare_record" "unificontroller" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "unificontroller"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
 
 resource "cloudflare_record" "warez" {
   zone_id  = cloudflare_zone.veverka.id

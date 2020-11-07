@@ -30,6 +30,12 @@ client {
     read_only = false
   }
 
+
+  host_volume "hassconfig" {
+    path = "/mnt/configs/hass"
+    read_only = false
+  }
+
   host_volume "freshrssconfig" {
     path = "/mnt/configs/freshrss"
     read_only = false
@@ -139,11 +145,6 @@ client {
   }
   host_volume "gitea-db" {
     path      = "/opt/nomad/configs/gitea/db"
-    read_only = false
-  }
-
-  host_volume "unifi" {
-    path      = "/opt/nomad/configs/unifi"
     read_only = false
   }
 

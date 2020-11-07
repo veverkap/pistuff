@@ -50,23 +50,6 @@
 
 {% endfor %}
 
-# Adding in router for nextcloud
-[http.routers.cloud]
-  rule = "Host(`cloud.veverka.net`)"
-  service = "nextcloud@consulcatalog"
-  entryPoints = ["websecure"]
-
-  [http.routers.cloud.tls]
-    certResolver = "le" # From static configuration
-    [[http.routers.cloud.tls.domains]]
-      main = "cloud.veverka.net"
-
-# Adding in router for consuldash
-# [http.services]
-#   [http.services.nextcloud]
-#     [http.services.nextcloud.loadBalancer]
-#       port = 443
-#       scheme = https
 
 [http.middlewares.auth.basicAuth]
   usersFile = "/etc/traefik.d/users"

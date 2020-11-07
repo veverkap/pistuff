@@ -1,12 +1,12 @@
 ---
-traefik_version: "v2.2.11"
+traefik_version: "v2.3.2"
 traefik_systemd_unit_template: traefik.service.j2
 traefik_systemd_unit_dest: /etc/systemd/system/traefik.service
 traefik_install_dir: /usr/bin
 traefik_bin_path: "{{ traefik_install_dir }}/traefik"
 traefik_config_directory: /etc/traefik.d
 traefik_binary_url: https://github.com/containous/traefik/releases/download/{{traefik_version}}/traefik_{{traefik_version}}_linux_armv7.tar.gz
-traefik_checksum: "sha256:9c79c181b668dcaa0e634516b6da68738075c812261b301c385a251b389e1447"
+traefik_checksum: "sha256:d965894b469a9de836bd06df1091cd5a7963bd541a476576062cd16877a90ae7"
 traefik_config_template: traefik.toml.j2
 traefik_config_file: /etc/traefik.toml
 traefix_dashboard_template: dashboard.toml.j2
@@ -16,10 +16,6 @@ traefix_dashboard_items:
   - name: docker
     host: docker.veverka.net
     service: dockerregistry@consulcatalog
-    include_auth: false
-  - name: rss
-    host: rss.veverka.net
-    service: freshrss@consulcatalog
     include_auth: false
   - name: influxdb
     host: influxdb.veverka.net
@@ -68,8 +64,4 @@ traefix_dashboard_items:
   - name: tautulli
     host: tautulli.veverka.net
     service: tautulli@consulcatalog
-    include_auth: false
-  - name: unificontroller
-    host: unificontroller.veverka.net
-    service: unificontroller@consulcatalog
     include_auth: false

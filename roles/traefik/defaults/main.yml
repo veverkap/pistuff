@@ -17,6 +17,10 @@ traefix_dashboard_items:
     host: docker.veverka.net
     service: dockerregistry@consulcatalog
     include_auth: false
+  - name: hass
+    host: hass.veverka.net
+    service: hass-service@consulcatalog
+    include_auth: false
   - name: influxdb
     host: influxdb.veverka.net
     service: influxdb@consulcatalog

@@ -46,6 +46,15 @@ resource "cloudflare_record" "unifi" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "hass" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "hass"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "veverkanet" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "veverka.net"
@@ -184,7 +193,7 @@ resource "cloudflare_record" "ombi" {
 resource "cloudflare_record" "requests" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "requests"
-  value    = "lan.veverka.net"
+  value    = "external.veverka.net"
   type     = "CNAME"
   proxied  = false
   ttl      = 120

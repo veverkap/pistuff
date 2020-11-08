@@ -199,6 +199,16 @@ resource "cloudflare_record" "patrick" {
   ttl      = 1
 }
 
+
+resource "cloudflare_record" "seafile" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "seafile"
+  value    = "129.213.62.111"
+  type     = "A"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "radarr" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "radarr"

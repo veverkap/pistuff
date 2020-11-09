@@ -212,7 +212,7 @@ resource "cloudflare_record" "patrick" {
 resource "cloudflare_record" "seafile" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "seafile"
-  value    = "129.213.62.111"
+  value    = "129.213.54.79"
   type     = "A"
   proxied  = false
   ttl      = 120

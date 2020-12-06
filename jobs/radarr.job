@@ -72,7 +72,7 @@ job "radarr" {
       }
 
       config {
-        image        = "linuxserver/radarr"
+        image        = "linuxserver/radarr:latest"
         network_mode = "bridge"
 
         port_map {

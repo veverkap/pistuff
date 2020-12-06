@@ -48,7 +48,7 @@ job "tautulli" {
       }
 
       config {
-        image        = "linuxserver/tautulli"
+        image        = "linuxserver/tautulli:latest"
         network_mode = "bridge"
 
         port_map {

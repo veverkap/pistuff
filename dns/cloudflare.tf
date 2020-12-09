@@ -184,7 +184,7 @@ resource "cloudflare_record" "nomad" {
 resource "cloudflare_record" "ombi" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "ombi"
-  value    = "external.veverka.net"
+  value    = "lan.veverka.net"
   type     = "CNAME"
   proxied  = false
   ttl      = 120

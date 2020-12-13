@@ -19,7 +19,7 @@ job "radarr" {
   }
 
   group "radarr" {
-    count = 1
+    count = 2
 
     volume "radarrconfig" {
       type      = "host"
@@ -72,7 +72,7 @@ job "radarr" {
       }
 
       config {
-        image        = "linuxserver/radarr:latest"
+        image        = "linuxserver/radarr"
         network_mode = "bridge"
 
         port_map {

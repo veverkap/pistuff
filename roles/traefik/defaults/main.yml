@@ -1,12 +1,12 @@
 ---
-traefik_version: "v2.3.4"
+traefik_version: "v2.3.6"
 traefik_systemd_unit_template: traefik.service.j2
 traefik_systemd_unit_dest: /etc/systemd/system/traefik.service
 traefik_install_dir: /usr/bin
 traefik_bin_path: "{{ traefik_install_dir }}/traefik"
 traefik_config_directory: /etc/traefik.d
 traefik_binary_url: https://github.com/containous/traefik/releases/download/{{traefik_version}}/traefik_{{traefik_version}}_linux_armv7.tar.gz
-traefik_checksum: "sha256:f44af4b38c7b760488731695af8559e4e35820cc6a55fb9d99577fff80638cc4"
+traefik_checksum: "sha256:fbf3a8c62eca9dfd297947b88297789f7b93cee30cd2dc1d827e5137778b0d7b"
 traefik_config_template: traefik.toml.j2
 traefik_config_file: /etc/traefik.toml
 traefix_dashboard_template: dashboard.toml.j2
@@ -55,7 +55,7 @@ traefix_dashboard_items:
     include_auth: false
   - name: radarr
     host: radarr.veverka.net
-    service: radarr@consulcatalog
+    service: radarrwin-service@consulcatalog
     include_auth: false
   - name: requests
     host: requests.veverka.net

@@ -20,6 +20,7 @@ plugin "raw_exec" {
 
 consul {
   address = "127.0.0.1:8500"
+  token = "8e28c90a-aa0c-226f-c930-f7b2d405d3c6"
 }
 
 client {
@@ -45,6 +46,11 @@ client {
 
   host_volume "moviessync" {
     path = "/mnt/external/MovieSync"
+    read_only = false
+  }
+
+  host_volume "tvfolder" {
+    path = "/mnt/external/TV"
     read_only = false
   }
 

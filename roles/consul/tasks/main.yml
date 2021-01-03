@@ -103,7 +103,7 @@
     seconds: 3
 
 - name: join cluster of consul-dcs
-  command: "/usr/local/bin/consul join {{ groups['consul_servers'] | random }}"
+  command: "/usr/local/bin/consul join {{ groups['consul_servers'] | random }} -token=8e28c90a-aa0c-226f-c930-f7b2d405d3c6"
   run_once: yes
   tags:
     - consul

@@ -7,7 +7,9 @@
   tags:
     - dnsmasq
     - bootstrap
-  when: ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- debug:
+    msg: "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }} {{ ansible_distribution }}"
 - name: ensure dnsmasq.d directory exists
   file:
     path: /etc/NetworkManager/dnsmasq.d
@@ -36,7 +38,7 @@
     src: etc/dhcp/dhclient.conf.j2
   tags:
     - dnsmasq
-  when: ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 #supersede domain-name
 #prepend domain-name-servers
 - meta: flush_handlers

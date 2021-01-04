@@ -1,0 +1,6 @@
+{
+  "registry.terraform.io/hashicorp/consul": {
+    "hash": "h1:cy5zaZjdpK89OCJHtC/G5Msp2TRUwyoTGKyNDwHqUvA=",
+    "version": "2.10.1"
+  }
+}

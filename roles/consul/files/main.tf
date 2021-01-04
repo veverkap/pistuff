@@ -4,32 +4,54 @@ provider "consul" {
   address    = "192.168.1.231:8500"
   datacenter = "alpha"
 
-  # SecretID from the previous step
-  token      = "570107c2-01db-ab45-3f8b-37bb50c9c4ca"
+  token      = var.consul_token
+  http_auth  = var.consul_http_auth
 }
-
-resource "consul_node" "hass" {
-  name    = "hass"
-  address = "192.168.1.152"
-
-  meta = {
-    "external-node"  = "true"
-    "external-probe" = "true"
-  }
-}
-
 
 resource "consul_service" "hass" {
   name    = "hass-service"
-  node    = consul_node.hass.name
+  node    = "rpi6"
   port    = 8123
-  tags    = ["counting"]
 
   check {
     check_id                          = "service:hass"
     name                              = "Hass health check"
     status                            = "passing"
     http                              = "192.168.1.152:8123"
+    tls_skip_verify                   = false
+    method                            = "GET"
+    interval                          = "5s"
+    timeout                           = "1s"
+  }
+}
+
+resource "consul_service" "radarr" {
+  name    = "radarr-service"
+  node    = "rpi2"
+  port    = 7878
+
+  check {
+    check_id                          = "service:radarr"
+    name                              = "radarr health check"
+    status                            = "passing"
+    http                              = "192.168.1.224:7878"
+    tls_skip_verify                   = false
+    method                            = "GET"
+    interval                          = "5s"
+    timeout                           = "1s"
+  }
+}
+
+resource "consul_service" "sonarr" {
+  name    = "sonarr-service"
+  node    = "rpi2"
+  port    = 8989
+
+  check {
+    check_id                          = "service:sonarr"
+    name                              = "sonarr health check"
+    status                            = "passing"
+    http                              = "192.168.1.224:8989"
     tls_skip_verify                   = false
     method                            = "GET"
     interval                          = "5s"

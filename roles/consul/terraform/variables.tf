@@ -12,6 +12,3 @@ variable "consul_datacenter" {
 variable "consul_token" {
   description = "consul token"
 }
-
-variable "consul_http_auth" {
-}

@@ -17,14 +17,6 @@ traefix_dashboard_items:
     host: docker.veverka.net
     service: dockerregistry@consulcatalog
     include_auth: false
-  - name: hass
-    host: hass.veverka.net
-    service: hass-service@consulcatalog
-    include_auth: false
-  - name: influxdb
-    host: influxdb.veverka.net
-    service: influxdb@consulcatalog
-    include_auth: false
   - name: jackett
     host: jackett.veverka.net
     service: jackett@consulcatalog
@@ -53,10 +45,6 @@ traefix_dashboard_items:
     host: ombi.veverka.net
     service: ombi@consulcatalog
     include_auth: false
-  - name: radarr
-    host: radarr.veverka.net
-    service: radarrwin-service@consulcatalog
-    include_auth: false
   - name: requests
     host: requests.veverka.net
     service: ombi@consulcatalog
@@ -65,10 +53,6 @@ traefix_dashboard_items:
     host: registry.veverka.net
     service: dockerregistry@consulcatalog
     include_auth: true
-  - name: sonarr
-    host: sonarr.veverka.net
-    service: sonarr@consulcatalog
-    include_auth: false
   - name: tautulli
     host: tautulli.veverka.net
     service: tautulli@consulcatalog

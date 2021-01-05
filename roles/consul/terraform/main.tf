@@ -5,7 +5,6 @@ provider "consul" {
   datacenter = "alpha"
 
   token      = var.consul_token
-  http_auth  = var.consul_http_auth
 }
 
 resource "consul_service" "hass" {

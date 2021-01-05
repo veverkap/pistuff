@@ -1,0 +1,46 @@
+# services
+
+[http.services]
+  [http.services.service-hass]
+    [http.services.service-hass.loadBalancer]
+      [[http.services.service-hass.loadBalancer.servers]]
+        url = "http://192.168.1.152:8123"
+  [http.services.service-radarr]
+    [http.services.service-radarr.loadBalancer]
+      [[http.services.service-radarr.loadBalancer.servers]]
+        url = "http://192.168.1.224:7878"
+  [http.services.service-sonarr]
+    [http.services.service-sonarr.loadBalancer]
+      [[http.services.service-sonarr.loadBalancer.servers]]
+        url = "http://192.168.1.224:8989"
+
+
+[http.routers.hassdash]
+  rule = "Host(`hass.veverka.net`)"
+  service = "service-hass"
+  entryPoints = ["websecure"]
+
+  [http.routers.hassdash.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.hassdash.tls.domains]]
+      main = "hass.veverka.net"
+
+[http.routers.radarrdash]
+  rule = "Host(`radarr.veverka.net`)"
+  service = "service-radarr"
+  entryPoints = ["websecure"]
+
+  [http.routers.radarrdash.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.radarrdash.tls.domains]]
+      main = "radarr.veverka.net"
+
+[http.routers.sonarrdash]
+  rule = "Host(`sonarr.veverka.net`)"
+  service = "service-sonarr"
+  entryPoints = ["websecure"]
+
+  [http.routers.sonarrdash.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.sonarrdash.tls.domains]]
+      main = "sonarr.veverka.net"

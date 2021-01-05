@@ -1,21 +1,21 @@
 ---
 # Required
 
-- include: packages.yml
-- include: msmtp.yml
+# - include: packages.yml
+# - include: msmtp.yml
 - include: clean_mounts.yml
 - include: mounts.yml
-- include: zsh.yml
+# - include: zsh.yml
 
-- name: install check scripts
-  template:
-    src: check-service-active.j2
-    dest: /usr/local/bin/check-service-active
-    mode: u=rwx,g=rx,o=rx
-- name: Set authorized keys taken from url
-  authorized_key:
-    user: pi
-    state: present
-    key: https://github.com/veverkap.keys
-  tags:
-    - dude
+# - name: install check scripts
+#   template:
+#     src: check-service-active.j2
+#     dest: /usr/local/bin/check-service-active
+#     mode: u=rwx,g=rx,o=rx
+# - name: Set authorized keys taken from url
+#   authorized_key:
+#     user: pi
+#     state: present
+#     key: https://github.com/veverkap.keys
+#   tags:
+#     - dude

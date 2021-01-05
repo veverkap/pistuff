@@ -88,10 +88,10 @@
   notify:
     - Restart traefik
 
-- name: Copy Traefik prtg config file
+- name: Copy Traefik static file
   copy:
-    src: prtg.toml
-    dest: "{{ traefik_config_directory }}/prtg.toml"
+    src: static.toml
+    dest: "{{ traefik_config_directory }}/static.toml"
     owner: root
     group: root
     backup: true

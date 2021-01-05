@@ -3,20 +3,15 @@
     path: "{{ item.name }}"
     state: directory
   loop:
-    - { name: "/mnt/rpi1-kids", source: "//192.168.1.231/external/Movies" }
-    - { name: "/mnt/rpi1-workout", source: "//192.168.1.231/external/Workout" }
     - { name: "/mnt/rpi1-movies", source: "//192.168.1.231/external/Movies" }
-    - { name: "/mnt/rpi1-movies-sync", source: "//192.168.1.231/external/MovieSync" }
     - { name: "/mnt/rpi1-tv", source: "//192.168.1.231/external/TV" }
-    - { name: "/mnt/rpi1-tv-sync", source: "//192.168.1.231/external/TVSync" }
 
     - { name: "/mnt/qnap-tv", source: "//192.168.1.43/VIDEO/TV" }
-    - { name: "/mnt/qnap-sync", source: "//192.168.1.43/VIDEO/Sync" }
     - { name: "/mnt/configs", source: "//192.168.1.43/Public/NomadConfigs" }
   tags:
     - dockermnt
 
-- name: Mount directories
+- name: Mount directories for radarr (using pi)
   mount:
     name: "{{ item.name }}"
     src:  "{{ item.source }}"
@@ -25,15 +20,21 @@
     state: mounted
   become: true # as root
   loop:
-    - { name: "/mnt/rpi1-kids", source: "//192.168.1.231/external/Movies" }
-    - { name: "/mnt/rpi1-workout", source: "//192.168.1.231/external/Workout" }
     - { name: "/mnt/rpi1-movies", source: "//192.168.1.231/external/Movies" }
-    - { name: "/mnt/rpi1-movies-sync", source: "//192.168.1.231/external/MovieSync" }
-    - { name: "/mnt/rpi1-tv", source: "//192.168.1.231/external/TV" }
-    - { name: "/mnt/rpi1-tv-sync", source: "//192.168.1.231/external/TVSync" }
-
-    - { name: "/mnt/qnap-tv", source: "//192.168.1.43/VIDEO/TV" }
-    - { name: "/mnt/qnap-sync", source: "//192.168.1.43/VIDEO/Sync" }
     - { name: "/mnt/configs", source: "//192.168.1.43/Public/NomadConfigs" }
+  tags:
+    - dockermnt
+
+- name: Mount directories for sonarr
+  mount:
+    name: "{{ item.name }}"
+    src:  "{{ item.source }}"
+    opts: "noacl,uid=sonarr,gid=sonarr,username=admin,password=admin"
+    fstype: cifs
+    state: mounted
+  become: true # as root
+  loop:
+    - { name: "/mnt/rpi1-tv", source: "//192.168.1.231/external/TV" }
+    - { name: "/mnt/qnap-tv", source: "//192.168.1.43/VIDEO/TV" }
   tags:
     - dockermnt

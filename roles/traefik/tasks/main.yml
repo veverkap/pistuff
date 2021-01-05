@@ -88,7 +88,7 @@
   notify:
     - Restart traefik
 
-- name: Copy Traefik static file
+- name: Copy Traefik static config file
   copy:
     src: static.toml
     dest: "{{ traefik_config_directory }}/static.toml"

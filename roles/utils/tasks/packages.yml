@@ -6,6 +6,7 @@
     pkg:
       - curl
       - dnsutils
+      - cifs-utils
       - git
       - htop
       - net-tools

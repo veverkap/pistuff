@@ -7,12 +7,12 @@
     - { name: "/mnt/rpi1-kids", source: "//192.168.1.231/external/Movies" }
     - { name: "/mnt/rpi1-workout", source: "//192.168.1.231/external/Workout" }
     - { name: "/mnt/rpi1-movies", source: "//192.168.1.231/external/Movies" }
-    - { name: "/mnt/rpi1-movies-sync", source: "//192.168.1.231/external/MovieSync" }
+    - {
+        name: "/mnt/rpi1-movies-sync",
+        source: "//192.168.1.231/external/MovieSync",
+      }
     - { name: "/mnt/rpi1-tv", source: "//192.168.1.231/external/TV" }
     - { name: "/mnt/rpi1-tv-sync", source: "//192.168.1.231/external/TVSync" }
-
-    - { name: "/mnt/rpi2-kids-tv", source: "//192.168.1.224/external/Kids/TV" }
-    - { name: "/mnt/rpi2-sync", source: "//192.168.1.224/external/Sync" }
 
     - { name: "/mnt/qnap-tv", source: "//192.168.1.43/VIDEO/TV" }
     - { name: "/mnt/qnap-sync", source: "//192.168.1.43/VIDEO/Sync" }
@@ -27,12 +27,12 @@
     - { name: "/mnt/rpi1-kids", source: "//192.168.1.231/external/Movies" }
     - { name: "/mnt/rpi1-workout", source: "//192.168.1.231/external/Workout" }
     - { name: "/mnt/rpi1-movies", source: "//192.168.1.231/external/Movies" }
-    - { name: "/mnt/rpi1-movies-sync", source: "//192.168.1.231/external/MovieSync" }
+    - {
+        name: "/mnt/rpi1-movies-sync",
+        source: "//192.168.1.231/external/MovieSync",
+      }
     - { name: "/mnt/rpi1-tv", source: "//192.168.1.231/external/TV" }
     - { name: "/mnt/rpi1-tv-sync", source: "//192.168.1.231/external/TVSync" }
-
-    - { name: "/mnt/rpi2-kids-tv", source: "//192.168.1.224/external/Kids/TV" }
-    - { name: "/mnt/rpi2-sync", source: "//192.168.1.224/external/Sync" }
 
     - { name: "/mnt/qnap-tv", source: "//192.168.1.43/VIDEO/TV" }
     - { name: "/mnt/qnap-sync", source: "//192.168.1.43/VIDEO/Sync" }

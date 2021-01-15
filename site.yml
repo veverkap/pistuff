@@ -1,5 +1,15 @@
 #!/usr/bin/env ansible-playbook -i inventory --skip-tags=consul,bootstrap,nomad
 ---
+- name: setup ubuntu servers
+  hosts: linuxhosts
+  gather_facts: true
+  remote_user: veverkap
+  become: yes
+  become_user: root
+  roles:
+    - { role: utils, tags: ["utils"] }
+  tags:
+    - bootstrap
 - name: setup servers
   hosts: hosts
   gather_facts: true

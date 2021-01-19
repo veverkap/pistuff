@@ -82,6 +82,15 @@ resource "cloudflare_record" "qnap" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "bazarr" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "bazarr"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "consul" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "consul"

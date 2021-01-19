@@ -13,6 +13,10 @@
     [http.services.service-sonarr.loadBalancer]
       [[http.services.service-sonarr.loadBalancer.servers]]
         url = "http://192.168.1.224:8989"
+  [http.services.service-bazarr]
+    [http.services.service-bazarr.loadBalancer]
+      [[http.services.service-bazarr.loadBalancer.servers]]
+        url = "http://192.168.1.111:6767"
 
 
 [http.routers.hassdash]
@@ -44,3 +48,13 @@
     certResolver = "le" # From static configuration
     [[http.routers.sonarrdash.tls.domains]]
       main = "sonarr.veverka.net"
+
+[http.routers.bazarrdash]
+  rule = "Host(`bazarr.veverka.net`)"
+  service = "service-bazarr"
+  entryPoints = ["websecure"]
+
+  [http.routers.bazarrdash.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.bazarrdash.tls.domains]]
+      main = "bazarr.veverka.net"

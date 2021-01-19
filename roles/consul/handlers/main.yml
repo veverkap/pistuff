@@ -5,3 +5,5 @@
   service:
     name: consul
     state: restarted
+- name: reload systemd
+  command: systemctl daemon-reload

@@ -11,11 +11,11 @@ rpi2.local ansible_host=192.168.1.224 ansible_user=pi
 
 [consul_servers]
 rpi1.local ansible_host=192.168.1.231
-rpi2.local ansible_host=192.168.1.224
 rpi3.local ansible_host=192.168.1.149
 
 [consul_followers]
 rpi[4:6].local
+linuxplex ansible_host=192.168.1.111 ansible_user=veverkap
 
 [nomad_servers]
 rpi6.local

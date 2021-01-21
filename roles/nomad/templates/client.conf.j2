@@ -36,78 +36,18 @@ client {
     read_only = false
   }
 
-{% if ansible_hostname == "rpi1" %}
-  # rpi1 only for radarr
-
-  host_volume "moviesfolder" {
-    path = "/mnt/external/Movies"
-    read_only = false
-  }
-
-  host_volume "moviessync" {
-    path = "/mnt/external/MovieSync"
-    read_only = false
-  }
-
-  host_volume "tvfolder" {
-    path = "/mnt/external/TV"
-    read_only = false
-  }
-
-  host_volume "radarrconfig" {
-    path = "/opt/nomad/configs/radarr"
-    read_only = false
-  }
-
-  host_volume "radarrsyncconfig" {
-    path = "/opt/nomad/configs/radarrsync"
-    read_only = false
-  }
-
-{% endif %}
-
 {% if ansible_hostname == "rpi2" %}
-  # rpi2 only for sonarr
-
-  host_volume "tvfolder" {
-    path = "/mnt/rpi1-tv"
-    read_only = false
-  }
-
-  host_volume "rpi2-kids-tvfolder" {
-    path = "/mnt/rpi2-kids-tv"
-    read_only = false
-  }
-
-  host_volume "qnaptvfolder" {
-    path = "/mnt/qnap-tv"
-    read_only = false
-  }
-
-  host_volume "sonarrconfig" {
-    path = "/opt/nomad/configs/sonarr"
-    read_only = false
-  }
-
-  host_volume "sonarrsyncconfig" {
-    path = "/opt/nomad/configs/sonarrsync"
-    read_only = false
-  }
-
   host_volume "influxdbconfig" {
     path = "/opt/nomad/configs/influxdb"
     read_only = false
   }
-
 {% endif %}
 
 {% if ansible_hostname == "rpi3" %}
-
   host_volume "tautulliconfig" {
     path = "/opt/nomad/configs/tautulli"
     read_only = false
   }
-
 
   host_volume "lazylibrarianconfig" {
     path = "/opt/nomad/configs/lazylibrarian"
@@ -123,52 +63,18 @@ client {
     path = "/opt/nomad/configs/calibrebooks"
     read_only = false
   }
-
-
 {% endif %}
 
 {% if ansible_hostname == "rpi4" %}
-
   host_volume "minioconfig" {
     path = "/opt/nomad/configs/minio"
     read_only = false
   }
-
-  host_volume "shioriconfig" {
-    path = "/opt/nomad/configs/shiori"
-    read_only = false
-  }
-
-  host_volume "gitea-data" {
-    path      = "/opt/nomad/configs/gitea/data"
-    read_only = false
-  }
-  host_volume "gitea-db" {
-    path      = "/opt/nomad/configs/gitea/db"
-    read_only = false
-  }
-
 {% endif %}
 
 {% if ansible_hostname == "rpi5" %}
-
-  host_volume "nextcloudconfig" {
-    path = "/opt/nomad/configs/nextcloud"
-    read_only = false
-  }
-
-  host_volume "nextclouddata" {
-    path = "/opt/nomad/configs/nextclouddata"
-    read_only = false
-  }
-
   host_volume "jackettconfig" {
     path = "/opt/nomad/configs/jackett"
-    read_only = false
-  }
-
-  host_volume "ombiconfig" {
-    path = "/opt/nomad/configs/ombi"
     read_only = false
   }
 
@@ -176,31 +82,7 @@ client {
     path = "/opt/nomad/configs/redis"
     read_only = false
   }
-
-  host_volume "ombimovies" {
-    path = "/mnt/rpi1-movies"
-    read_only = false
-  }
-
-  host_volume "ombitv" {
-    path = "/mnt/rpi1-tv"
-    read_only = false
-  }
-
-  host_volume "ombitv2" {
-    path = "/mnt/qnap-tv"
-    read_only = false
-  }
-
-  host_volume "homebridgeconfig" {
-    path = "/opt/nomad/configs/homebridge"
-    read_only = false
-  }
-
-
 {% endif %}
-
-
   host_volume "postgres" {
     path = "/opt/nomad/configs/postgres"
     read_only = false

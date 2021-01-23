@@ -82,6 +82,15 @@ resource "cloudflare_record" "qnap" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "linuxplex" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "qnap"
+  value    = "192.168.1.111"
+  type     = "A"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "bazarr" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "bazarr"

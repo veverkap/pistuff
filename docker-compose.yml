@@ -1,0 +1,85 @@
+---
+version: "2.1"
+services:
+  bazarr:
+    image: ghcr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /media/storage/config/bazarr:/config
+      - /mnt/external/Movies:/movies
+      - /mnt/external/TV:/tv
+      - /mnt/qnap-tv:/qnap-tv
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+  sonarr:
+    image: ghcr.io/linuxserver/sonarr:preview
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /media/storage/config/sonarr:/config
+      - /mnt/external/TV:/tv
+      - /mnt/qnap-tv:/qnap-tv
+      - /mnt/external/TVSync:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+  tautulli:
+    image: ghcr.io/linuxserver/tautulli:latest
+    container_name: tautulli
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /media/storage/config/tautulli:/config
+    ports:
+      - 8181:8181
+    restart: unless-stopped
+  radarr:
+    image: ghcr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /media/storage/config/radarr:/config
+      - /mnt/external/Movies:/movies
+      - /mnt/external/MovieSync:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+  calibre-web:
+    image: ghcr.io/linuxserver/calibre-web:latest
+    container_name: calibre-web
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - DOCKER_MODS=linuxserver/calibre-web:calibre
+    volumes:
+      - /media/storage/config/calibre:/config
+      - /mnt/calibre:/books
+    ports:
+      - 8083:8083
+    restart: unless-stopped
+  ombi:
+    image: ghcr.io/linuxserver/ombi:latest
+    container_name: ombi
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /media/storage/config/ombi:/config
+    ports:
+      - 3579:3579
+    restart: unless-stopped

@@ -16,21 +16,25 @@
       [[http.services.service-ombi.loadBalancer.servers]]
         url = "http://192.168.1.111:3579"
 
+  [http.services.service-radarr]
+    [http.services.service-radarr.loadBalancer]
+      [[http.services.service-radarr.loadBalancer.servers]]
+        url = "http://192.168.1.111:7878"
+
   [http.services.service-requests]
     [http.services.service-requests.loadBalancer]
       [[http.services.service-requests.loadBalancer.servers]]
         url = "http://192.168.1.111:3579"
 
-  [http.services.service-radarr]
-    [http.services.service-radarr.loadBalancer]
-      [[http.services.service-radarr.loadBalancer.servers]]
-        url = "http://192.168.1.224:7878"
-
   [http.services.service-sonarr]
     [http.services.service-sonarr.loadBalancer]
       [[http.services.service-sonarr.loadBalancer.servers]]
-        url = "http://192.168.1.224:8989"
+        url = "http://192.168.1.111:8989"
 
+  [http.services.service-tautulli]
+    [http.services.service-tautulli.loadBalancer]
+      [[http.services.service-tautulli.loadBalancer.servers]]
+        url = "http://192.168.1.111:8181"
 
 [http.routers.bazarrdash]
   rule = "Host(`bazarr.veverka.net`)"
@@ -72,7 +76,7 @@
     [[http.routers.radarrdash.tls.domains]]
       main = "radarr.veverka.net"
 
-[http.routers.requestdash]
+[http.routers.requestsdash]
   rule = "Host(`requests.veverka.net`)"
   service = "service-requests"
   entryPoints = ["websecure"]
@@ -81,6 +85,7 @@
     certResolver = "le" # From static configuration
     [[http.routers.requestsdash.tls.domains]]
       main = "requests.veverka.net"
+
 
 [http.routers.sonarrdash]
   rule = "Host(`sonarr.veverka.net`)"
@@ -91,3 +96,14 @@
     certResolver = "le" # From static configuration
     [[http.routers.sonarrdash.tls.domains]]
       main = "sonarr.veverka.net"
+
+
+[http.routers.tautullidash]
+  rule = "Host(`tautulli.veverka.net`)"
+  service = "service-tautulli"
+  entryPoints = ["websecure"]
+
+  [http.routers.tautullidash.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.tautullidash.tls.domains]]
+      main = "tautulli.veverka.net"

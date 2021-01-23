@@ -1,17 +1,17 @@
 ---
-traefik_version: "v2.3.6"
+traefik_version: "v2.4.0"
 traefik_systemd_unit_template: traefik.service.j2
 traefik_systemd_unit_dest: /etc/systemd/system/traefik.service
 traefik_install_dir: /usr/bin
 traefik_bin_path: "{{ traefik_install_dir }}/traefik"
 traefik_config_directory: /etc/traefik.d
 traefik_binary_url: https://github.com/containous/traefik/releases/download/{{traefik_version}}/traefik_{{traefik_version}}_linux_armv7.tar.gz
-traefik_checksum: "sha256:fbf3a8c62eca9dfd297947b88297789f7b93cee30cd2dc1d827e5137778b0d7b"
+traefik_checksum: "sha256:83ca871c22443dd3b76c6a8ad2e5611bf2bb0ae7beba47d3cfaa94f1d99f59fe"
 traefik_config_template: traefik.toml.j2
 traefik_config_file: /etc/traefik.toml
 traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
-traefik_update: no
+traefik_update: yes
 traefix_dashboard_items:
   - name: docker
     host: docker.veverka.net
@@ -20,14 +20,6 @@ traefix_dashboard_items:
   - name: jackett
     host: jackett.veverka.net
     service: jackett@consulcatalog
-    include_auth: false
-  - name: lazylibrarian
-    host: lazylibrarian.veverka.net
-    service: lazylibrarian@consulcatalog
-    include_auth: false
-  - name: library
-    host: library.veverka.net
-    service: calibreweb@consulcatalog
     include_auth: false
   - name: minio
     host: minio.veverka.net
@@ -41,19 +33,7 @@ traefix_dashboard_items:
     host: nomad.veverka.net
     service: nomad-client@consulcatalog
     include_auth: true
-  - name: ombi
-    host: ombi.veverka.net
-    service: ombi@consulcatalog
-    include_auth: false
-  - name: requests
-    host: requests.veverka.net
-    service: ombi@consulcatalog
-    include_auth: false
   - name: registry
     host: registry.veverka.net
     service: dockerregistry@consulcatalog
     include_auth: true
-  - name: tautulli
-    host: tautulli.veverka.net
-    service: tautulli@consulcatalog
-    include_auth: false

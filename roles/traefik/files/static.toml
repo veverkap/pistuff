@@ -1,33 +1,66 @@
 # services
 
 [http.services]
-  [http.services.service-hass]
-    [http.services.service-hass.loadBalancer]
-      [[http.services.service-hass.loadBalancer.servers]]
-        url = "http://192.168.1.152:8123"
-  [http.services.service-radarr]
-    [http.services.service-radarr.loadBalancer]
-      [[http.services.service-radarr.loadBalancer.servers]]
-        url = "http://192.168.1.224:7878"
-  [http.services.service-sonarr]
-    [http.services.service-sonarr.loadBalancer]
-      [[http.services.service-sonarr.loadBalancer.servers]]
-        url = "http://192.168.1.224:8989"
   [http.services.service-bazarr]
     [http.services.service-bazarr.loadBalancer]
       [[http.services.service-bazarr.loadBalancer.servers]]
         url = "http://192.168.1.111:6767"
 
+  [http.services.service-library]
+    [http.services.service-library.loadBalancer]
+      [[http.services.service-library.loadBalancer.servers]]
+        url = "http://192.168.1.111:8083"
 
-[http.routers.hassdash]
-  rule = "Host(`hass.veverka.net`)"
-  service = "service-hass"
+  [http.services.service-ombi]
+    [http.services.service-ombi.loadBalancer]
+      [[http.services.service-ombi.loadBalancer.servers]]
+        url = "http://192.168.1.111:3579"
+
+  [http.services.service-requests]
+    [http.services.service-requests.loadBalancer]
+      [[http.services.service-requests.loadBalancer.servers]]
+        url = "http://192.168.1.111:3579"
+
+  [http.services.service-radarr]
+    [http.services.service-radarr.loadBalancer]
+      [[http.services.service-radarr.loadBalancer.servers]]
+        url = "http://192.168.1.224:7878"
+
+  [http.services.service-sonarr]
+    [http.services.service-sonarr.loadBalancer]
+      [[http.services.service-sonarr.loadBalancer.servers]]
+        url = "http://192.168.1.224:8989"
+
+
+[http.routers.bazarrdash]
+  rule = "Host(`bazarr.veverka.net`)"
+  service = "service-bazarr"
   entryPoints = ["websecure"]
 
-  [http.routers.hassdash.tls]
+  [http.routers.bazarrdash.tls]
     certResolver = "le" # From static configuration
-    [[http.routers.hassdash.tls.domains]]
-      main = "hass.veverka.net"
+    [[http.routers.bazarrdash.tls.domains]]
+      main = "bazarr.veverka.net"
+
+[http.routers.librarydash]
+  rule = "Host(`library.veverka.net`)"
+  service = "service-library"
+  entryPoints = ["websecure"]
+
+  [http.routers.librarydash.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.librarydash.tls.domains]]
+      main = "library.veverka.net"
+
+[http.routers.ombidash]
+  rule = "Host(`ombi.veverka.net`)"
+  service = "service-ombi"
+  entryPoints = ["websecure"]
+
+  [http.routers.ombidash.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.ombidash.tls.domains]]
+      main = "ombi.veverka.net"
 
 [http.routers.radarrdash]
   rule = "Host(`radarr.veverka.net`)"
@@ -39,6 +72,16 @@
     [[http.routers.radarrdash.tls.domains]]
       main = "radarr.veverka.net"
 
+[http.routers.requestdash]
+  rule = "Host(`requests.veverka.net`)"
+  service = "service-requests"
+  entryPoints = ["websecure"]
+
+  [http.routers.requestsdash.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.requestsdash.tls.domains]]
+      main = "requests.veverka.net"
+
 [http.routers.sonarrdash]
   rule = "Host(`sonarr.veverka.net`)"
   service = "service-sonarr"
@@ -48,13 +91,3 @@
     certResolver = "le" # From static configuration
     [[http.routers.sonarrdash.tls.domains]]
       main = "sonarr.veverka.net"
-
-[http.routers.bazarrdash]
-  rule = "Host(`bazarr.veverka.net`)"
-  service = "service-bazarr"
-  entryPoints = ["websecure"]
-
-  [http.routers.bazarrdash.tls]
-    certResolver = "le" # From static configuration
-    [[http.routers.bazarrdash.tls.domains]]
-      main = "bazarr.veverka.net"

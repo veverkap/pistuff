@@ -64,15 +64,6 @@ resource "cloudflare_record" "veverkanet" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "windows" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "windows"
-  value    = "192.168.1.32"
-  type     = "A"
-  proxied  = false
-  ttl      = 120
-}
-
 resource "cloudflare_record" "qnap" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "qnap"
@@ -145,28 +136,11 @@ resource "cloudflare_record" "jackett" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "lazylibrarian" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "lazylibrarian"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
 
 resource "cloudflare_record" "library" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "library"
   value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "meatsweats" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "meatsweats"
-  value    = "external.veverka.net"
   type     = "CNAME"
   proxied  = false
   ttl      = 120
@@ -226,15 +200,6 @@ resource "cloudflare_record" "patrick" {
   ttl      = 1
 }
 
-
-resource "cloudflare_record" "seafile" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "seafile"
-  value    = "129.213.54.79"
-  type     = "A"
-  proxied  = false
-  ttl      = 120
-}
 
 resource "cloudflare_record" "radarr" {
   zone_id  = cloudflare_zone.veverka.id

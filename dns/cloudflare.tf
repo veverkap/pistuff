@@ -146,6 +146,16 @@ resource "cloudflare_record" "library" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "movie_api" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "movie_api"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
+
 resource "cloudflare_record" "minioext" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "minioext"

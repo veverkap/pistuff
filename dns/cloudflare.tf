@@ -265,6 +265,15 @@ resource "cloudflare_record" "traefik" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "glce" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "gitlab"
+  value    = "external.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "gitlab" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "gitlab"

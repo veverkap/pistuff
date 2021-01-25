@@ -12,6 +12,25 @@ traefik_config_file: /etc/traefik.toml
 traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
 traefik_update: no
+traefix_static_items:
+  - name: bazarr
+    url: http://192.168.1.111:6767
+  - name: library
+    url: http://192.168.1.111:8083
+  - name: movie_api
+    url: http://192.168.1.111:8013
+  - name: ombi
+    url: http://192.168.1.111:3579
+  - name: radarr
+    url: http://192.168.1.111:7878
+  - name: requests
+    url: http://192.168.1.111:3579
+  - name: sonarr
+    url: http://192.168.1.111:8989
+  - name: tautulli
+    url: http://192.168.1.111:8181
+  - name: gitlab
+    url: http://192.168.1.112
 traefix_dashboard_items:
   - name: docker
     host: docker.veverka.net
@@ -20,14 +39,6 @@ traefix_dashboard_items:
   - name: jackett
     host: jackett.veverka.net
     service: jackett@consulcatalog
-    include_auth: false
-  - name: minio
-    host: minio.veverka.net
-    service: minio@consulcatalog
-    include_auth: false
-  - name: minioext
-    host: minioext.veverka.net
-    service: minio@consulcatalog
     include_auth: false
   - name: nomad
     host: nomad.veverka.net

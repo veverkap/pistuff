@@ -21,6 +21,14 @@
       [[http.services.service-consul.loadBalancer.servers]]
         url = "http://192.168.1.149:8500"
 
+{% for item in traefix_static_items %}
+  # Adding in service for {{item.name}}
+  [http.services.service-{{ item.name }}]
+    [http.services.service-{{ item.name }}.loadBalancer]
+      [[http.services.service-{{ item.name }}.loadBalancer.servers]]
+        url = "{{ item.url }}"
+{% endfor %}
+
 
 [http.routers.consuldash]
   rule = "Host(`consul.veverka.net`)"
@@ -50,6 +58,17 @@
 
 {% endfor %}
 
+{% for item in traefix_static_items %}
+# Adding in router for {{item.name}}
+[http.routers.{{ item.name }}dash]
+  rule = "Host(`{{ item.name }}.veverka.net`)"
+  service = "service-{{ item.name }}"
+  entryPoints = ["websecure"]
 
+  [http.routers.{{ item.name }}dash.tls]
+    certResolver = "le" # From static configuration
+    [[http.routers.{{ item.name }}dash.tls.domains]]
+      main = "{{ item.name }}.veverka.net"
+{% endfor %}
 [http.middlewares.auth.basicAuth]
   usersFile = "/etc/traefik.d/users"

@@ -30,9 +30,9 @@ traefix_static_items:
   - name: tautulli
     url: http://192.168.1.111:8181
   - name: gitlab
-    url: http://192.168.1.112
+    url: http://192.168.1.104
   - name: glce
-    url: http://192.168.1.112
+    url: http://192.168.1.104
 traefix_dashboard_items:
   - name: docker
     host: docker.veverka.net

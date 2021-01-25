@@ -265,6 +265,15 @@ resource "cloudflare_record" "traefik" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "gitlab" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "gitlab"
+  value    = "lan.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "warez" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "warez"

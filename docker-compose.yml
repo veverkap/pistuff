@@ -72,7 +72,7 @@ services:
       - 8083:8083
     restart: unless-stopped
   ombi:
-    image: ghcr.io/linuxserver/ombi:latest
+    image: ghcr.io/linuxserver/ombi:v4-preview
     container_name: ombi
     environment:
       - PUID=1000
@@ -82,4 +82,16 @@ services:
       - /media/storage/config/ombi:/config
     ports:
       - 3579:3579
+    restart: unless-stopped
+  movie_api:
+    image: docker.pkg.github.com/veverkap/mdb_api/movie_api:v3
+    container_name: movie_api
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /media/storage/config/movie_api:/config
+    ports:
+      - 8013:8013
     restart: unless-stopped

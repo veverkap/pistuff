@@ -83,15 +83,15 @@ services:
     ports:
       - 3579:3579
     restart: unless-stopped
-  movie_api:
+  movieapi:
     image: docker.pkg.github.com/veverkap/mdb_api/movie_api:v3
-    container_name: movie_api
+    container_name: movieapi
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=America/New_York
     volumes:
-      - /media/storage/config/movie_api:/config
+      - /media/storage/config/movieapi:/config
     ports:
       - 8013:8013
     restart: unless-stopped

@@ -11,9 +11,9 @@
       [[http.services.service-library.loadBalancer.servers]]
         url = "http://192.168.1.111:8083"
 
-  [http.services.service-movie_api]
-    [http.services.service-movie_api.loadBalancer]
-      [[http.services.service-movie_api.loadBalancer.servers]]
+  [http.services.service-movieapi]
+    [http.services.service-movieapi.loadBalancer]
+      [[http.services.service-movieapi.loadBalancer.servers]]
         url = "http://192.168.1.111:8013"
 
   [http.services.service-ombi]
@@ -61,15 +61,15 @@
     [[http.routers.librarydash.tls.domains]]
       main = "library.veverka.net"
 
-[http.routers.movie_apidash]
-  rule = "Host(`movie_api.veverka.net`)"
-  service = "service-movie_api"
+[http.routers.movieapidash]
+  rule = "Host(`movieapi.veverka.net`)"
+  service = "service-movieapi"
   entryPoints = ["websecure"]
 
-  [http.routers.movie_apidash.tls]
+  [http.routers.movieapidash.tls]
     certResolver = "le" # From static configuration
-    [[http.routers.movie_apidash.tls.domains]]
-      main = "movie_api.veverka.net"
+    [[http.routers.movieapidash.tls.domains]]
+      main = "movieapi.veverka.net"
 
 [http.routers.ombidash]
   rule = "Host(`ombi.veverka.net`)"

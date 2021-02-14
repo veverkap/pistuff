@@ -146,9 +146,9 @@ resource "cloudflare_record" "library" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "movie_api" {
+resource "cloudflare_record" "movieapi" {
   zone_id  = cloudflare_zone.veverka.id
-  name     = "movie_api"
+  name     = "movieapi"
   value    = "lan.veverka.net"
   type     = "CNAME"
   proxied  = false

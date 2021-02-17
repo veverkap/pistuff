@@ -11,7 +11,7 @@ traefik_config_template: traefik.toml.j2
 traefik_config_file: /etc/traefik.toml
 traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
-traefik_update: yes
+traefik_update: no
 traefix_static_items:
   - name: bazarr
     url: http://192.168.1.111:6767
@@ -33,6 +33,8 @@ traefix_static_items:
     url: http://192.168.1.104
   - name: glce
     url: http://192.168.1.104
+  - name: hass
+    url: http://192.168.1.113:8123
 traefix_dashboard_items:
   - name: docker
     host: docker.veverka.net

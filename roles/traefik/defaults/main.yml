@@ -16,7 +16,7 @@ traefix_static_items:
   - name: bazarr
     url: http://192.168.1.111:6767
   - name: library
-    url: http://192.168.1.111:8083
+    url: http://192.168.1.84:8083
   - name: movieapi
     url: http://192.168.1.111:8013
   - name: ombi

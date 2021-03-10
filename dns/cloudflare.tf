@@ -183,6 +183,15 @@ resource "cloudflare_record" "nomad" {
   ttl      = 120
 }
 
+resource "cloudflare_record" "nomadext" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "nomad"
+  value    = "external.veverka.net"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
 resource "cloudflare_record" "ombi" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "ombi"

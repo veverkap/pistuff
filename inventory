@@ -6,8 +6,8 @@ rpi5.local ansible_host=192.168.1.151
 rpi6.local ansible_host=192.168.1.152
 
 [linuxhosts]
-linuxplex ansible_host=192.168.1.111 ansible_user=veverkap
-rpi2.local ansible_host=192.168.1.224 ansible_user=pi
+calibre ansible_host=192.168.1.84 ansible_user=veverkap
+
 
 [consul_servers]
 rpi1.local ansible_host=192.168.1.231

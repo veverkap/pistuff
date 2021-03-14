@@ -46,28 +46,10 @@ resource "cloudflare_record" "unifi" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "hass" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "hass"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
 resource "cloudflare_record" "veverkanet" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "veverka.net"
   value    = "71.120.230.47"
-  type     = "A"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "qnap" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "qnap"
-  value    = "192.168.1.43"
   type     = "A"
   proxied  = false
   ttl      = 120
@@ -100,33 +82,6 @@ resource "cloudflare_record" "consul" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "docker" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "docker"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "emailmg" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "email.mg"
-  value    = "mailgun.org"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "influxdb" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "influxdb"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
 resource "cloudflare_record" "jackett" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "jackett"
@@ -135,7 +90,6 @@ resource "cloudflare_record" "jackett" {
   proxied  = false
   ttl      = 120
 }
-
 
 resource "cloudflare_record" "library" {
   zone_id  = cloudflare_zone.veverka.id
@@ -149,25 +103,6 @@ resource "cloudflare_record" "library" {
 resource "cloudflare_record" "movieapi" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "movieapi"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-
-resource "cloudflare_record" "minioext" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "minioext"
-  value    = "external.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
-resource "cloudflare_record" "minio" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "minio"
   value    = "lan.veverka.net"
   type     = "CNAME"
   proxied  = false
@@ -238,15 +173,6 @@ resource "cloudflare_record" "redis" {
   ttl      = 120
 }
 
-resource "cloudflare_record" "registry" {
-  zone_id  = cloudflare_zone.veverka.id
-  name     = "registry"
-  value    = "lan.veverka.net"
-  type     = "CNAME"
-  proxied  = false
-  ttl      = 120
-}
-
 resource "cloudflare_record" "sonarr" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "sonarr"
@@ -305,6 +231,15 @@ resource "cloudflare_record" "webmail" {
   zone_id  = cloudflare_zone.veverka.id
   name     = "webmail"
   value    = "ghs.googlehosted.com"
+  type     = "CNAME"
+  proxied  = false
+  ttl      = 120
+}
+
+resource "cloudflare_record" "mediarequest" {
+  zone_id  = cloudflare_zone.veverka.id
+  name     = "mediarequest"
+  value    = "external.veverka.net"
   type     = "CNAME"
   proxied  = false
   ttl      = 120

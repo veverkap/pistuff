@@ -17,8 +17,14 @@ traefix_static_items:
     url: http://192.168.1.111:6767
   - name: library
     url: http://192.168.1.84:8083
+  - name: recipes
+    url: http://192.168.1.84:9000
+  - name: rss
+    url: http://192.168.1.84:8280
   - name: movieapi
     url: http://192.168.1.111:8013
+  - name: mediarequest
+    url: http://192.168.1.111:8014
   - name: ombi
     url: http://192.168.1.111:3579
   - name: radarr
@@ -31,8 +37,14 @@ traefix_static_items:
     url: http://192.168.1.111:9117
   - name: tautulli
     url: http://192.168.1.111:8181
+  - name: sync
+    url: http://192.168.1.111:8384
+  - name: bitwarden
+    url: http://192.168.1.84:8085
   - name: gitlab
     url: http://192.168.1.104
+  - name: adguard
+    url: http://192.168.1.69    
   - name: glce
     url: http://192.168.1.104
   - name: hass

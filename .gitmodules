@@ -1,0 +1,3 @@
+[submodule "linux_configs"]
+	path = linux_configs
+	url = git@github.com:veverkap/linux_configs.git

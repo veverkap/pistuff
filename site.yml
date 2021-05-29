@@ -1,15 +1,15 @@
 #!/usr/bin/env ansible-playbook -i inventory --skip-tags=consul,bootstrap,nomad
 ---
-# - name: setup ubuntu servers
-#   hosts: linuxhosts
-#   gather_facts: true
-#   remote_user: veverkap
-#   become: yes
-#   become_user: root
-#   roles:
-#     - { role: utils, tags: ["utils"] }
-#   tags:
-#     - bootstrap
+- name: setup ubuntu servers
+  hosts: linuxhosts
+  gather_facts: true
+  remote_user: veverkap
+  become: yes
+  become_user: root
+  roles:
+    - cloudalchemy.node_exporter
+  tags:
+    - bootstrap
 # - name: setup servers
 #   hosts: hosts
 #   gather_facts: true
@@ -66,16 +66,16 @@
 #     - { role: nomad, nomad_dc: alpha }
 #   tags:
 #     - nomad
-- name: setup traefix
-  hosts: traefik_servers
-  become: true
-  become_user: root
-  gather_facts: true
-  remote_user: pi
-  roles:
-    - traefik
-  tags:
-    - traefik
+# - name: setup traefix
+#   hosts: traefik_servers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: pi
+#   roles:
+#     - traefik
+#   tags:
+#     - traefik
 # - name: setup samba
 #   hosts: samba_servers
 #   become: true

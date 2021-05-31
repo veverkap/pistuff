@@ -1,36 +1,28 @@
 ---
-traefik_version: "v2.4.7"
+traefik_version: "v2.4.8"
 traefik_systemd_unit_template: traefik.service.j2
 traefik_systemd_unit_dest: /etc/systemd/system/traefik.service
 traefik_install_dir: /usr/bin
 traefik_bin_path: "{{ traefik_install_dir }}/traefik"
 traefik_config_directory: /etc/traefik.d
 traefik_binary_url: https://github.com/containous/traefik/releases/download/{{traefik_version}}/traefik_{{traefik_version}}_linux_armv7.tar.gz
-traefik_checksum: "sha256:bb02d766271467088b3ef2085887f3b431473c666befdca967fe093670302765"
+traefik_checksum: "sha256:a9863430a3dfe1aa8c25fb0a37911a887834f4e1f7f69f85c66226c7573408d2"
 traefik_config_template: traefik.toml.j2
 traefik_config_file: /etc/traefik.toml
 traefix_dashboard_template: dashboard.toml.j2
 traefik_dashboard_file: "{{ traefik_config_directory }}/dashboard.toml"
-traefik_update: no
+traefik_update: false
 traefix_static_items:
   - name: bazarr
     url: http://192.168.1.111:6767
-  - name: library
-    url: http://192.168.1.84:8083
-  - name: recipes
-    url: http://192.168.1.84:9000
-  - name: rss
-    url: http://192.168.1.84:8280
   - name: movieapi
     url: http://192.168.1.111:8013
-  - name: mediarequest
-    url: http://192.168.1.111:8014
   - name: ombi
+    url: http://192.168.1.111:3579
+  - name: requests
     url: http://192.168.1.111:3579
   - name: radarr
     url: http://192.168.1.111:7878
-  - name: requests
-    url: http://192.168.1.111:3579
   - name: sonarr
     url: http://192.168.1.111:8989
   - name: jackett
@@ -39,16 +31,18 @@ traefix_static_items:
     url: http://192.168.1.111:8181
   - name: sync
     url: http://192.168.1.111:8384
+  - name: library
+    url: http://192.168.1.84:8083
+  - name: recipes
+    url: http://192.168.1.84:9000
   - name: bitwarden
     url: http://192.168.1.84:8085
-  - name: gitlab
-    url: http://192.168.1.104
   - name: adguard
-    url: http://192.168.1.69    
-  - name: glce
-    url: http://192.168.1.104
-  - name: hass
-    url: http://192.168.1.113:8123
+    url: http://192.168.1.69
+  - name: grafana
+    url: http://192.168.1.56:3000
+  - name: prometheus
+    url: http://192.168.1.56:9000
 traefix_dashboard_items:
   - name: nomad
     host: nomad.veverka.net

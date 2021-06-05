@@ -39,6 +39,8 @@ traefix_static_items:
     url: http://192.168.1.84:8085
   - name: adguard
     url: http://192.168.1.69
+  - name: file
+    url: http://192.168.1.56
   - name: grafana
     url: http://192.168.1.56:3000
   - name: prometheus

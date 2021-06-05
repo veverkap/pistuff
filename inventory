@@ -9,6 +9,7 @@ rpi6.local ansible_host=192.168.1.152
 calibre ansible_host=192.168.1.84 ansible_user=veverkap
 veverkaplex ansible_host=192.168.1.111 ansible_user=veverkap
 adguard ansible_host=192.168.1.69 ansible_user=veverkap
+fileserver ansible_host=192.168.1.56 ansible_user=veverkap
 
 
 [consul_servers]

@@ -2,61 +2,35 @@
 ###############################################################################
 ################################# INSTALL #####################################
 ###############################################################################
-- stat:
-    path: "{{ consul_install_path }}/{{ consul_version }}/"
-  register: preexisting
+- apt_key:
+    url: "https://apt.releases.hashicorp.com/gpg"
+    state: present
+- name: apt repository add x86_64
+  apt_repository:
+    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release | lower }} main"
+    state: present
+  when: ansible_architecture == "x86_64"
+- name: apt repository add aarch64
+  apt_repository:
+    repo: "deb [arch=armhfv6] https://apt.releases.hashicorp.com {{ ansible_distribution_release | lower }} main"
+    state: present
+  when: ansible_architecture == "aarch64"
+- name: Update APT package cache
+  apt: update_cache=yes cache_valid_time=3600
+- name: Install consul
+  apt:
+    pkg:
+      - consul
   tags:
-    - consul
-# - debug: var=preexisting
+    - apt
 - block:
-    - name: download consul
-      get_url:
-        url: "https://releases.hashicorp.com/consul/{{consul_version}}/consul_{{consul_version}}_linux_armhfv6.zip"
-        dest: /tmp/consul.zip
-        mode: 0777
-        checksum: "{{consul_checksum}}"
-      tags:
-        - consul
-    - name: create the install paths
+    - name: create the configuration paths
       file:
         path: "{{ item }}"
         state: directory
         mode: 0755
       with_items:
-        - "{{ consul_install_path }}/{{ consul_version }}"
         - /etc/consul
-      tags:
-        - consul
-    - name: Decompress archive
-      unarchive:
-        src: /tmp/consul.zip
-        dest: "{{ consul_install_path }}/{{ consul_version }}/"
-        remote_src: yes
-    - name: link the versioned consul to the local bin
-      file:
-        src: "{{ consul_install_path }}/{{ consul_version }}/consul"
-        dest: /usr/local/bin/consul
-        owner: root
-        group: root
-        state: link
-      tags:
-        - consul
-    - name: remove the temp archives
-      file:
-        path: "{{ item }}"
-        state: absent
-      with_items:
-        - /tmp/consul.zip
-      tags:
-        - consul
-  become: true
-  become_user: root
-  when: preexisting.stat.exists != true
-# ###############################################################################
-# ################################ CONFIGURE ####################################
-# ###############################################################################
-
-- block:
     - name: install consul scripts
       copy:
         src: "{{ item.src }}"
@@ -64,8 +38,6 @@
         mode: u=rwx,g=rx,o=rx
       with_items:
         - src: consul-wait-for-leader.sh
-          dest: /usr/local/bin
-        - src: consul-destroy-install.sh
           dest: /usr/local/bin
       tags:
         - consul
@@ -88,12 +60,13 @@
           dest: /etc/consul/consul.json
       tags:
         - consul
-
     - name: enable consul
       service:
         name: consul
         enabled: yes
         state: started
+      notify:
+        - reload systemd
       tags:
         - consul
 
@@ -103,7 +76,7 @@
     seconds: 3
 
 - name: join cluster of consul-dcs
-  command: "/usr/local/bin/consul join {{ groups['consul_servers'] | random }} -token=8e28c90a-aa0c-226f-c930-f7b2d405d3c6"
+  command: "/usr/bin/consul join 192.168.1.231"
   run_once: yes
   tags:
     - consul

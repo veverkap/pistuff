@@ -1,2 +1,2 @@
-- src: geerlingguy.docker_arm
+- src: geerlingguy.docker
 - src: cloudalchemy.node_exporter

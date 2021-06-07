@@ -1,11 +1,6 @@
 {
   "advertise_addr": "{{ consul_advertise }}",
   "bind_addr": "{{ consul_bind }}",
-  "acl": {
-    "enabled": true,
-    "default_policy": "allow",
-    "enable_token_persistence": true
-  },
 {% if consul_is_server %}
   "bootstrap_expect": {{ consul_bootstrap_expect }},
 {% endif %}
@@ -14,10 +9,10 @@
   "data_dir": "/var/lib/consul",
   "datacenter": "{{ consul_dc }}",
   "log_level": "INFO",
-  "node_name": "{{ ansible_hostname }}",
+  "node_name": "{{ ansible_host }}",
   "recursors" : [ "1.1.1.1" ],
 {% if consul_bootstrap_expect > 1 %}
-  "retry_join": [ {{ consul_retry_join }} ],
+  "retry_join": [ "192.168.1.231", "192.168.1.56", "192.168.1.53" ],
 {% endif %}
 {% if consul_is_server %}
   "server": true,

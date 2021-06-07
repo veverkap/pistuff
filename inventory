@@ -7,31 +7,48 @@ rpi5.local ansible_host=192.168.1.61
 rpi6.local ansible_host=192.168.1.62
 
 [linuxhosts]
-calibre ansible_host=192.168.1.84 ansible_user=veverkap
-veverkaplex ansible_host=192.168.1.111 ansible_user=veverkap
-adguard ansible_host=192.168.1.69 ansible_user=veverkap
-fileserver ansible_host=192.168.1.56 ansible_user=veverkap
+fileserver ansible_host=192.168.1.56
+adguard ansible_host=192.168.1.69
+calibre ansible_host=192.168.1.84
+veverkaplex ansible_host=192.168.1.111
 
 [consul_servers]
 rpi1.local ansible_host=192.168.1.231
 rpi3.local ansible_host=192.168.1.53
+fileserver ansible_host=192.168.1.56
 
 [consul_followers]
-rpi[4:6].local
-linuxplex ansible_host=192.168.1.111 ansible_user=veverkap
+rpi2.local ansible_host=192.168.1.224
+rpi4.local ansible_host=192.168.1.54
+rpi5.local ansible_host=192.168.1.61
+rpi6.local ansible_host=192.168.1.62
+adguard ansible_host=192.168.1.69
+calibre ansible_host=192.168.1.84
+veverkaplex ansible_host=192.168.1.111
 
 [nomad_servers]
 rpi6.local ansible_host=192.168.1.62
+fileserver ansible_host=192.168.1.56
 
 [traefik_servers]
 rpi6.local ansible_host=192.168.1.62
 
 [nomad_workers]
 rpi[1:5].local
+adguard ansible_host=192.168.1.69
+calibre ansible_host=192.168.1.84
 
 [hosts:vars]
 ansible_ssh_user=ubuntu
+ansible_user=ubuntu
 deploy_target=ubuntu
+server_user_name=ubuntu
+
+[linuxhosts:vars]
+ansible_ssh_user=veverkap
+ansible_user=veverkap
+deploy_target=veverkap
+server_user_name=veverkap
 
 [samba_servers]
 rpi1.local ansible_host=192.168.1.231

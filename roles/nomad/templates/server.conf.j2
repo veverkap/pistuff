@@ -17,7 +17,7 @@ advertise {
 server {
   enabled = true
   bootstrap_expect = {{ nomad_bootstrap_expect }}
-  retry_join = {{ nomad_retry_join }}
+  retry_join = ["192.168.1.62", "192.168.1.56"]
   rejoin_after_leave = true
 }
 

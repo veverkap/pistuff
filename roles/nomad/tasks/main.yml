@@ -2,19 +2,20 @@
 ###############################################################################
 ################################# INSTALL #####################################
 ###############################################################################
-- stat:
-    path: "{{ nomad_install_path }}/{{ nomad_version }}/"
-  register: preexisting
-  tags:
-    - nomad
 
 - block:
-    - name: download nomad
+    - name: Install nomad
+      apt:
+        pkg:
+          - nomad
+        state: absent
+      tags:
+        - apt
+    - name: download nomad for arm64
       get_url:
-        url: "https://releases.hashicorp.com/nomad/{{ nomad_version }}/nomad_{{ nomad_version }}_linux_arm.zip"
+        url: "https://releases.hashicorp.com/nomad/{{ nomad_version }}/nomad_{{ nomad_version }}_linux_arm64.zip"
         dest: /tmp/nomad.zip
         mode: 0777
-        checksum: "{{ nomad_checksum }}"
       tags:
         - nomad
     - name: create the install paths
@@ -36,7 +37,7 @@
     - name: link the versioned nomad to the local bin
       file:
         src: "{{ nomad_install_path }}/{{ nomad_version }}/nomad"
-        dest: /usr/local/bin/nomad
+        dest: /usr/bin/nomad
         owner: root
         group: root
         state: link
@@ -52,9 +53,37 @@
         - nomad
   become: true
   become_user: root
-  when: preexisting.stat.exists != true
+  when: ansible_architecture == "aarch64"
 
 - block:
+  - apt_key:
+      url: "https://apt.releases.hashicorp.com/gpg"
+      state: present
+  - name: apt repository add x86_64
+    apt_repository:
+      repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release | lower }} main"
+      state: present
+  - name: Update APT package cache
+    apt: update_cache=yes cache_valid_time=3600
+  - name: Install nomad
+    apt:
+      pkg:
+        - nomad
+    tags:
+      - apt
+  become: true
+  become_user: root
+  when: ansible_architecture == "x86_64"
+
+- block:
+    - name: create the configuration paths
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: 0755
+      with_items:
+        - /etc/nomad
+        - /var/lib/nomad
     - name: setup nomad server config
       template:
         src: server.conf.j2

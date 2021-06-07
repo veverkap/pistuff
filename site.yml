@@ -7,12 +7,12 @@
 #   become_user: root
 #   roles:
 #     - { role: utils, tags: ["utils"] }
-#     # - {
-#     #     role: geerlingguy.docker,
-#     #     docker_install_compose: false,
-#     #     tags: ["docker"],
-#     #   }
-#     # - cloudalchemy.node_exporter
+#     - {
+#         role: geerlingguy.docker,
+#         docker_install_compose: false,
+#         tags: ["docker"],
+#       }
+#     - cloudalchemy.node_exporter
 #   tags:
 #     - bootstrap
 # - name: setup the consul servers
@@ -25,16 +25,16 @@
 #     - { role: consul, consul_is_server: yes }
 #   tags:
 #     - consul
-# - name: setup the consul followers
-#   hosts: consul_followers
-#   become: true
-#   become_user: root
-#   gather_facts: true
-#   remote_user: ubuntu
-#   roles:
-#     - { role: consul, consul_is_server: no }
-#   tags:
-#     - consul
+- name: setup the consul followers
+  hosts: consul_followers
+  become: true
+  become_user: root
+  gather_facts: true
+  remote_user: ubuntu
+  roles:
+    - { role: consul, consul_is_server: no }
+  tags:
+    - consul
 # - name: setup the nomad servers
 #   hosts: nomad_servers
 #   become: true
@@ -55,13 +55,3 @@
     - { role: nomad, nomad_dc: alpha }
   tags:
     - nomad
-# - name: setup samba
-#   hosts: samba_servers
-#   become: true
-#   become_user: root
-#   gather_facts: true
-#   remote_user: pi
-#   roles:
-#     - samba
-#   tags:
-#     - samba

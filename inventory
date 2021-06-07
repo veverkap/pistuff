@@ -7,6 +7,7 @@ rpi5.local ansible_host=192.168.1.61
 rpi6.local ansible_host=192.168.1.62
 
 [linuxhosts]
+traefik ansible_host=192.168.1.51
 fileserver ansible_host=192.168.1.56
 adguard ansible_host=192.168.1.69
 calibre ansible_host=192.168.1.84
@@ -22,6 +23,7 @@ rpi2.local ansible_host=192.168.1.224
 rpi4.local ansible_host=192.168.1.54
 rpi5.local ansible_host=192.168.1.61
 rpi6.local ansible_host=192.168.1.62
+traefik ansible_host=192.168.1.51
 adguard ansible_host=192.168.1.69
 calibre ansible_host=192.168.1.84
 veverkaplex ansible_host=192.168.1.111
@@ -35,6 +37,7 @@ rpi6.local ansible_host=192.168.1.62
 
 [nomad_workers]
 rpi[1:5].local
+traefik ansible_host=192.168.1.51
 adguard ansible_host=192.168.1.69
 calibre ansible_host=192.168.1.84
 

@@ -1,30 +1,30 @@
 #!/usr/bin/env ansible-playbook -i inventory --skip-tags=consul,bootstrap,nomad
 ---
-# - name: setup servers
-#   hosts: all
-#   gather_facts: true
-#   become: yes
-#   become_user: root
-#   roles:
-#     - { role: utils, tags: ["utils"] }
-#     - {
-#         role: geerlingguy.docker,
-#         docker_install_compose: false,
-#         tags: ["docker"],
-#       }
-#     - cloudalchemy.node_exporter
-#   tags:
-#     - bootstrap
-# - name: setup the consul servers
-#   hosts: consul_servers
-#   become: true
-#   become_user: root
-#   gather_facts: true
-#   remote_user: ubuntu
-#   roles:
-#     - { role: consul, consul_is_server: yes }
-#   tags:
-#     - consul
+- name: setup servers
+  hosts: all
+  gather_facts: true
+  become: yes
+  become_user: root
+  roles:
+    - { role: utils, tags: ["utils"] }
+    - {
+        role: geerlingguy.docker,
+        docker_install_compose: false,
+        tags: ["docker"],
+      }
+    - cloudalchemy.node_exporter
+  tags:
+    - bootstrap
+- name: setup the consul servers
+  hosts: consul_servers
+  become: true
+  become_user: root
+  gather_facts: true
+  remote_user: ubuntu
+  roles:
+    - { role: consul, consul_is_server: yes }
+  tags:
+    - consul
 - name: setup the consul followers
   hosts: consul_followers
   become: true
@@ -35,16 +35,16 @@
     - { role: consul, consul_is_server: no }
   tags:
     - consul
-# - name: setup the nomad servers
-#   hosts: nomad_servers
-#   become: true
-#   become_user: root
-#   gather_facts: true
-#   remote_user: ubuntu
-#   roles:
-#     - { role: nomad, nomad_is_server: yes, nomad_dc: alpha }
-#   tags:
-#     - nomad
+- name: setup the nomad servers
+  hosts: nomad_servers
+  become: true
+  become_user: root
+  gather_facts: true
+  remote_user: ubuntu
+  roles:
+    - { role: nomad, nomad_is_server: yes, nomad_dc: alpha }
+  tags:
+    - nomad
 - name: setup the nomad workers
   hosts: nomad_workers
   become: true

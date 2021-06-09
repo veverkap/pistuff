@@ -2,7 +2,7 @@ bind_addr = "0.0.0.0"
 data_dir = "/var/lib/nomad"
 region = "{{ nomad_dc }}"
 datacenter = "{{ nomad_dc }}"
-name = "{{ ansible_hostname }}.node"
+name = "{{ inventory_hostname }}"
 log_level = "DEBUG"
 enable_debug = true
 
@@ -23,4 +23,12 @@ server {
 
 consul {
   address = "127.0.0.1:8500"
+}
+
+telemetry {
+  collection_interval = "1s"
+  disable_hostname = false
+  prometheus_metrics = true
+  publish_allocation_metrics = true
+  publish_node_metrics = true
 }

@@ -1,16 +1,20 @@
 ---
 # Required
-- include: packages.yml
-- include: zsh.yml
-- name: install check scripts
-  template:
-    src: check-service-active.j2
-    dest: /usr/local/bin/check-service-active
-    mode: u=rwx,g=rx,o=rx
-- name: Set authorized keys taken from url
-  authorized_key:
-    user: "{{ server_user_name }}"
-    state: present
-    key: https://github.com/veverkap.keys
-  tags:
-    - dude
+# - include: packages.yml
+# - include: zsh.yml
+- name: set system hostname
+  command: hostnamectl set-hostname {{ inventory_hostname }}
+- name: see what the default ip address is
+  debug: msg="{{ inventory_hostname }} {{ ansible_hostname }}"
+# - name: install check scripts
+#   template:
+#     src: check-service-active.j2
+#     dest: /usr/local/bin/check-service-active
+#     mode: u=rwx,g=rx,o=rx
+# - name: Set authorized keys taken from url
+#   authorized_key:
+#     user: "{{ server_user_name }}"
+#     state: present
+#     key: https://github.com/veverkap.keys
+#   tags:
+#     - dude

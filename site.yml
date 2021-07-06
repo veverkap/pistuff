@@ -7,11 +7,16 @@
   become_user: root
   roles:
     - { role: utils, tags: ["utils"] }
-    - {
-        role: geerlingguy.docker,
-        docker_install_compose: false,
-        tags: ["docker"],
-      }
+    # - {
+    #     role: geerlingguy.docker,
+    #     docker_install_compose: false,
+    #     tags: ["docker"],
+    #   }
+    # - {
+    #     role: geerlingguy.docker_arm,
+    #     docker_install_compose: false,
+    #     tags: ["docker"],
+    #   }
     - cloudalchemy.node_exporter
   tags:
     - bootstrap

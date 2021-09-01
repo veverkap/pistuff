@@ -1,8 +1,8 @@
 ---
-- name: blah
-  debug:
-    msg: "{{ lookup('bitwarden', 'Google') }}"
-- include: packages.yml
+# - name: blah
+#   debug:
+#     msg: "{{ lookup('bitwarden', 'Google') }}"
+# - include: packages.yml
 # - include: zsh.yml
 # - name: set system hostname
 #   command: hostnamectl set-hostname {{ inventory_hostname }}

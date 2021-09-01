@@ -1,38 +1,35 @@
 #!/usr/bin/env ansible-playbook -i inventory --skip-tags=consul,bootstrap,nomad
 ---
-- hosts: localhost
-  roles:
-    - ansible-modules-bitwarden
-- name: setup servers
-  hosts: all
-  gather_facts: true
-  become: yes
-  become_user: root
-  roles:
-    - { role: utils, tags: ["utils"] }
-#     # - {
-#     #     role: geerlingguy.docker,
-#     #     docker_install_compose: false,
-#     #     tags: ["docker"],
-#     #   }
-#     # - {
-#     #     role: geerlingguy.docker_arm,
-#     #     docker_install_compose: false,
-#     #     tags: ["docker"],
-#     #   }
+# - name: setup servers
+#   hosts: all
+#   gather_facts: true
+#   become: yes
+#   become_user: root
+#   roles:
+#     # - { role: utils, tags: ["utils"] }
+# #     # - {
+# #     #     role: geerlingguy.docker,
+# #     #     docker_install_compose: false,
+# #     #     tags: ["docker"],
+# #     #   }
+# #     # - {
+# #     #     role: geerlingguy.docker_arm,
+# #     #     docker_install_compose: false,
+# #     #     tags: ["docker"],
+# #     #   }
 #     # - cloudalchemy.node_exporter
 #   tags:
 #     - bootstrap
 
-# - name: Servers
-#   hosts: rasphosts
-#   roles:
-#     - role: artis3n.tailscale
-#       vars:
-#         verbose: true
-#         tailscale_auth_key: "{{ vault_password('tailscale_auth_key') }}"
-#   tags:
-#     - tailscale
+- name: Servers
+  hosts: rasphosts
+  roles:
+    - role: artis3n.tailscale
+      vars:
+        verbose: true
+        tailscale_auth_key: ""
+  tags:
+    - tailscale
 
 
 # - name: setup the consul servers

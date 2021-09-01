@@ -1,10 +1,10 @@
 [hosts]
 rpi1.local ansible_host=192.168.1.231
 rpi2.local ansible_host=192.168.1.224
-rpi3.local ansible_host=192.168.1.53
-rpi4.local ansible_host=192.168.1.54
+rpi3.local ansible_host=192.168.1.123
+rpi4.local ansible_host=192.168.1.121
 rpi5.local ansible_host=192.168.1.61
-rpi6.local ansible_host=192.168.1.62
+rpi6.local ansible_host=192.168.1.122
 traefik ansible_host=192.168.1.51
 fileserver ansible_host=192.168.1.56
 adguard ansible_host=192.168.1.69
@@ -14,10 +14,10 @@ veverkaplex ansible_host=192.168.1.111
 [rasphosts]
 rpi1.local ansible_host=192.168.1.231
 rpi2.local ansible_host=192.168.1.224
-rpi3.local ansible_host=192.168.1.53
-rpi4.local ansible_host=192.168.1.54
+rpi3.local ansible_host=192.168.1.123
+rpi4.local ansible_host=192.168.1.121
 rpi5.local ansible_host=192.168.1.61
-rpi6.local ansible_host=192.168.1.62
+rpi6.local ansible_host=192.168.1.122
 
 [linuxhosts]
 traefik ansible_host=192.168.1.51
@@ -28,25 +28,25 @@ veverkaplex ansible_host=192.168.1.111
 
 [consul_servers]
 rpi1.local ansible_host=192.168.1.231
-rpi3.local ansible_host=192.168.1.53
+rpi3.local ansible_host=192.168.1.123
 fileserver ansible_host=192.168.1.56
 
 [consul_followers]
 rpi2.local ansible_host=192.168.1.224
-rpi4.local ansible_host=192.168.1.54
+rpi4.local ansible_host=192.168.1.121
 rpi5.local ansible_host=192.168.1.61
-rpi6.local ansible_host=192.168.1.62
+rpi6.local ansible_host=192.168.1.122
 traefik ansible_host=192.168.1.51
 adguard ansible_host=192.168.1.69
 calibre ansible_host=192.168.1.84
 veverkaplex ansible_host=192.168.1.111
 
 [nomad_servers]
-rpi6.local ansible_host=192.168.1.62
+rpi6.local ansible_host=192.168.1.122
 fileserver ansible_host=192.168.1.56
 
 [traefik_servers]
-rpi6.local ansible_host=192.168.1.62
+rpi6.local ansible_host=192.168.1.122
 
 [nomad_workers]
 rpi[1:5].local
@@ -69,4 +69,4 @@ server_user_name=veverkap
 [samba_servers]
 rpi1.local ansible_host=192.168.1.231
 rpi2.local ansible_host=192.168.1.224
-rpi3.local ansible_host=192.168.1.53
+rpi3.local ansible_host=192.168.1.123

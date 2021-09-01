@@ -1,5 +1,8 @@
 #!/usr/bin/env ansible-playbook -i inventory --skip-tags=consul,bootstrap,nomad
 ---
+- hosts: localhost
+  roles:
+    - ansible-modules-bitwarden
 - name: setup servers
   hosts: all
   gather_facts: true
@@ -7,56 +10,68 @@
   become_user: root
   roles:
     - { role: utils, tags: ["utils"] }
-    # - {
-    #     role: geerlingguy.docker,
-    #     docker_install_compose: false,
-    #     tags: ["docker"],
-    #   }
-    # - {
-    #     role: geerlingguy.docker_arm,
-    #     docker_install_compose: false,
-    #     tags: ["docker"],
-    #   }
-    - cloudalchemy.node_exporter
-  tags:
-    - bootstrap
-- name: setup the consul servers
-  hosts: consul_servers
-  become: true
-  become_user: root
-  gather_facts: true
-  remote_user: ubuntu
-  roles:
-    - { role: consul, consul_is_server: yes }
-  tags:
-    - consul
-- name: setup the consul followers
-  hosts: consul_followers
-  become: true
-  become_user: root
-  gather_facts: true
-  remote_user: ubuntu
-  roles:
-    - { role: consul, consul_is_server: no }
-  tags:
-    - consul
-- name: setup the nomad servers
-  hosts: nomad_servers
-  become: true
-  become_user: root
-  gather_facts: true
-  remote_user: ubuntu
-  roles:
-    - { role: nomad, nomad_is_server: yes, nomad_dc: alpha }
-  tags:
-    - nomad
-- name: setup the nomad workers
-  hosts: nomad_workers
-  become: true
-  become_user: root
-  gather_facts: true
-  remote_user: ubuntu
-  roles:
-    - { role: nomad, nomad_dc: alpha }
-  tags:
-    - nomad
+#     # - {
+#     #     role: geerlingguy.docker,
+#     #     docker_install_compose: false,
+#     #     tags: ["docker"],
+#     #   }
+#     # - {
+#     #     role: geerlingguy.docker_arm,
+#     #     docker_install_compose: false,
+#     #     tags: ["docker"],
+#     #   }
+#     # - cloudalchemy.node_exporter
+#   tags:
+#     - bootstrap
+
+# - name: Servers
+#   hosts: rasphosts
+#   roles:
+#     - role: artis3n.tailscale
+#       vars:
+#         verbose: true
+#         tailscale_auth_key: "{{ vault_password('tailscale_auth_key') }}"
+#   tags:
+#     - tailscale
+
+
+# - name: setup the consul servers
+#   hosts: consul_servers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: ubuntu
+#   roles:
+#     - { role: consul, consul_is_server: yes }
+#   tags:
+#     - consul
+# - name: setup the consul followers
+#   hosts: consul_followers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: ubuntu
+#   roles:
+#     - { role: consul, consul_is_server: no }
+#   tags:
+#     - consul
+# - name: setup the nomad servers
+#   hosts: nomad_servers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: ubuntu
+#   roles:
+#     - { role: nomad, nomad_is_server: yes, nomad_dc: alpha }
+#   tags:
+#     - nomad
+# - name: setup the nomad workers
+#   hosts: nomad_workers
+#   become: true
+#   become_user: root
+#   gather_facts: true
+#   remote_user: ubuntu
+#   roles:
+#     - { role: nomad, nomad_dc: alpha }
+#   tags:
+#     - nomad

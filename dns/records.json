@@ -1,0 +1,1200 @@
+[
+ {
+  "id": "5d00e839a343480589ff3fa76c82d714",
+  "type": "A",
+  "name": "calibre.internal.veverka.net",
+  "content": "100.74.66.105",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-09-01T12:20:44.883954Z",
+  "modified_on": "2021-09-01T12:20:44.883954Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "7aa436d7ea9b3d6baaa546ea340eb5f2",
+  "type": "A",
+  "name": "cdn.veverka.net",
+  "content": "68.131.109.254",
+  "proxiable": true,
+  "proxied": true,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-07-17T22:28:04.829959Z",
+  "modified_on": "2021-08-19T18:16:28.480786Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "c26d9ca958c9c3cb758b0fa057825a80",
+  "type": "A",
+  "name": "dns.veverka.net",
+  "content": "192.168.1.69",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-05-23T22:50:44.640722Z",
+  "modified_on": "2021-05-23T22:50:44.640722Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "62b33d71e378a70f8210d3414123f333",
+  "type": "A",
+  "name": "external.veverka.net",
+  "content": "68.131.109.254",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-11-07T20:18:00.528436Z",
+  "modified_on": "2021-08-09T19:31:53.794715Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "9786abe54a836e8adfcd005b2cef4440",
+  "type": "A",
+  "name": "lan.veverka.net",
+  "content": "192.168.1.51",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-04-21T17:51:52.283491Z",
+  "modified_on": "2021-06-07T19:35:20.978559Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "7b934b73e04d2d12bb5be8962ba90805",
+  "type": "A",
+  "name": "plex.veverka.net",
+  "content": "192.168.1.111",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-01-23T02:11:34.308918Z",
+  "modified_on": "2021-05-30T22:37:36.201816Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "d45561bfdef0194d875f3bcd334c0bdd",
+  "type": "A",
+  "name": "psql.internal.veverka.net",
+  "content": "100.74.66.105",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-09-01T12:20:56.768945Z",
+  "modified_on": "2021-09-01T12:20:56.768945Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "52409d8e6c74d5031c184779560879aa",
+  "type": "A",
+  "name": "qnap.veverka.net",
+  "content": "192.168.1.43",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-13T14:31:49.535373Z",
+  "modified_on": "2020-02-13T14:31:49.535373Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "a87cc06cb7d0a7d78029e17178b2ed53",
+  "type": "A",
+  "name": "unifi.veverka.net",
+  "content": "192.168.1.6",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-09T20:37:31.168296Z",
+  "modified_on": "2020-02-09T20:37:31.168296Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "9d1cb0e6499920a9b1a23971389c49db",
+  "type": "A",
+  "name": "veverka.net",
+  "content": "185.199.111.153",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-06-09T16:47:26.817109Z",
+  "modified_on": "2021-06-09T16:47:26.817109Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "3808b60e37dad44f32325f0f45d1ef84",
+  "type": "A",
+  "name": "veverka.net",
+  "content": "185.199.110.153",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-06-09T16:47:12.268687Z",
+  "modified_on": "2021-06-09T16:47:12.268687Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "b71083581c0e9270918e98231159cc04",
+  "type": "A",
+  "name": "veverka.net",
+  "content": "185.199.109.153",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-06-09T16:46:53.264871Z",
+  "modified_on": "2021-06-09T16:46:53.264871Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "36ab7884859c06b183d7d9047a912418",
+  "type": "A",
+  "name": "veverka.net",
+  "content": "185.199.108.153",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-10-11T19:24:37.080712Z",
+  "modified_on": "2021-06-09T16:46:14.998146Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "72b52891fb28775b2802435e735df416",
+  "type": "CNAME",
+  "name": "adguard.veverka.net",
+  "content": "external.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-05-23T22:52:21.837128Z",
+  "modified_on": "2021-05-23T22:52:21.837128Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "cdf7e6d37159dabeff2ee27937e2daf8",
+  "type": "CNAME",
+  "name": "aria.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-07-20T18:57:38.107118Z",
+  "modified_on": "2021-07-20T18:57:38.107118Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "03ffce7e981203d47a9d13dc911c5b5c",
+  "type": "CNAME",
+  "name": "bazarr.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-01-19T12:44:54.078674Z",
+  "modified_on": "2021-01-19T12:44:54.078674Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "8d4b030372dd4eb2d7a26c8cf65ac1f9",
+  "type": "CNAME",
+  "name": "bitwarden.veverka.net",
+  "content": "external.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-05-22T19:38:43.39652Z",
+  "modified_on": "2021-05-22T19:38:43.39652Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "c6eeeaeb3662d64af72ca89e4c4f5ea6",
+  "type": "CNAME",
+  "name": "consul.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-04T12:32:40.088513Z",
+  "modified_on": "2020-02-04T12:32:40.088513Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "51915a12503cff8839b05f98659c7e20",
+  "type": "CNAME",
+  "name": "email.mg.veverka.net",
+  "content": "mailgun.org",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-09T20:37:30.780919Z",
+  "modified_on": "2020-02-09T20:37:30.780919Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "5debfc8cf469050f903cbf342c420f7a",
+  "type": "CNAME",
+  "name": "file.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-05-31T00:59:20.339039Z",
+  "modified_on": "2021-05-31T00:59:20.339039Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "396c28c2687a3ba856ec322cbefbeaf4",
+  "type": "CNAME",
+  "name": "grafana.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-05-30T22:36:58.421715Z",
+  "modified_on": "2021-05-30T22:36:58.421715Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "299b50c51ce5ac5f9d2d7c86a17c5437",
+  "type": "CNAME",
+  "name": "hass.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-06-06T02:29:43.713841Z",
+  "modified_on": "2021-06-06T02:29:43.713841Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "a25e5151b2b4398bdb9e61c71d0ffba9",
+  "type": "CNAME",
+  "name": "healthchecks.veverka.net",
+  "content": "external.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-07-07T23:49:08.671021Z",
+  "modified_on": "2021-07-07T23:49:08.671021Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "29557bf31f69f18c8d518045f382e160",
+  "type": "CNAME",
+  "name": "influxdb.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-04-18T17:35:32.943921Z",
+  "modified_on": "2020-04-18T17:35:32.943921Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "aa68a4aefaa79f3a3b07fb7cfd32b273",
+  "type": "CNAME",
+  "name": "jackett.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-02T19:46:34.091657Z",
+  "modified_on": "2020-02-02T19:46:34.091657Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "ecfc313d95fac0d7442f465545624106",
+  "type": "CNAME",
+  "name": "library.veverka.net",
+  "content": "external.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-04-22T21:11:50.678882Z",
+  "modified_on": "2021-05-30T01:53:36.599125Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "6637cff0bfcb4c0555d1cf564dd33ec7",
+  "type": "CNAME",
+  "name": "minio.veverka.net",
+  "content": "external.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-18T17:43:15.531711Z",
+  "modified_on": "2021-07-17T22:08:36.810441Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "c8047ce7b8cc7fc808b4e9f7db1f1f3e",
+  "type": "CNAME",
+  "name": "movieapi.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-02-14T20:24:05.571664Z",
+  "modified_on": "2021-02-14T20:24:05.571664Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "55112c9b2be0b4708714efc337e7f34f",
+  "type": "CNAME",
+  "name": "noco.veverka.net",
+  "content": "external.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-08-01T23:56:03.878823Z",
+  "modified_on": "2021-08-01T23:56:03.878823Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "546ce655bf4dab3e23f05f626585112a",
+  "type": "CNAME",
+  "name": "nomad.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-06-08T16:34:51.088748Z",
+  "modified_on": "2021-06-08T16:34:51.088748Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "a77422113b37b56e00520fe06d78eca9",
+  "type": "CNAME",
+  "name": "npm.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-06-08T01:53:20.628405Z",
+  "modified_on": "2021-06-08T01:53:20.628405Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "250b403ea88477137b6bf8f917b5b471",
+  "type": "CNAME",
+  "name": "ombi.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-12-09T17:19:46.554882Z",
+  "modified_on": "2020-12-09T17:19:46.554882Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "c8fa8e03437030e1e99ec84788e2a830",
+  "type": "CNAME",
+  "name": "patrick.veverka.net",
+  "content": "veverkap.github.io",
+  "proxiable": true,
+  "proxied": true,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-02T19:45:28.881282Z",
+  "modified_on": "2020-02-02T19:45:28.881282Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "e415f8d4470ec8016c7974af15693199",
+  "type": "CNAME",
+  "name": "polywork.veverka.net",
+  "content": "evening-chard-3sjtwtxxs2d95802t2fju2vt.herokudns.com",
+  "proxiable": true,
+  "proxied": true,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-06-18T21:02:13.471473Z",
+  "modified_on": "2021-06-18T21:02:13.471473Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "3ee461595e406e5918515a2937d82f68",
+  "type": "CNAME",
+  "name": "prometheus.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-05-30T22:36:43.442632Z",
+  "modified_on": "2021-05-30T22:36:43.442632Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "82e3f957d4a95493010f730efd1e636d",
+  "type": "CNAME",
+  "name": "radarr.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-05T00:37:38.074247Z",
+  "modified_on": "2020-02-05T00:37:38.074247Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "4b98bf237b838514a05c6dd004d2a4c7",
+  "type": "CNAME",
+  "name": "recipes.veverka.net",
+  "content": "external.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-03-14T13:45:27.06049Z",
+  "modified_on": "2021-03-14T13:45:27.06049Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "cfcb26dc6e2bd3e70acdb4b48f09c2f9",
+  "type": "CNAME",
+  "name": "requests.veverka.net",
+  "content": "external.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-11-07T21:13:19.496076Z",
+  "modified_on": "2020-11-07T21:13:19.496076Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "3b7daaec39619d16ade801625f838944",
+  "type": "CNAME",
+  "name": "sonarr.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-04T12:32:15.035735Z",
+  "modified_on": "2020-02-04T12:32:15.035735Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "9b73d626f9537a7b50c89fe67c0ac5d5",
+  "type": "CNAME",
+  "name": "sync.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-05-15T19:47:29.536465Z",
+  "modified_on": "2021-05-15T19:47:29.536465Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "aaabf65f691827fb5bfa81c54e11dd5c",
+  "type": "CNAME",
+  "name": "tautulli.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-03-29T23:10:27.838406Z",
+  "modified_on": "2020-03-29T23:10:27.838406Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "b40d05b0d58fcde210261fed588c5bcd",
+  "type": "CNAME",
+  "name": "traefik.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-04T12:31:54.863606Z",
+  "modified_on": "2020-02-04T12:31:54.863606Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "fb79a619c66de2c58e7de27401512bde",
+  "type": "CNAME",
+  "name": "vmware.veverka.net",
+  "content": "lan.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-06-09T14:49:48.41349Z",
+  "modified_on": "2021-06-09T14:49:48.41349Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "507222e20b2624b0a981719a06332994",
+  "type": "CNAME",
+  "name": "warez.veverka.net",
+  "content": "f001.backblazeb2.com",
+  "proxiable": true,
+  "proxied": true,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-03-03T15:02:10.027706Z",
+  "modified_on": "2020-03-03T15:02:10.027706Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "452723401378779f4c1e69e82c56517a",
+  "type": "CNAME",
+  "name": "webhook.veverka.net",
+  "content": "external.veverka.net",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-07-03T19:18:16.374126Z",
+  "modified_on": "2021-07-03T19:18:16.374126Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "736b6c886adfbfb11756dba4e5354889",
+  "type": "CNAME",
+  "name": "webmail.veverka.net",
+  "content": "ghs.googlehosted.com",
+  "proxiable": true,
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-09T20:37:31.151392Z",
+  "modified_on": "2020-02-09T20:37:31.151392Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "7d4d4c90d87f422a2c93031f7e505e2e",
+  "type": "CNAME",
+  "name": "www.veverka.net",
+  "content": "patrick.veverka.net",
+  "proxiable": true,
+  "proxied": true,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-02-12T01:02:44.330719Z",
+  "modified_on": "2020-02-12T01:02:44.330719Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "bc524d470685ecbb2b95524573308c66",
+  "type": "MX",
+  "name": "mg.veverka.net",
+  "content": "mxb.mailgun.org",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2017-12-21T01:36:04.212424Z",
+  "modified_on": "2017-12-21T01:36:04.212424Z",
+  "meta": {
+   "auto_added": true,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  },
+  "priority": 10
+ },
+ {
+  "id": "29dd0aaf58e18a1fa36e2c57e78a3ab8",
+  "type": "MX",
+  "name": "mg.veverka.net",
+  "content": "mxa.mailgun.org",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2017-12-21T01:36:04.197581Z",
+  "modified_on": "2017-12-21T01:36:04.197581Z",
+  "meta": {
+   "auto_added": true,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  },
+  "priority": 10
+ },
+ {
+  "id": "868ba2c13370c3e0de9f848a7a26be84",
+  "type": "MX",
+  "name": "veverka.net",
+  "content": "alt2.aspmx.l.google.com",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2017-12-21T01:36:04.166771Z",
+  "modified_on": "2017-12-21T01:36:04.166771Z",
+  "meta": {
+   "auto_added": true,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  },
+  "priority": 5
+ },
+ {
+  "id": "3f548721772588658c3d8d73fcea99e5",
+  "type": "MX",
+  "name": "veverka.net",
+  "content": "alt1.aspmx.l.google.com",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2017-12-21T01:36:04.123201Z",
+  "modified_on": "2017-12-21T01:36:04.123201Z",
+  "meta": {
+   "auto_added": true,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  },
+  "priority": 5
+ },
+ {
+  "id": "61693bb9001d542f133d65ee2628e7da",
+  "type": "MX",
+  "name": "veverka.net",
+  "content": "alt3.aspmx.l.google.com",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2017-12-21T01:36:04.105996Z",
+  "modified_on": "2017-12-21T01:36:04.105996Z",
+  "meta": {
+   "auto_added": true,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  },
+  "priority": 10
+ },
+ {
+  "id": "4681e8102a371da24c31d423f155a81f",
+  "type": "MX",
+  "name": "veverka.net",
+  "content": "aspmx.l.google.com",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2017-12-21T01:36:04.031255Z",
+  "modified_on": "2017-12-21T01:36:04.031255Z",
+  "meta": {
+   "auto_added": true,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  },
+  "priority": 1
+ },
+ {
+  "id": "8c05c7579d8c29ed19172328d5af7e11",
+  "type": "TXT",
+  "name": "_acme-challenge.auth.veverka.net",
+  "content": "eRfUPg_q2VeVYEYX3elG1H70xBMPwAruj3G1Tt07k8c",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-03-14T23:35:56.96038Z",
+  "modified_on": "2021-03-14T23:35:56.96038Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "ad7e70502765bf097a392457b117a3a1",
+  "type": "TXT",
+  "name": "_acme-challenge.git.veverka.net",
+  "content": "7DLBhNjwqXGLKONIU6OQMbhuyPOat5lrE3_btCVUj6A",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-07-19T20:33:20.210681Z",
+  "modified_on": "2020-07-19T20:33:20.210681Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "8432871ee142323104a95b6cdc86e390",
+  "type": "TXT",
+  "name": "_acme-challenge.hass.veverka.net",
+  "content": "DvUgnZOzPD9dW6qeLahGTvH6TLexLtSlt18JCVGGhh4",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-11-07T16:10:48.151458Z",
+  "modified_on": "2020-11-07T16:10:48.151458Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "c40877a9541bdeda941bb80728d81870",
+  "type": "TXT",
+  "name": "_acme-challenge.next.veverka.net",
+  "content": "7iJBVUZ73PseXG8yuRNvwTi88FQWbgbpMm9rg-694P0",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-08-10T15:08:57.426161Z",
+  "modified_on": "2020-08-10T15:08:57.426161Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "1a3e9fd0e9144ada82cc84d76ce4adf9",
+  "type": "TXT",
+  "name": "_acme-challenge.radarr.veverka.net",
+  "content": "EZpm1S3Mfulbad3wCvaJVNPKLkwhTgYSAOePOTVV7ek",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-02-17T20:10:11.745504Z",
+  "modified_on": "2021-02-17T20:10:11.745504Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "45fc9d1eda483e8df6e43dfbfbe9529a",
+  "type": "TXT",
+  "name": "_acme-challenge.tautulli.veverka.net",
+  "content": "FccSMHJO54P2_d1szxQYA7sOfaDAdHy-YdgXRzWeIws",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-04-21T17:49:08.758613Z",
+  "modified_on": "2020-04-21T17:49:08.758613Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "9a6d3214993ad14972b6ecb4922bf83f",
+  "type": "TXT",
+  "name": "_acme-challenge.unifi.veverka.net",
+  "content": "p-Y7-DHwLx8xm-ZIEGzIRvjGNVZs4KHSYAtfRI4O2Fw",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-01-07T20:30:48.534878Z",
+  "modified_on": "2020-01-07T20:30:48.534878Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "d16098845ef91c781daa25a5a18096cc",
+  "type": "TXT",
+  "name": "google._domainkey.veverka.net",
+  "content": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl5877xmoSEjsFnxdW6gK9kV5cHoplec1+WPtsmaYrtMZp1Peuv6bwa6znwISTmmdufgsRT80/TRmmRWfPydBmizY5TfM45XAdkD1hbVqFTZMGEIUWE/UT4hdFhTfZYSi8EQSYLOcwhxxmbMPeg4rJnwTPbZwPhzoYoyv14jO6vILajAEjDVHVIiG2W1qviHQJ6aflQfJU9rYdfVDp6sgKWsz3m6V5tUqvW4A8G4NdbPCtFrlfN6x1vKCuVoJh0a8WuJbdvcsCnbUSGEOMvYQ0IeUrimFNc/7wcDPRMTOMT5+Vmb5jr6S2df5Jv+arU+dltfC1EQi4fLbkW9BzM+vewIDAQAB",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2020-11-21T16:12:06.93639Z",
+  "modified_on": "2020-11-21T16:12:06.93639Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "10ff1f92e1a22df5e9c420160b7359c4",
+  "type": "TXT",
+  "name": "krs._domainkey.mg.veverka.net",
+  "content": "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDNovEEzq88Qeu26RokaVrslr1pm/9xwUpFEp89NIEFIbg7+RGCV+Zzy1k9NR3GfayXu5GHuK4NTxXsHYlHGZ6Y3EmvsyLDhxzWKLpqrVzpJkWMDxOvN9LwHBfvmec+8ZDfigU8HZBlpORxQb7glIxUdWXndbL1KCogdLZHk3frcwIDAQAB",
+  "proxied": false,
+  "ttl": 120,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2021-05-29T00:19:15.824312Z",
+  "modified_on": "2021-05-29T00:19:25.763113Z",
+  "meta": {
+   "auto_added": false,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "ffd1c84340bbea95efe76b4f0e503f00",
+  "type": "TXT",
+  "name": "mg.veverka.net",
+  "content": "v=spf1 include:mailgun.org ~all",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2017-12-21T01:36:04.181267Z",
+  "modified_on": "2017-12-21T01:36:04.181267Z",
+  "meta": {
+   "auto_added": true,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ },
+ {
+  "id": "1f2c355615efd5b6094c4b828ae36744",
+  "type": "TXT",
+  "name": "veverka.net",
+  "content": "v=spf1 include:_spf.google.com ~all",
+  "proxied": false,
+  "ttl": 1,
+  "zone_id": "ad0d354e2aae49b21ca3f09c421936e6",
+  "zone_name": "veverka.net",
+  "created_on": "2017-12-21T01:36:04.010156Z",
+  "modified_on": "2017-12-21T01:36:04.010156Z",
+  "meta": {
+   "auto_added": true,
+   "managed_by_apps": false,
+   "managed_by_argo_tunnel": false,
+   "source": "primary"
+  }
+ }
+]

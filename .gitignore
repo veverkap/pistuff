@@ -6,3 +6,4 @@ roles/consul/terraform/terraform.tfstate.backup
 roles/consul/terraform/.terraform/plugins/
 roles/consul/terraform/.envrc
 vaultpass.txt
+env/

@@ -1,0 +1,395 @@
+---
+? ''
+: - octodns:
+      cloudflare:
+        proxied: false
+    ttl: 120
+    type: A
+    values:
+    - 185.199.108.153
+    - 185.199.109.153
+    - 185.199.110.153
+    - 185.199.111.153
+  - ttl: 300
+    type: MX
+    values:
+    - exchange: aspmx.l.google.com.
+      preference: 1
+    - exchange: alt1.aspmx.l.google.com.
+      preference: 5
+    - exchange: alt2.aspmx.l.google.com.
+      preference: 5
+    - exchange: alt3.aspmx.l.google.com.
+      preference: 10
+  - ttl: 300
+    type: TXT
+    value: v=spf1 include:_spf.google.com ~all
+_acme-challenge.auth:
+  ttl: 120
+  type: TXT
+  value: eRfUPg_q2VeVYEYX3elG1H70xBMPwAruj3G1Tt07k8c
+_acme-challenge.git:
+  ttl: 120
+  type: TXT
+  value: 7DLBhNjwqXGLKONIU6OQMbhuyPOat5lrE3_btCVUj6A
+_acme-challenge.hass:
+  ttl: 120
+  type: TXT
+  value: DvUgnZOzPD9dW6qeLahGTvH6TLexLtSlt18JCVGGhh4
+_acme-challenge.next:
+  ttl: 120
+  type: TXT
+  value: 7iJBVUZ73PseXG8yuRNvwTi88FQWbgbpMm9rg-694P0
+_acme-challenge.radarr:
+  ttl: 120
+  type: TXT
+  value: EZpm1S3Mfulbad3wCvaJVNPKLkwhTgYSAOePOTVV7ek
+_acme-challenge.tautulli:
+  ttl: 120
+  type: TXT
+  value: FccSMHJO54P2_d1szxQYA7sOfaDAdHy-YdgXRzWeIws
+_acme-challenge.unifi:
+  ttl: 300
+  type: TXT
+  value: p-Y7-DHwLx8xm-ZIEGzIRvjGNVZs4KHSYAtfRI4O2Fw
+adguard:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 60
+  type: CNAME
+  value: lan.veverka.net.
+apprise:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 60
+  type: CNAME
+  value: external.veverka.net.
+bazarr:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+bitwarden:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+calibre.internal:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: A
+  value: 100.74.66.105
+cdn:
+  octodns:
+    cloudflare:
+      proxied: true
+  ttl: 300
+  type: A
+  value: 68.131.109.254
+change:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 60
+  type: CNAME
+  value: external.veverka.net.
+consul:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+dns:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 300
+  type: A
+  value: 192.168.1.69
+email.mg:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: mailgun.org.
+external:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: A
+  value: 71.120.213.99
+file:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+flow:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: external.veverka.net.
+google._domainkey:
+  ttl: 120
+  type: TXT
+  value: v=DKIM1\; k=rsa\; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl5877xmoSEjsFnxdW6gK9kV5cHoplec1+WPtsmaYrtMZp1Peuv6bwa6znwISTmmdufgsRT80/TRmmRWfPydBmizY5TfM45XAdkD1hbVqFTZMGEIUWE/UT4hdFhTfZYSi8EQSYLOcwhxxmbMPeg4rJnwTPbZwPhzoYoyv14jO6vILajAEjDVHVIiG2W1qviHQJ6aflQfJU9rYdfVDp6sgKWsz3m6V5tUqvW4A8G4NdbPCtFrlfN6x1vKCuVoJh0a8WuJbdvcsCnbUSGEOMvYQ0IeUrimFNc/7wcDPRMTOMT5+Vmb5jr6S2df5Jv+arU+dltfC1EQi4fLbkW9BzM+vewIDAQAB
+grafana:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+huginn:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 300
+  type: CNAME
+  value: lan.veverka.net.
+influxdb:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+jackett:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+krs._domainkey.mg:
+  ttl: 120
+  type: TXT
+  value: k=rsa\; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDNovEEzq88Qeu26RokaVrslr1pm/9xwUpFEp89NIEFIbg7+RGCV+Zzy1k9NR3GfayXu5GHuK4NTxXsHYlHGZ6Y3EmvsyLDhxzWKLpqrVzpJkWMDxOvN9LwHBfvmec+8ZDfigU8HZBlpORxQb7glIxUdWXndbL1KCogdLZHk3frcwIDAQAB
+lan:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: A
+  value: 100.110.50.38
+library:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: external.veverka.net.
+mg:
+- ttl: 300
+  type: MX
+  values:
+  - exchange: mxa.mailgun.org.
+    preference: 10
+  - exchange: mxb.mailgun.org.
+    preference: 10
+- ttl: 300
+  type: TXT
+  value: v=spf1 include:mailgun.org ~all
+minio:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: external.veverka.net.
+movieapi:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+n8n:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+nodered:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+nomad:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+notifications:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 60
+  type: CNAME
+  value: lan.veverka.net.
+npm:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+ombi:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+patrick:
+  octodns:
+    cloudflare:
+      proxied: true
+  ttl: 300
+  type: CNAME
+  value: veverkap.github.io.
+plex:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: A
+  value: 192.168.1.111
+polywork:
+  octodns:
+    cloudflare:
+      proxied: true
+  ttl: 300
+  type: CNAME
+  value: evening-chard-3sjtwtxxs2d95802t2fju2vt.herokudns.com.
+postgres:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 300
+  type: A
+  value: 100.74.66.105
+postgres.internal:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: A
+  value: 192.168.1.84
+prometheus:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+qnap:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: A
+  value: 192.168.1.43
+radarr:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+recipes:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: external.veverka.net.
+requests:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: external.veverka.net.
+sonarr:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+sync:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 300
+  type: CNAME
+  value: lan.veverka.net.
+tautulli:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+unifi:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: A
+  value: 192.168.1.6
+vmware:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: lan.veverka.net.
+warez:
+  octodns:
+    cloudflare:
+      proxied: true
+  ttl: 300
+  type: CNAME
+  value: f001.backblazeb2.com.
+webhook:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: external.veverka.net.
+webmail:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 120
+  type: CNAME
+  value: ghs.googlehosted.com.
+www:
+  octodns:
+    cloudflare:
+      proxied: true
+  ttl: 300
+  type: CNAME
+  value: patrick.veverka.net.
